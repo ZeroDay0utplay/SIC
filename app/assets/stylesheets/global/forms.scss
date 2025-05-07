@@ -1,0 +1,31 @@
+@use './variables.scss' as *;
+
+.form-validate {
+  .error-message {
+    padding: 0 10px;
+    display: block;
+    color: $red;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 24px;
+  }
+}
+
+form {
+  .form-control,
+  .form-select {
+    font-size: 14px;
+    color: $gray-500;
+    padding: 4px 7px;
+    line-height: 28px;
+    border-radius: 5px;
+
+    &::placeholder {
+      color: $gray-400;
+    }
+
+    &:focus {
+      color: $gray-500;
+    }
+  }
+}

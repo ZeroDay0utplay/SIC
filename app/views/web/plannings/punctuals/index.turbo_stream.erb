@@ -1,0 +1,5 @@
+<%= turbo_stream.replace "cover-punctuals-list" do %>
+  <%= turbo_frame_tag 'cover-punctuals-list' do %>
+    <%= render 'punctuals', punctuals: @punctuals %>
+  <% end %>
+<% end %>

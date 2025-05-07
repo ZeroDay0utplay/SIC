@@ -1,0 +1,166 @@
+@use './variables.scss' as *;
+
+.modal {
+  .modal-header {
+    .modal-title {
+      color: $black;
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    .btn-close {
+      color: $black-text;
+    }
+  }
+  .modal-footer {
+    padding: 20px 10px 10px;
+  }
+}
+
+.modal-right-side {
+  transform: translate(100%, 0%);
+  transition: 0.7s transform cubic-bezier(0.2, -0.45, 0.25, 1);
+  &.show {
+    transform: translate(0%, 0%);
+  }
+  .modal-dialog {
+    top: 0;
+    right: 0;
+    margin: 0;
+    width: 50vw;
+    height: 100vh;
+    max-width: 920px;
+    position: absolute;
+
+    .modal-content {
+      margin: 0;
+      height: 100%;
+      border-radius: 0;
+
+      .modal-body {
+        padding: 20px 40px;
+        overflow-y: auto;
+      }
+    }
+  }
+
+  &.w-900 {
+    .modal-dialog {
+      width: 100%;
+      max-width: 900px;
+    }
+  }
+
+  &.w-780 {
+    .modal-dialog {
+      width: 100%;
+      max-width: 780px;
+    }
+  }
+}
+
+.modal-catalogue {
+  .modal-dialog {
+    min-width: 640px;
+
+    .modal-body {
+      padding: 20px 35px;
+
+      &.new-prestation {
+        padding: 20px 60px;
+      }
+    }
+
+    .nav-tabs {
+      border: none;
+
+      .nav-link-catalogue {
+        padding: 5px;
+        border: none;
+        font-size: 14px;
+        color: #5A5A5A;
+        overflow: hidden;
+        position: relative;
+        border-radius: 5px;
+        background: transparent;
+
+        &:after {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          content: "";
+          left: 0;
+          top: 0;
+        }
+
+        &:hover,
+        &.active {
+          color: #233341;
+          background-color: #B5E0FF;
+
+          svg {
+            path {
+              stroke: #233341;
+            }
+          }
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+          fill: transparent;
+
+          path {
+            stroke: #5A5A5A;
+          }
+        }
+      }
+
+      .nav-item+.nav-item {
+        margin-left: 10px;
+      }
+    }
+
+    .search-catalogue {
+      margin-right: 10px;
+      position: relative;
+      width: calc(100% - 55px);
+
+      input {
+        line-height: 42px;
+        padding: 0 40px 0 10px;
+      }
+
+      svg {
+        top: 10px;
+        right: 16px;
+        position: absolute;
+      }
+    }
+
+    .btn-add {
+      width: 44px;
+      color: #fff;
+      border-radius: 6px;
+      line-height: 44px;
+      background-color: #0095D6;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  #catalogue_content {
+    .prestation-item {
+      cursor: pointer;
+      transition: 0.3s all ease;
+
+      &:hover {
+        color: #333;
+        background-color: #B5E0FF;
+      }
+    }
+  }
+}

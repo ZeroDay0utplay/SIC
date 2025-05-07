@@ -1,0 +1,14 @@
+<div class="dropdown">
+<a href="#" id="contactsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+    <%= inline_svg_tag("icons/interloc.svg") %>
+</a>
+  <ul class="dropdown-menu" aria-labelledby="contactsDropdown">
+    <% contacts.each do |contact| %>
+      <li>
+        <a class="dropdown-item" href="#" title="<%= contact&.full_name %>">
+          <%= contact&.full_name %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>

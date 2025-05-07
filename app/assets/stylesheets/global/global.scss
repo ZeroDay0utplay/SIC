@@ -1,0 +1,75 @@
+@use './variables.scss'as *;
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  letter-spacing: -0.5px;
+  font-style: normal;
+  color: $black-text;
+  font-size: 14px;
+
+  &::-webkit-scrollbar-track {
+    border-radius: 7px;
+    background-color: $blue-400;
+  }
+
+  &::-webkit-scrollbar {
+    width: 7px;
+    background-color: $blue-400;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 7px;
+    background-color: $blue;
+  }
+}
+
+
+.skeleton-loader .skeleton-line {
+  background: linear-gradient(90deg, $blue-400 25%, $blue-300 37%, $blue-500 63%);
+  animation: shimmer 1.4s infinite;
+  background-size: 1000px 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+
+.d-none {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.text-gray-dark {
+  color: $gray-400;
+}
+
+.text-300 {
+  font-weight: 300;
+}
+
+.text-500 {
+  font-weight: 500;
+}
+
+.text-600 {
+  font-weight: 600;
+}
+
+.text-700 {
+  font-weight: 700;
+}
+
+.pointer {
+  cursor: pointer;
+}

@@ -1,0 +1,105 @@
+<div class="settings-container finances interventions-view" data-controller="search">
+  <div class="d-flex d-wrap justify-content-between mb-3">
+    <h1 class="settings-title mb-0">Interventions</h1>
+  </div>
+  <div class="intervention-status d-flex align-content-center justify-content-center">
+    <div class="form-check form-check-inline">
+      <%= label_tag 'all-filter', class: 'form-check-label blue-dark-status' do %>
+        <%= radio_button_tag :state, '', class: 'form-check-input', checked: true, id: 'all-filter',
+            data: { action: 'change->search#getByState' } %>
+        <span class='type-status-value'>Tout</span>
+        <div class="after"></div>
+      <% end %>
+    </div>
+    <div class="separation"></div>
+    <div class="form-check form-check-inline">
+      <%= label_tag 'pending-filter', class: 'form-check-label green-status' do %>
+        <%= radio_button_tag :state, '0', class: 'form-check-input', id: 'pending-filter',
+            data: { action: 'change->search#getByState' } %>
+        <span class='type-status-value'>Facturé</span>
+        <div class="after"></div>
+      <% end %>
+    </div>
+    <div class="separation"></div>
+    <div class="form-check form-check-inline">
+      <%= label_tag 'allowed-filter', class: 'form-check-label blue-light-status' do %>
+        <%= radio_button_tag :state, '1', class: 'form-check-input', id: 'allowed-filter',
+            data: { action: 'change->search#getByState' } %>
+        <span class='type-status-value'>Partielle</span>
+        <div class="after"></div>
+      <% end %>
+    </div>
+    <div class="separation"></div>
+    <div class="form-check form-check-inline">
+      <%= label_tag 'refused-filter', class: 'form-check-label red-status' do %>
+        <%= radio_button_tag :state, '2', class: 'form-check-input', id: 'refused-filter',
+            data: { action: 'change->search#getByState' } %>
+        <span class='type-status-value'>En cours</span>
+        <div class="after"></div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="d-flex flex-wrap align-items-end my-3">
+    <div class="col-sm-12 col-md-6 col-lg-2">
+      <div class="col-item">
+        <label class='form-label'">Année</label>
+        <div class="m-0" id="filter_quote_dates">
+          <div class="input-group">
+            <%= select_tag "intervention_date", options_for_select(@years), class:"form-select" %>
+            <div class="input-group-text bg-primary-transparent">
+              <%= inline_svg_tag('icons/devis-calendar.svg') %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-7">
+      <div class="col-item w-100 d-flex align-items-center justify-content-center">
+        <%= render 'months' %>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-3 d-flex justify-content-end">
+      <div class="search-input w-350">
+        <%= form_with url: finances_interventions_path, method: :get,
+            data: { search_url: finances_interventions_path } do |form| %>
+          <div class="search-input w-350">
+            <%= form.search_field :search, class: 'form-control', placeholder: 'Rechercher',
+                aria: { label: 'search by name or company', describedby: 'button-addon-2' },
+                data: { action: "input->search#search", search_target: "input" } %>
+            <i class="search-icon">
+              <%= inline_svg_tag('icons/search.svg') %>
+            </i>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= render "shared/skeleton_loader" %>
+
+    <div data-search-target="skeletonTable">
+      <%= turbo_frame_tag 'cover-interventions-list' do %>
+        <%= render 'interventions', interventions: @interventions %>
+        <% if @count > 10 %>
+          <footer class="d-flex align-items-center justify-content-between p-4">
+            <div class="cover-pagination">
+              <%= will_paginate @interventions, renderer: BootstrapPaginationHelper::BootstrapLinkRenderer %>
+            </div>
+            <div class='w-25 d-flex align-items-center justify-content-end'>
+              <label class='text-gray-dark me-2'>Affichage :</label>
+              <%= select_tag :items, options_for_select([10, 20, 30, 40, 50], params[:items]),
+                data: { action: "change->search#changeItemsPerPage", search_target: "itemsPerPage" },
+                class: "w-25 ml-auto form-select" %>
+            </div>
+          </footer>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+</div>

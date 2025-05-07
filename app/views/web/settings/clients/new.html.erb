@@ -1,0 +1,8 @@
+<div class="settings-container d-flex">
+  <div class="new-client-form-container w-100" data-controller="client">
+    <%= form_for :client, url: settings_clients_path, method: :post,
+        html: { multipart: true, class: 'form-validate', data: { controller:'form-validate'} } do |form| %>
+      <%= render 'form', form: form %>
+    <% end %>
+  </div>
+</div>

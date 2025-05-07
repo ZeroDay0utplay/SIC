@@ -1,0 +1,60 @@
+<ul class="dropdown-menu" data-popper-placement="left-start" aria-labelledby="dropdownMenuClickableInside">
+
+  <% if ["new", "edit"].include?(action_name) %>
+    <li>
+      <div class="dropdown-item">
+        <%= form_detail.check_box :display_title, checked: @quote.commercial_detail.display_title,
+            data: { action:"change->finance#showInputsFirstStep", binding: "display_title"} %>
+        <%= form_detail.label :display_title, "Titre du document", class:"pointer user-select-none" %>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown-item">
+        <%= form_detail.check_box :display_description, checked: @quote.commercial_detail.display_description,
+            data: { action:"change->finance#showInputsFirstStep", binding: "display_description"} %>
+        <%= form_detail.label :display_description, "Champ libre", class:"pointer user-select-none" %>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown-item">
+        <%= form_detail.check_box :display_heading, checked: @quote.commercial_detail.display_heading,
+            data: { action:"change->finance#showInputsFirstStep", binding: "display_heading"} %>
+        <%= form_detail.label :display_heading, "Intitulé client", class:"pointer user-select-none" %>
+      </div>
+    </li>
+  <% end %>
+
+  <% if action_name == "edit_prestations" %>
+    <li>
+      <div class="dropdown-item">
+        <%= form_detail.check_box :display_legal_mentions, checked: @quote.commercial_detail.display_legal_mentions %>
+        <%= form_detail.label :display_legal_mentions, "Mentions spéciales", class:"pointer user-select-none" %>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown-item">
+        <%= form_detail.check_box :display_footer, checked: @quote.commercial_detail.display_footer %>
+        <%= form_detail.label :display_footer, "Pied de page", class:"pointer user-select-none" %>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown-item">
+        <%= form_detail.check_box :display_global_discount, checked: @quote.commercial_detail.display_global_discount, data: {action:"change->finance#showGlobalReduction"} %>
+        <%= form_detail.label :display_global_discount, "Remise global", class:"pointer user-select-none" %>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown-item">
+        <%= form_detail.check_box :display_total_with_tax, checked: @quote.commercial_detail.display_total_with_tax,
+            data: { action:"change->finance#showTotalPricePerLine", binding: "display_heading"} %>
+        <%= form_detail.label :display_total_with_tax, "Total TTC par ligne", class:"pointer user-select-none" %>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown-item">
+        <%= form_detail.check_box :display_service_details, checked: @quote.commercial_detail.display_service_details %>
+        <%= form_detail.label :display_service_details, "Détails des prestations", class:"pointer user-select-none" %>
+      </div>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,11 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+  <div class="modal fade modal-lg" id="client" tabindex="-1" aria-labelledby="clientModalLabel" aria-hidden="true" data-controller="bs-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <%= form_for :client, url: settings_clients_path(), method: :patch do |form| %>
+          <%= render partial: '/web/shared/modals/form_client_modal', locals: { form: form } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

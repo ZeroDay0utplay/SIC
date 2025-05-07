@@ -1,0 +1,116 @@
+<div class="modal fade modal-need-tasks w-780 modal-right-side" id="taskModal"
+    tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true"
+    data-controller="needs-tasks" data-needs-target="taskModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="taskModalLabel">Créer une nouvelle tâche</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div data-needs-tasks-target="taskForm">
+          <h5>Renseignez les détails de la tâche pour la mission sélectionnée.</h5>
+
+          <template data-needs-tasks-target="taskTemplate">
+            <%= form.fields_for :tasks, PlanningTask.new, child_index: 'TASK_ID' do |task_fields| %>
+              <div class="cover-task mb-3" data-controller="needs-tasks-item" data-planning-type="<%= @planning.type %>">
+                <% task_fields.hidden_field :week_start, data: {needs_tasks_item_target:"weekStart"} %>
+                <% task_fields.hidden_field :week_end, data: {needs_tasks_item_target:"weekEnd"} %>
+                <% if @planning.type == "Regular" %>
+                  <div class="d-flex justify-content-center cover-frequency mb-2">
+                    <% { 'weekly' => 'Hebdomadaire', 'half-monthly' => 'Semi Mensuel', 'monthly' => 'Mensuel' }.each do |value, label| %>
+                      <label class="d-flex align-items-center pointer me-3">
+                        <%= task_fields.radio_button :frequency, value, checked: (value == 'weekly'), class: "task-frequency", data: { needs_tasks_item_target: "frequency" } %>
+                        <span><%= label %></span>
+                      </label>
+                    <% end %>
+                  </div>
+
+                  <div class="d-flex justify-content-center cover-frequency-days mb-3">
+                    <% {1=>"Lun", 2=>"Mar", 3=>"Mer", 4=>"Jeu", 5=>"Ven", 6=>"Sam", 0=>"Dim"}.each do |key, value| %>
+                      <label class="me-2">
+                        <input type="checkbox" value="<%= key %>" <%= key == 1 ? "checked" : "" %>
+                              class="frequency-days"
+                              data-needs-tasks-item-target="frequencyDays">
+                        <span><%= value %></span>
+                      </label>
+                    <% end %>
+                  </div>
+
+                <% end %>
+
+                <div class="row mb-3">
+                  <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                      <label class="form-label text-gray-dark">Sélectionner une date</label>
+                      <%= task_fields.text_field :date,
+                          class: "form-control date-picker",
+                          placeholder: "Choisissez une date",
+                          data: { needs_tasks_item_target: "dateRange" } %>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12 col-md-6">
+                    <div class="d-flex">
+                      <div class="w-50">
+                        <label class="form-label text-gray-dark">De</label>
+                        <%= task_fields.time_field :started_at,
+                            class: "form-control", value:"07:00" %>
+                      </div>
+                      <div class="w-50 ms-3">
+                        <label class="form-label text-gray-dark">à</label>
+                        <%= task_fields.time_field :finished_at,
+                            class: "form-control", value:"08:00" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <%= task_fields.label :prestation_id, "Prestation", class: "form-label text-gray-dark" %>
+                      <%= task_fields.select :prestation_id,
+                          Prestation.current_company.order(:name).map { |p| [p.name, p.id] },
+                          {}, class: "form-select" %>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-12 mb-2">
+                    <div class="form-group">
+                      <%= task_fields.label :description, "Instruction spécifique", class: "form-label text-gray-dark" %>
+                      <%= task_fields.rich_text_area :description,
+                          class: "form-control",
+                          data: { controller: "trix-toolbar" },
+                          placeholder: "Ecrivez votre texte ici ..." %>
+                    </div>
+                  </div>
+                </div>
+
+                <button type="button"
+                        class="btn btn-remove-item d-flex align-items-center"
+                        data-action="click->needs-tasks#removeTask">
+                  <%= inline_svg_tag("icons/trash-can.svg") %>
+                </button>
+
+              <% end %>
+            </div>
+          </template>
+
+          <div class="cover-all-tasks" data-needs-tasks-target="taskList">
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue btn-sm btn-add btn-text-white"
+                data-action="click->needs-tasks#addTask">
+          <%= inline_svg_tag("icons/add.svg") %>
+          Ajouter la tâche
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

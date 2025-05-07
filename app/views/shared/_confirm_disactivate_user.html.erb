@@ -1,0 +1,30 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+  <%= turbo_frame_tag :confirm_activate_user, target: :_top do %>
+    <div class="modal confirm-modal fade" id="contact" tabindex="-1" aria-hidden="true" data-controller="bs-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title d-flex align-items">
+                <div class='d-flex align-items-center icon-ideo icon-red icon-24 me-2'>
+                  <%= inline_svg_tag('icons/error.svg') %>
+                </div>
+                Désactiver agent
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Vous allez désactiver l'agent <strong><%= @user&.first_name %></strong> en fonction. Si vous souhaitez garder ce compte actif, veuillez vous cliquer sur “Annuler”.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
+                Annuler
+              </button>
+              <%= button_to 'Valider', confirm_path, method: :patch, class: "btn btn-save btn-text-white btn-danger", form: { data: { turbo_method: :patch } } %>
+            </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+

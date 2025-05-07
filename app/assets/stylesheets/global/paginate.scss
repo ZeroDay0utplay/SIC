@@ -1,0 +1,57 @@
+@use './variables.scss' as *;
+
+.cover-pagination {
+  .pagination {
+    .page-item {
+      display: flex;
+      margin: 0 40px;
+      align-items: center;
+      justify-content: center;
+
+      .input-page {
+        text-align: center;
+        max-width: 60px;
+      }
+
+      .separate {
+        margin: 0 10px;
+        font-size: 18px;
+      }
+
+      .total-page {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      &.disabled {
+        .page-link {
+          color: $gray;
+          border-color: $gray;
+          background-color: $white;
+        }
+      }
+    }
+
+    .prev-next-link {
+      .page-link {
+        color: $blue;
+        font-size: 14px;
+        padding: 0 10px;
+        font-weight: 500;
+        line-height: 34px;
+        border-radius: 6px;
+        border: 1px solid $blue;
+
+        &:hover {
+          color: $white;
+          background-color: $blue;
+        }
+      }
+    }
+
+    .previous,
+    .next {
+      margin: 0;
+    }
+  }
+}

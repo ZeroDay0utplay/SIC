@@ -1,0 +1,36 @@
+<%= turbo_stream.replace "client-reference" do %>
+  <%= turbo_frame_tag 'client-reference' do %>
+    <input type="text" name="client-reference" id="quote_client_reference" class="form-control" value="<%= @client.reference %>" disabled>
+  <% end %>
+<% end %>
+<%= turbo_stream.replace "client-heading" do %>
+  <%= turbo_frame_tag 'client-heading' do %>
+    <div class="d-flex align-items-center">
+      <%= select_tag "quote[heading_id]", options_for_select(@heading.pluck(:title, :id)),
+          data: { action: "change->search#changeItemsPerPage" },
+          class: "form-select me-2" %>
+      <%= link_to modal_new_settings_headings_path(), class:'btn btn-text-white btn-blue-dark btn-sm btn-add', data: { controller:'modals', action: 'click->modals#showModal', turbo_frame: 'modal', turbo: 'false'} do %>
+        <%= inline_svg_tag('icons/add.svg') %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+<%= turbo_stream.replace "client-details" do %>
+  <%= turbo_frame_tag 'client-details' do %>
+    <div class="client-details d-flex align-items-center">
+      <% if @client.logo.attached? %>
+        <%= image_tag @client.logo.variant(resize_to_fill: [40, 40]), class: 'rounded-circle' %>
+      <% else %>
+        <%= inline_svg_tag 'icons/logo.svg', width: "40", height: "40" %>
+      <% end %>
+      <div>
+        <h5><%= @client.name %></h5>
+        <% unless @client.address.nil? %>
+          <p>
+            <%= @client&.address&.formatted_address %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

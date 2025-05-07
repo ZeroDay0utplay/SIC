@@ -1,0 +1,9 @@
+<div class="finance-container" data-controller="finance">
+  <h1>Création de devis</h1>
+  <div class="finance-head">
+    <%= render 'steps' %>
+  </div>
+
+  <%= render 'form_first_step', url: finances_quotes_path(), method: :post %>
+
+</div>

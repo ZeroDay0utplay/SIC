@@ -1,0 +1,135 @@
+fr:
+  activerecord:
+    errors:
+      models:
+        regular:
+            attributes:
+              prestation:
+                required: "est requise"
+
+        intervention:
+          attributes:
+            client:
+              required: "doit être sélectionné"
+            company:
+              required: "doit être sélectionné"
+
+      messages:
+        required: "Ce champ est requis"
+        record_invalid: "La validation a échoué : %{errors}"
+        blank: "doit être rempli(e)"
+        taken: "est déjà utilisé(e)"
+        invalid: "n'est pas valide"
+        confirmation: "ne correspond pas"
+        accepted: "doit être accepté(e)"
+        empty: "doit être vide"
+        not_an_integer: "doit être un entier"
+        greater_than: "doit être supérieur à %{count}"
+        greater_than_or_equal_to: "doit être supérieur ou égal à %{count}"
+        equal_to: "doit être égal à %{count}"
+        less_than: "doit être inférieur à %{count}"
+        less_than_or_equal_to: "doit être inférieur ou égal à %{count}"
+        other_than: "doit être différent de %{count}"
+        odd: "doit être impair"
+        even: "doit être pair"
+        too_long: "est trop long (maximum %{count} caractères)"
+        too_short: "est trop court (minimum %{count} caractères)"
+        wrong_length: "n'a pas la bonne longueur (doit être de %{count} caractères)"
+        not_a_number: "n'est pas un nombre"
+        not_a_date: "n'est pas une date valide"
+        not_a_time: "n'est pas une heure valide"
+        not_a_boolean: "doit être vrai ou faux"
+        inclusion: "n'est pas inclus dans la liste"
+        exclusion: "est réservé"
+        not_unique: "doit être unique"
+        not_found: "n'a pas été trouvé(e)"
+        taken: "est déjà pris(e)"
+        not_saved: "n'a pas pu être sauvegardé(e)"
+        not_destroyed: "n'a pas pu être supprimé(e)"
+        not_updated: "n'a pas pu être mis à jour"
+        not_created: "n'a pas pu être créé(e)"
+        not_associated: "n'est pas associé(e)"
+        not_loaded: "n'a pas pu être chargé(e)"
+        not_connected: "n'est pas connecté(e)"
+        not_authorized: "n'est pas autorisé(e)"
+        not_permitted: "n'est pas permis(e)"
+        not_allowed: "n'est pas autorisé(e)"
+        not_valid: "n'est pas valide"
+        not_available: "n'est pas disponible"
+        not_found_in_database: "n'a pas été trouvé(e) dans la base de données"
+        not_found_in_cache: "n'a pas été trouvé(e) dans le cache"
+        not_found_in_session: "n'a pas été trouvé(e) dans la session"
+        not_found_in_params: "n'a pas été trouvé(e) dans les paramètres"
+        not_found_in_request: "n'a pas été trouvé(e) dans la requête"
+        not_found_in_response: "n'a pas été trouvé(e) dans la réponse"
+        not_found_in_context: "n'a pas été trouvé(e) dans le contexte"
+        not_found_in_scope: "n'a pas été trouvé(e) dans le scope"
+        not_found_in_relation: "n'a pas été trouvé(e) dans la relation"
+        not_found_in_association: "n'a pas été trouvé(e) dans l'association"
+        not_found_in_collection: "n'a pas été trouvé(e) dans la collection"
+        not_found_in_set: "n'a pas été trouvé(e) dans l'ensemble"
+        not_found_in_array: "n'a pas été trouvé(e) dans le tableau"
+        not_found_in_hash: "n'a pas été trouvé(e) dans le hash"
+        not_found_in_string: "n'a pas été trouvé(e) dans la chaîne"
+        not_found_in_symbol: "n'a pas été trouvé(e) dans le symbole"
+        not_found_in_integer: "n'a pas été trouvé(e) dans l'entier"
+        not_found_in_float: "n'a pas été trouvé(e) dans le flottant"
+        not_found_in_decimal: "n'a pas été trouvé(e) dans le décimal"
+        not_found_in_boolean: "n'a pas été trouvé(e) dans le booléen"
+        not_found_in_date: "n'a pas été trouvé(e) dans la date"
+        not_found_in_time: "n'a pas été trouvé(e) dans l'heure"
+        not_found_in_datetime: "n'a pas été trouvé(e) dans la date et l'heure"
+        not_found_in_timestamp: "n'a pas été trouvé(e) dans le timestamp"
+        not_found_in_binary: "n'a pas été trouvé(e) dans le binaire"
+        not_found_in_json: "n'a pas été trouvé(e) dans le JSON"
+
+  enums:
+    type_absence:
+      sick_day: "Jour de maladie"
+      personal_reason: "Raison personnelle"
+      rest: "Repos"
+      vacation: "Congé"
+    absence_state:
+      pending: "En attente"
+      allowed: "Autorisé"
+      refused: "Refusé"
+    client_type:
+      particular: "Particulier"
+      professional: "Professionnel"
+    client_role:
+      representative: "Mandataire"
+      contractor: "Donneur d'ordre"
+    contact_role:
+      individual: "Particulier"
+      external: "Externe"
+      internal: "Interne"
+      prospect: "Prospect"
+    quote_state:
+      sended: "Envoyé"
+      pending: "En attente"
+      validated: "Validé"
+      draft: "Brouillon"
+    payment_mode:
+      cheque: "Chèque"
+      transfer_bank: "Virement"
+      cash: "Espèces"
+
+
+  devise:
+    failure:
+      user:
+        unauthenticated: "Vous devez vous connecter pour continuer."
+      unauthenticated: "Authentification requise."
+
+  models:
+    prestation:
+      type_prestation:
+        service: "Service"
+        rent: "Location"
+        sell: "Vente"
+        recurring: "Récurrent"
+        flat_rate: "Forfaitaire"
+      state:
+        under_repair: "En réparation"
+        free: "Libre"
+

@@ -1,0 +1,2 @@
+module ColumnItemsHelper
+end

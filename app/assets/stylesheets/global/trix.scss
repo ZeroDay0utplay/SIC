@@ -1,0 +1,109 @@
+@use './variables.scss' as *;
+
+.cover-company-footer-page {
+  trix-editor {
+    padding: 16px 12px;
+    min-height: 140px;
+    border-radius: 0 10px 10px 10px;
+
+    ::placeholder {
+      color: red;
+    }
+  }
+
+  trix-toolbar {
+    .trix-button-row {
+      .trix-button-group {
+        border-bottom: none;
+        border-radius: 10px 10px 0 0;
+        background-color: rgba($gray, 0.2);
+      }
+      .trix-button-group--text-tools {
+        button {
+          display: flex;
+          border: none;
+          width: auto;
+          height: auto;
+          padding: 7px 6.5px;
+          align-items: center;
+          justify-content: center;
+          &::before {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
+            position: relative;
+            background-position: center;
+          }
+        }
+      }
+
+      .trix-button--icon-bold {
+        position: relative;
+        &::before {
+          background-image: url('icons/text-bold.svg');
+        }
+      }
+
+      .trix-button--icon-italic {
+        &::before {
+          background-image: url('icons/text-italic.svg');
+        }
+      }
+
+      .trix-button--icon-strike {
+        &::before {
+          background-image: url('icons/text-strikethrough.svg');
+        }
+      }
+
+      .trix-button-group--block-tools {
+        &::before {
+          background-image: url('icons/text-scale.svg');
+        }
+      }
+
+      .trix-button--icon-heading-1 {
+        &::before {
+          background-image: url('icons/text-scale.svg');
+        }
+      }
+
+      .trix-button--icon-quote {
+        &::before {
+          background-image: url('icons/quotes.svg');
+        }
+      }
+
+      .trix-button--icon-code {
+        &::before {
+          background-image: url('icons/code.svg');
+        }
+      }
+
+      .trix-button--icon-bullet-list {
+        &::before {
+          background-image: url('icons/list-bulleted.svg');
+        }
+      }
+
+      .trix-button--icon-number-list {
+        &::before {
+          background-image: url('icons/list-numbered.svg');
+        }
+      }
+
+      .trix-button--icon-decrease-nesting-level {
+        &::before {
+          background-image: url('icons/text-indent-less.svg');
+        }
+      }
+
+      .trix-button--icon-increase-nesting-level {
+        &::before {
+          background-image: url('icons/text-indent-more.svg');
+        }
+      }
+
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<%= turbo_stream.replace "cover-clients-list" do %>
+  <%= turbo_frame_tag 'cover-clients-list' do %>
+    <% if @clients.empty? %>
+      <div class="alert alert-warning" role="alert">Aucun client trouvé</div>
+    <% else %>
+      <div class="contact-list">
+        <table class='table ideo-table'>
+          <thead class='thead-success'>
+            <tr>
+              <th>ID</th>
+              <th>Logo</th>
+              <th>Nom</th>
+              <th>Type</th>
+              <th>Adresse</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="clients-list" class='align-middle'>
+            <%= render 'web/settings/clients/client_list', clients: @clients %>
+          </tbody>
+        </table>
+      </div>
+      <% if @count > 10 %>
+        <footer class="d-flex align-items-center justify-content-between p-4">
+          <div class="cover-pagination">
+            <%= will_paginate @clients, renderer: BootstrapPaginationHelper::BootstrapLinkRenderer %>
+          </div>
+
+          <div class='w-25 d-flex align-items-center justify-content-end'>
+            <label class='text-gray-dark me-2'>Affichage :</label>
+            <%= select_tag :items, options_for_select([10, 20, 30, 40, 50], params[:items]),
+              data: { action: "change->search#changeItemsPerPage", search_target: "itemsPerPage" },
+              class: "w-25 ml-auto form-select" %>
+          </div>
+        </footer>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

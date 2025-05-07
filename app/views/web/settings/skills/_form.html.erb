@@ -1,0 +1,11 @@
+<%= form_with(model: skill, url: settings_skills_path, local: false, data: { controller: "skill", action: "input->skill#checkName", turbo_frame: "skills-form" }) do |form| %>
+  <div class="col-md-12 col-lg-6 d-flex mb-5 align-items-center flex-wrap">
+    <div class="flex-grow-1 me-3">
+      <%= form.text_field :name, class: "form-control", placeholder: "Désignation de compétence", data: { skill_target: "input" } %>
+    </div>
+    <%= form.button type: 'submit', class: "btn btn-sm btn-save btn-text-white btn-blue-dark", data: { skill_target: "submitButton" }, disabled: true do %>
+      Enregistrer
+      <%= inline_svg_tag('icons/save.svg') %>
+    <% end %>
+  </div>
+<% end %>

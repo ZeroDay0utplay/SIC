@@ -1,0 +1,5 @@
+<%= turbo_stream.remove "quote-#{@quote.id}" %>
+
+<% if @next_quote.present? %>
+  <%= turbo_stream.append "quotes-list", partial: "quote", locals: { quote: @next_quote } %>
+<% end %>

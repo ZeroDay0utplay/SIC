@@ -1,0 +1,84 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+  <div class="modal fade modal-lg" id="contact" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true" data-controller="bs-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <%= form_with(model: [:settings, @contact], local: true, html: { class: 'form-validate', data: { controller:'form-validate'}}) do |form| %>
+          <div class="modal-header">
+            <h5 class="modal-title"><%= @contact.persisted? ? "Modifier contact" : "Nouveau contact" %></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" data-controller='modal-contact'>
+            <div class='container me-auto ms-0'>
+              <div class='row'>
+                <div class='col-12 d-flex flex-wrap'>
+                  <div class="w-100 mb-2">
+                    <%= form.label :client_id, "Groupe"%>
+                    <%= form.select :client_id,
+                        @clients.map { |client| [client.name, client.id] },
+                        { include_blank: 'Choisissez-en un', selected: @clients.first&.id },
+                        multiple: true,
+                        data: { modal_contact_target: "client" } %>
+
+                  </div>
+                  <div class='w-50 pe-2 mb-2'>
+                    <%= form.label :first_name, 'Nom' %>
+                    <%= form.text_field :first_name, class: 'form-control', require: true,
+                        data: { action: "blur->form-validate#validate", form_validate_target: "input" } %>
+                    <span class="error-message" data-form-validate-target="errorMessage"></span>
+                  </div>
+                  <div class='w-50 pe-2 mb-2'>
+                    <%= form.label :last_name, 'Prénom' %>
+                    <%= form.text_field :last_name, class: 'form-control', require: true,
+                        data: { action: "blur->form-validate#validate", form_validate_target: "input" } %>
+                    <span class="error-message" data-form-validate-target="errorMessage"></span>
+                  </div>
+                  <div class='w-50 pe-2 mb-2'>
+                    <%= form.label :role, 'Rôle' %>
+                    <%= form.select :role,
+                        Contact.roles.keys.map { |key| [I18n.t("enums.contact_role.#{key}"), key] }, {},
+                        class: 'form-control' %>
+                  </div>
+                  <div class='w-50 pe-2 mb-2'>
+                    <%= form.label :phone, 'Téléphone' %>
+                    <%= form.text_field :phone, class: 'form-control', require: true,
+                        data: { action: "blur->form-validate#validate", form_validate_target: "input" } %>
+                    <span class="error-message" data-form-validate-target="errorMessage"></span>
+                  </div>
+                  <div class='w-50 pe-2 mb-2'>
+                    <%= form.label :email, 'Email' %>
+                    <%= form.email_field :email, class: 'form-control', require: true,
+                        data: { action: "blur->form-validate#validate", form_validate_target: "input" } %>
+                    <span class="error-message" data-form-validate-target="errorMessage"></span>
+                  </div>
+                  <div class='w-50 pe-2 mb-2'>
+                    <%= form.label :company_name, 'Societé' %>
+                    <%= form.select :company_name,
+                        @companies.map { |name| [name, name] },
+                        { include_blank: 'Choisissez-en un', selected: @contact.company_name },
+                        data: { modal_contact_target: "company" } %>
+
+                  </div>
+                  <div class='w-50 pe-2 mb-2'>
+                    <%= form.label :job, 'Fonction' %>
+                    <%= form.select :job,
+                        @jobs.map { |name| [name, name] } ,
+                        { include_blank: 'Choisissez-en un' }, data: { modal_contact_target: "job" } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <%= form.button type: 'reset', class: "btn btn-lg btn-outline-secondary btn-cancel btn-text-white" do %>
+              Annuler
+            <% end %>
+            <%= form.button type: 'submit', class: "btn btn-lg mx-2 btn-save btn-text-white btn-blue-dark", data: { action: 'bs-modal#submitEnd'}, form_validate_target: "submit" do %>
+              Enregistrer
+              <%= inline_svg_tag('icons/save.svg') %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,42 @@
+@use './variables.scss' as *;
+
+.cover-steps {
+  position: relative;
+
+  .step-item {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    font-size: 13px;
+    font-weight: 500;
+    align-items: center;
+    border-radius: 32px;
+    justify-content: center;
+
+    &.active {
+      color: $blue;
+      border: 2px solid $blue;
+    }
+
+    &.disabled {
+      color: $gray;
+      border: 2px solid $gray;
+    }
+
+    &.complete {
+      background-color: $blue;
+      svg {
+        fill: $white
+      }
+    }
+  }
+
+  .step-separation {
+    margin: 0 8px;
+    width: 100%;
+    height: 2px;
+    max-width: 80px;
+    background-color: $blue;
+  }
+
+}

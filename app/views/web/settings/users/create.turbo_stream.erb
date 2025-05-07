@@ -1,0 +1,55 @@
+<%= turbo_stream.prepend 'users-list' do %>
+  <tr id="user-<%= @user.id %>" class='align-middle'>
+    <td><%= @user.id %></td>
+    <td class="text-center">
+      <% if @user.photo.attached? %>
+        <%= image_tag @user.photo.variant(resize_to_fill: [50, 50]), class: 'rounded-circle' %>
+      <% else %>
+        <%= image_tag 'default_avatar.png', size: "50x50", class: 'rounded-circle' %>
+      <% end %>
+    </td>
+    <td>
+      <div><%= @user.full_name %></div>
+      <small><%= @user.email %></small>
+    </td>
+    <td>
+      <% if(@user&.skills.count > 0) %>
+        <div class="skills">
+          <%= @user&.skills.map(&:name).join(', ') %>
+        </div>
+      <% end %>
+    </td>
+    <td><%= @user&.job&.capitalize %></td>
+    <% unless @user.admin? %>
+      <td><%= @user&.role.capitalize %></td>
+    <% end %>
+    <td><%= 'Note ??' %></td>
+    <td>
+      <%= @user.active? ? raw("<span class='user-status enable'> Actif </span>") : raw("<span class='user-status disable'> Inactif </span>") %>
+    </td>
+    <td class="align-content-center">
+      <%= link_to edit_settings_user_path(@user), class:'icon-ideo icon-edit icon-blue icon-20', data: { controller:'edit-mention-legal', turbo_frame: 'modal', turbo: 'false'} do %>
+        <%= inline_svg_tag ('icons/edit.svg') %>
+      <% end %>
+      <%= link_to settings_user_path(@user),
+            class: 'icon-ideo icon-destroy icon-red icon-16',
+            data: { controller:'confirm-modal', action:'click->confirm-modal#confirmDestroy',
+                    confirm_modal_target:'itemToBeRemoved',
+                    value: "user-#{@user.id}",
+                    turbo_frame: 'modal', turbo: 'false'} do %>
+        <%= inline_svg_tag('icons/trash-can.svg') %>
+      <% end %>
+      <% if @user.active? %>
+        <%= link_to confirm_activate_settings_user_path(@user), class:'icon-ideo icon-red icon-20' ,
+            data: { controller: 'confirm-modal', action:'click->confirm-modal#showModal', turbo_frame: 'modal', turbo: 'false'} do %>
+          <%= inline_svg_tag('icons/error.svg') %>
+        <% end %>
+      <% else %>
+        <%= link_to confirm_activate_settings_user_path(@user), class:'icon-ideo icon-blue icon-20' ,
+            data: { controller: 'confirm-modal', action:'click->confirm-modal#showModal', turbo_frame: 'modal', turbo: 'false'} do %>
+          <%= inline_svg_tag('icons/face-activated.svg') %>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

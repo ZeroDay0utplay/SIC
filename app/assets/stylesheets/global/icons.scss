@@ -1,0 +1,69 @@
+@use './variables.scss' as *;
+
+.icon-ideo {
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+  }
+
+  &.icon-32 {
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &.icon-26 {
+    svg {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  &.icon-24 {
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &.icon-20 {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &.icon-16 {
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &.icon-red {
+    svg {
+      fill: $red
+    }
+  }
+
+  &.icon-blue {
+    svg {
+      fill: $blue
+    }
+  }
+
+  &.icon-stroke-red {
+    svg {
+      stroke: $red;
+      fill: transparent;
+    }
+  }
+}

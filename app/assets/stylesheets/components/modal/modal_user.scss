@@ -1,0 +1,7 @@
+@use '../../global/_mixins' as *;
+
+.user-modal {
+  .form-user-status {
+    @include form-user-status;
+  }
+}

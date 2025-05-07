@@ -1,0 +1,23 @@
+<%= turbo_stream.replace "mention-#{@mention_legal.id}" do %>
+  <tr id="mention-<%= @mention_legal.id %>">
+    <td><%= @mention_legal.id %></td>
+    <td>
+      <div class="mention-name">
+        <%= @mention_legal.name %>
+      </div>
+    </td>
+    <td>
+      <div class="mention-description">
+        <%= @mention_legal.description %>
+      </div>
+    </td>
+    <td class="align-content-center">
+      <%= link_to edit_settings_mention_legal_path(@mention_legal), class:'icon-ideo icon-edit icon-blue', data: { controller:'edit-mention-legal', turbo_frame: 'modal', turbo: 'false'} do %>
+        <%= inline_svg_tag ('icons/edit.svg') %>
+      <% end %>
+      <%= link_to settings_mention_legal_path(@mention_legal), class:'icon-ideo icon-destroy icon-red', method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to sign out?' } do %>
+        <%= inline_svg_tag ('icons/trash-can.svg') %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

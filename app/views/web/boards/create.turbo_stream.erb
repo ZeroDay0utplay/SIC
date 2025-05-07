@@ -1,0 +1,3 @@
+<%= turbo_stream.append "boards-list" do %>
+  <option id="board-option-<%= @board.id %>" value="<%= @board.id %>"><%= @board.title %></option>
+<% end %>

@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-start mb-3 flex-md-wrap cover-textarea">
+  <div class="col-sm-12">
+    <h4 class="title-needs">Commentaires</h4>
+  </div>
+  <div class="fcol-sm-12 col-md-6 col-lg-4 pe-md-2 pe-lg-3">
+    <%= form.label :needs, "Besoins client", class:"text-gray-dark form-label" %>
+    <%= form.text_area :needs, rows: 3, placeholder:"Ecrivez votre text ici ...", class:"form-control w-100" %>
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-4 pe-lg-3">
+    <%= form.label :remark, "Remarques", class:"text-gray-dark form-label" %>
+    <%= form.text_area :remark, rows: 3, placeholder:"Ecrivez votre text ici ...", class:"form-control w-100" %>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-4">
+    <%= form.label :note, "Note interne", class:"text-gray-dark form-label" %>
+    <%= form.text_area :note, rows: 3, placeholder:"Ecrivez votre text ici ...", class:"form-control w-100" %>
+  </div>
+</div>

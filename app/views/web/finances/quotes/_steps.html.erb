@@ -1,0 +1,50 @@
+<div class="cover-steps d-flex align-items-center justify-content-start">
+  <% if @quote.present? && @quote.persisted? %>
+    <%= link_to edit_finances_quote_path(@quote),
+        class:"step #{ "current" if action_name == "edit" } #{ "valide" if @quote.first_step_valide?}",
+        data: {turbo: false} do %>
+      <span class="index">1</span>
+      <span class="text">Informations du client</span>
+    <% end %>
+  <% else %>
+    <%= link_to "javascript:(0)", class:"step disabled", data: {turbo: false} do %>
+      <span class="index">1</span>
+      <span class="text">Informations du client</span>
+    <% end %>
+  <% end %>
+  <div class="separate"></div>
+  <% if @quote.present? && @quote.persisted? %>
+    <%= link_to edit_informations_finances_quote_path(@quote),
+        class:"step #{ "current" if action_name == "edit_informations" } #{ "valide" if @quote.second_step_valide?}",
+        data: {turbo: false} do %>
+      <span class="index">2</span>
+      <span class="text">Informations de la mission</span>
+    <% end %>
+  <% else %>
+    <%= link_to "javascript:(0)", class:"step disabled", data: {turbo: false} do %>
+      <span class="index">2</span>
+      <span class="text">Informations de la mission</span>
+    <% end %>
+  <% end %>
+  <div class="separate"></div>
+  <% if @quote.present? && @quote.persisted? %>
+    <%= link_to edit_prestations_finances_quote_path(@quote),
+        class:"step #{ "current" if action_name == "edit_prestations" } #{ "valide" if @quote.last_step_valide?}",
+        data: {turbo: false} do %>
+      <span class="index">3</span>
+      <span class="text">Ajout de préstations</span>
+    <% end %>
+  <% else %>
+    <%= link_to "javascript:(0)", class:"step disabled", data: {turbo: false} do %>
+      <span class="index">3</span>
+      <span class="text">Ajout de préstations</span>
+    <% end %>
+  <% end %>
+
+  <% if @quote.present? && @quote.persisted? %>
+    <%= link_to preview_finances_quote_path(@quote.id), class:"preview d-flex align-items-center justify-content-center ms-auto", data: { action: "click->finance#showModal", turbo_frame: 'modal', turbo: 'false' } do %>
+      <%= inline_svg_tag("icons/view.svg") %>
+    <% end %>
+  <% end %>
+</div>
+

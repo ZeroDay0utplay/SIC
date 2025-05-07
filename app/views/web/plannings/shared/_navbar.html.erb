@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center mb-4 navbar">
+  <ul class="nav w-100 justify-content-center">
+    <li>
+      <%= link_to plannings_punctuals_path, class:"d-flex align-items-center flex-column #{ "active" if controller.controller_name == "punctuals"  }",
+          data: {turbo: false}  do %>
+        <%= inline_svg_tag("icons/time.svg") %>
+        <span class="text">
+          Ponctuel
+        </span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to plannings_regulars_path, class:"d-flex align-items-center flex-column #{ "active" if controller.controller_name == "regulars"  }",
+          data: {turbo: false} do %>
+        <%= inline_svg_tag("icons/list-checked-mirror.svg") %>
+        <span class="text">
+          Régulier
+        </span>
+      <% end %>
+    </li>
+    <li>
+      <a href="#" class="d-flex align-items-center flex-column">
+        <%= inline_svg_tag("icons/infinity-symbol.svg") %>
+        <span class="text">
+          Forfaitaire
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="d-flex align-items-center flex-column">
+        <%= inline_svg_tag("icons/shopping-bag.svg") %>
+        <span class="text">
+          Vente
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="d-flex align-items-center flex-column">
+        <%= inline_svg_tag("icons/password.svg") %>
+        <span class="text">
+          Location
+        </span>
+      </a>
+    </li>
+  </ul>
+</div>

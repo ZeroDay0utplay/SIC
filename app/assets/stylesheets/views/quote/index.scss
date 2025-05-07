@@ -1,0 +1,38 @@
+.badge{
+    border-radius: 10px;
+    width: 93px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: small;
+}
+
+.success-bill{
+    background-color: #E6F7E6;
+    color: #00AA00;
+}
+
+.fail-bill{
+    color: #DC4321;
+    background-color: #FCECE9;
+}
+
+.sended-bill{
+    color: #FFCA00;
+    background-color: #fff9e3;
+}
+
+th, td{
+    max-width: 200px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+    text-align: center;
+    vertical-align: middle;
+    height: 50px;
+}
+
+.add-quote{
+    border-radius: 10px;
+}

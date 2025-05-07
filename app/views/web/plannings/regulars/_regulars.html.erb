@@ -1,0 +1,75 @@
+<div class="regulars-list">
+  <table class="table ideo-table">
+    <thead class='thead-success'>
+      <tr>
+        <th>Date. début</th>
+        <th>Date. fin</th>
+        <th>Client</th>
+        <th>Adresse</th>
+        <th>Missions</th>
+        <th>Agents</th>
+        <th>Retour</th>
+        <th>Chat</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="regulars-list" class='align-middle'>
+      <% @regulars.each do |regular| %>
+        <tr>
+          <td><%= regular.start_on.strftime("%d/%m/%Y") %></td>
+          <td><%= regular.finish_on.strftime("%d/%m/%Y") %></td>
+          <td><%= regular.client.name %></td>
+          <td>
+            <div class="mission-address">
+              <%= regular.intervention.address.formatted_address %>
+            </div>
+          </td>
+          <td><%= regular.prestation.name %></td>
+          <td><%= regular.agent_needed %></td>
+          <td>
+            Feedback
+          </td>
+          <td>
+            Chat
+          </td>
+          <td>
+            <div class="dropdown d-inline">
+              <a href="#" id="moreOptionsDropdown" data-bs-toggle="dropdown" aria-expanded="false" class="p-0">
+                <%= inline_svg_tag("icons/more_options.svg") %>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="moreOptionsDropdown">
+                <li>
+                  <%= link_to edit_plannings_regular_path(regular), data: {turbo: false}, class: "dropdown-item p-1  icon-ideo icon-blue icon-20" do %>
+                    <%= inline_svg_tag("icons/edit.svg") %>
+                    Modifier
+                  <% end %>
+                </li>
+                <hr class="my-1">
+                <li>
+                  <%= link_to "#", class: "dropdown-item p-1  icon-ideo icon-blue icon-20" do %>
+                    <%= inline_svg_tag("icons/arrow-down-right.svg") %>
+                    Remplacement
+                  <% end %>
+                </li>
+                <hr class="my-1">
+                <li>
+                  <%= link_to "#", class: "dropdown-item p-1 icon-ideo icon-blue icon-20", data: { turbo: false } do %>
+                    <%= inline_svg_tag("icons/copy.svg") %>
+                    Dupliquer
+                  <% end %>
+                </li>
+                <hr class="my-1">
+                <li>
+                  <%= link_to "#", class: "dropdown-item p-1  icon-ideo icon-red icon-20" do %>
+                    <%= inline_svg_tag("icons/trash-can.svg") %>
+                    Supprimer
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

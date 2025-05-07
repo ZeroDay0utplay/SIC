@@ -1,0 +1,10 @@
+@use '../global/variables'as *;
+@use '../global/mixins'as *;
+
+.cover-steps {
+  padding: 30px 30px;
+  border-radius: 10px;
+  background-color: $blue-300;
+
+  @include steps;
+}

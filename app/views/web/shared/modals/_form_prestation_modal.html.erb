@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h5 class="modal-title">
+    <%= @prestation.persisted? ? "Modifier les informations du client" : "Ajouter une nouvelle prestation" %>
+  </h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body" data-controller="quotes">
+  <div class="mb-2">
+    <%= form.label :name, "Type de service", class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+  <div class="mb-2">
+    <%= form.label :unity, "Unité", class: "form-label" %>
+    <%= form.select :unity, ["Jour", "Pièce", "Agent", "Forfait", "Camion"], {}, class: "form-select" %>
+  </div>
+</div>
+<div class="modal-footer">
+  <%= form.button "Annuler", type: 'button', class: "btn btn-lg btn-outline-secondary btn-cancel btn-text-white", data: { bs_dismiss: 'modal' } %>
+  <%= form.button type: 'submit', class: "btn btn-lg mx-2 btn-save btn-text-white btn-blue-dark", data: { action: 'bs-modal#submitEnd'} do %>
+    Enregistrer
+    <%= inline_svg_tag('icons/save.svg') %>
+  <% end %>
+</div>

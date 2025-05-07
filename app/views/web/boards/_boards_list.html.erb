@@ -1,0 +1,19 @@
+<div class="board-body d-flex align-items-center flex-wrap justify-content-start" data-controller='boards'>
+  <div id="boards-list-items" class="boards-list d-flex align-items-center flex-nowrap justify-content-start overflow-auto">
+    <select id="boards-list" data-action="change->boards#loadBoard" class= "form-select me-2">
+      <option value="">Veuillez sélectionner</option>
+      <% @boards.each do |board| %>
+        <option id="board-option-<%= board.id %>" value="<%= board.id %>"><%= board.title %></option>
+      <% end %>
+    </select>
+
+    <%= turbo_frame_tag "board-actions" do %>
+    <% end %>
+  </div>
+
+  <div class="ms-auto d-flex">
+    <%= link_to new_board_path(), class: 'btn icon-ideo btn-blue btn-sm btn-add btn-text-white mx-2', data: { action:"click->boards#showModal", turbo_frame: 'modal', turbo: 'false' } do %>
+      <%= inline_svg_tag('icons/add.svg') %>
+    <% end %>
+  </div>
+</div>

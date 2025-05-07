@@ -1,0 +1,29 @@
+<div class="col-sm-12">
+  <h4 class="title-needs">Informations générales</h4>
+</div>
+
+<div class="col-sm-12 col-md-6">
+  <div class="d-flex align-items-end flex-sm-wrap flex-md-wrap justify-content-start mb-3">
+    <div class="form-group col-contacts">
+      <%= form.label :client_id, "Groupe", class: "form-label text-gray-dark" %>
+      <%= form.select :client_id,
+          [['Veuillez sélectionner', '0',
+          { disabled: true, selected: true }]] + Client.current_company.order(:name).map { |client| [client.name, client.id] },
+          {}, required: true, class: "clients-select",
+          data: { action: "change->needs#changeClient", needs_target: "clientList", model: @planning.type }
+      %>
+    </div>
+    <button class="custom-button ms-3" type="button" data-action="">
+      <%= inline_svg_tag("icons/add.svg") %>
+    </button>
+  </div>
+</div>
+
+<div class="col-sm-12 col-md-6">
+  <div class="form-group mb-3">
+    <%= turbo_frame_tag 'needs-interventions' do %>
+      <label class="form-label text-gray-dark">Adresse</label>
+      <select disabled class="form-select"></select>
+    <% end %>
+  </div>
+</div>

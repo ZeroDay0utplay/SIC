@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "board-option-#{@board.id}" do %>
+  <option id="board-option-<%= @board.id %>" value="<%= @board.id %>"><%= @board.title %></option>
+<% end %>

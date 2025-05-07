@@ -1,0 +1,430 @@
+@use '../global/variables'as *;
+@use '../global/mixins'as *;
+
+.finances-quotes {
+  .col-item {
+    width: 100%;
+    max-width: 300px;
+
+    .input-group {
+      width: 100%;
+      max-width: 175px;
+    }
+  }
+}
+
+.finance-container {
+  width: 100%;
+  margin: auto;
+  max-width: 1120px;
+
+  .cover-preview-picture {
+    max-width: 120px;
+    height: 120px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .previous-link {
+    svg {
+      fill: $blue;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .cover-logo-dates,
+  .convert-to-template {
+    @include ideo-checkbox
+  }
+
+  .finance-head {
+    margin-bottom: 20px;
+
+    h1 {
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 40px;
+      margin-bottom: 20px;
+      letter-spacing: -1.5%;
+    }
+
+    .preview {
+      width: 38px;
+      height: 38px;
+      position: relative;
+      border-radius: 10px;
+      border: 1px solid $blue;
+
+      &:after {
+        top: 0;
+        left: 0;
+        z-index: 1;
+        height: 100%;
+        width: 100%;
+        content: "";
+        position: absolute;
+      }
+
+      svg {
+        z-index: 0;
+        fill: $blue;
+        width: 18px;
+        height: 18px;
+        position: relative;
+      }
+    }
+  }
+
+  .comercial-dates {
+    width: 100%;
+    display: block;
+    max-width: 320px;
+    margin-left: auto;
+
+    input {
+      max-width: 160px;
+    }
+  }
+
+  .payment-dates {
+    width: 100%;
+    max-width: calc(100% - 275px);
+
+    input,
+    select {
+      width: 100%;
+      max-width: 205px;
+    }
+  }
+
+  .payment-infos {
+    width: 100%;
+    color: $gray-400;
+    max-width: 270px;
+    padding: 15px 8px;
+    border-radius: 10px;
+    background-color: $blue-300;
+
+    .title {
+      margin-bottom: 8px;
+      line-height: 24px;
+    }
+
+    .item {
+      line-height: 24px;
+
+      &+.item {
+        margin-top: 5px;
+      }
+
+      span {
+        color: $black;
+        margin-left: 5px;
+        display: inline-block;
+      }
+    }
+
+  }
+
+  .admin-details {
+    font-size: 14px;
+
+    span {
+      font-weight: 300;
+    }
+
+    strong {
+      font-weight: 500;
+    }
+  }
+
+  .cover-settings {
+    z-index: 1;
+    position: relative;
+
+    .dropstart {
+      .dropdown-toggle {
+        &::before {
+          display: none;
+        }
+
+        color: $blue-dark;
+        font-size: 16px;
+        font-weight: 600;
+
+        svg {
+          width: 20px;
+          height: 20px;
+          fill: $blue-dark;
+        }
+      }
+
+      .dropdown-menu {
+        .dropdown-item {
+          font-size: 14px;
+          padding: 0 10px;
+          line-height: 40px;
+
+          &:active {
+            background-color: $blue-500;
+            color: $blue-dark;
+          }
+        }
+      }
+    }
+  }
+
+  .finance-card {
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid $gray-300;
+
+    .add-item-button {
+      color: $blue;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 23px;
+      margin-top: 25px;
+
+      svg {
+        width: 23px;
+        height: 23px;
+        fill: $blue;
+        margin-right: 5px;
+        border-radius: 4px;
+        border: 1px solid $blue;
+      }
+    }
+
+    // Cover Quote Item
+    .cover-quote-item {
+      display: flex;
+      transform: 0.2s all ease;
+
+      &.sortable-ghost {
+        padding: 5px;
+        z-index: 99;
+        transform: scale(1, 0.95);
+        border: 2px dashed $gray;
+        background-color: $blue-300;
+      }
+
+      &+.cover-quote-item:not(.sortable-ghost) {
+        padding: 25px 0 0;
+      }
+
+      .quote-item-header {
+        .draggable {
+          cursor: pointer;
+          overflow: hidden;
+          position: relative;
+
+          &:after {
+            top: 0;
+            left: 0;
+            z-index: 1;
+            height: 100%;
+            width: 100%;
+            content: "";
+            position: absolute;
+          }
+
+          svg {
+            z-index: 0;
+            height: 28px;
+            width: auto;
+            fill: $gray;
+            position: relative;
+          }
+        }
+
+        .delete-duplicate {
+          svg {
+            width: 16px;
+            height: 16px;
+          }
+
+          >div {
+            width: 38px;
+            height: 38px;
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 10px;
+          }
+
+          .delete {
+            border-color: $red;
+
+            svg {
+              fill: $red;
+            }
+          }
+
+          .duplicate {
+            border-color: $blue-dark;
+
+            svg {
+              fill: $blue-dark;
+            }
+          }
+        }
+
+        .order-count {
+          width: 36px;
+          height: 36px;
+          color: $black;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 34px;
+          border-radius: 36px;
+          text-align: center;
+          border: 1px solid $blue-dark;
+        }
+
+        .prestation-name {
+          font-weight: 500;
+          font-size: 16px;
+        }
+      }
+
+      .quote-item-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 2fr 1fr 2fr 1fr;
+
+        .item-label {
+          padding: 0 5px;
+          color: $black-text;
+          line-height: 44px;
+          font-weight: 600;
+          background-color: $gray-100;
+          border-bottom: 1px solid $gray;
+
+          &.first-child {
+            border-radius: 10px 0 0 0;
+          }
+
+          &.last-child {
+            border-radius: 0 10px 0 0;
+          }
+        }
+
+        .item-input {
+          padding: 10px 0;
+
+          &+.item-input {
+            padding-left: 10px;
+          }
+        }
+
+        // TomSelect
+        .ts-wrapper {
+          .ts-control {
+            display: flex;
+            flex-wrap: nowrap;
+          }
+        }
+      }
+
+      .quote-item-details {
+        position: relative;
+      }
+
+      .quote-item-description {
+        .quote-description {
+          width: 100%;
+          font-size: 13px;
+          max-width: 660px;
+        }
+      }
+    }
+
+    // Quote Footer
+    .footer-quote {
+      padding: 40px 0;
+
+      .quote-tax {
+        table {
+          width: 100%;
+          max-width: 430px;
+
+          thead {
+            background-color: $gray-100;
+          }
+
+          th,
+          td {
+            padding: 10px;
+          }
+        }
+      }
+
+      .quote-summary {
+        position: relative;
+      }
+    }
+  }
+}
+
+.finances-status,
+.intervention-status {
+  @include status-navbar
+}
+
+.month-filters {
+  width: 100%;
+  max-width: 630px;
+
+  .months-list {
+    .month {
+      background: $gray-200;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      line-height: 28px;
+      cursor: pointer;
+      max-width: 98px;
+      display: block;
+      margin: 8px 1px 0 1px;
+      width: 100%;
+
+      .text {
+        position: relative;
+        color: $gray-500;
+        font-weight: 600;
+        font-size: 12px;
+        cursor: pointer;
+        display: block;
+        padding: 0 5px;
+        z-index: 2;
+      }
+
+      .after {
+        background-color: $blue-300;
+        transition: 0.3s ease all;
+        border-radius: 20px;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        content: "";
+        left: -100%;
+        z-index: 1;
+        top: 0;
+      }
+
+      &:hover .text,
+      input:checked~.text {
+        color: $blue-dark;
+      }
+
+      &:hover .after,
+      input:checked+.after {
+        left: 0;
+        background-color: $blue-500;
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<div class="cover-interventions-list" data-controller="address-search">
+  <input type="text" required class="form-control input-search" data-address-search-target="input"
+          value="<%= address %>"
+          data-action="input->address-search#onInput focus->address-search#onFocus blur->address-search#onBlur">
+
+  <div class="interventions-list" data-address-search-target="interventionList" name="<%= model %>[intervention_id]">
+    <% interventions.includes(:address).each do |intervention| %>
+      <div class="intervention-item" data-action="click->address-search#setAddress" data-address-search-target="interventionItem" data-id="<%= intervention.id %>">
+        <%= intervention&.address&.formatted_address %>
+      </div>
+    <% end %>
+  </div>
+
+  <input type="hidden" data-address-search-target="address" name="<%= model %>[address]" value="<%= address %>">
+  <input type="hidden" data-address-search-target="intervention" name="<%= model %>[intervention_id]" value="<%= selected %>">
+
+  <div id="address_suggestions" data-address-search-target="suggestions" class="suggestions" style="display: none;"></div>
+</div>

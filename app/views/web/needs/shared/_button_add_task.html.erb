@@ -1,0 +1,19 @@
+<div class="cover-dispatch <%= @planning.type == "Regular" ? "d-none" : "" %>"
+  <% if(@planning.type == "Regular") %>
+    data-needs-target="addTasksButton"
+  <% end %>
+  >
+  <div class="form-group d-flex align-items-center justify-content-start m-0">
+    <div class="form-label text-gray-dark label-left m-0">
+      Ajouter des tâches sur la mission
+      <span class="d-block">
+        Permet de repartir la journée
+      </span>
+    </div>
+    <button class="custom-button" type="button" data-action="click->needs#openTaskModal">
+      <%= inline_svg_tag("icons/add.svg") %>
+    </button>
+    <%= form.hidden_field :tasks_list, data: { name: "tasksList" } %>
+    <%= render 'web/needs/shared/task', form: form %>
+  </div>
+</div>

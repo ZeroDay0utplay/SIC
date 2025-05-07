@@ -1,0 +1,6 @@
+<%= turbo_stream.replace "admin-info" do %>
+  <%= turbo_frame_tag 'admin-info' do %>
+    <div><span>Tél:</span> <strong><%= @admin.phone %></strong></div>
+    <div><span>Email:</span> <strong><%= @admin.email%></strong></div>
+  <% end %>
+<% end %>

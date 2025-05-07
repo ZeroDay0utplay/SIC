@@ -1,0 +1,85 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+    <div class='modal fade modal fade modal-catalogue' id='modal-catalogue'
+          tabindex='-1' aria-labelledby='userModalLabel' aria-hidden='true'
+          data-controller="bs-modal commercial-catalogue">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Catalogue
+            </h5>
+            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'>
+              <i class="bi bi-x"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+              <li class="nav-item" role="service">
+                <button class="nav-link-catalogue active" id="service-tab" data-bs-toggle="tab"
+                        data-bs-target="#service" type="button"
+                        role="tab" aria-controls="service" aria-selected="true">
+                  <%= inline_svg_tag("icons/service.svg") %>
+                  Service
+                </button>
+              </li>
+              <li class="nav-item" role="recurring">
+                <button class="nav-link-catalogue" id="recurring-tab" data-bs-toggle="tab"
+                        data-bs-target="#recurring" type="button"
+                        role="tab" aria-controls="recurring" aria-selected="false">
+                  <%= inline_svg_tag("icons/recurring.svg") %>
+                  Récurrent
+                </button>
+              </li>
+              <li class="nav-item" role="rent">
+                <button class="nav-link-catalogue" id="rent-tab" data-bs-toggle="tab"
+                        data-bs-target="#rent" type="button"
+                        role="tab" aria-controls="rent" aria-selected="false">
+                  <%= inline_svg_tag("icons/rent.svg") %>
+                  Location
+                </button>
+              </li>
+              <li class="nav-item" role="sell">
+                <button class="nav-link-catalogue" id="sell-tab" data-bs-toggle="tab"
+                        data-bs-target="#sell" type="button"
+                        role="tab" aria-controls="sell" aria-selected="false">
+                  <%= inline_svg_tag("icons/sell.svg") %>
+                  Vente
+                </button>
+              </li>
+              <li class="nav-item" role="forfaitaire">
+                <button class="nav-link-catalogue" id="forfaitaire-tab" data-bs-toggle="tab"
+                        data-bs-target="#forfaitaire" type="button"
+                        role="tab" aria-controls="forfaitaire" aria-selected="false">
+                  <%= inline_svg_tag("icons/arrow-reload.svg") %>
+                  Forfaitaire
+                </button>
+              </li>
+            </ul>
+            <!-- Search Input -->
+            <div class="mb-3 mt-3 d-flex align-items-center">
+              <div class="search-catalogue">
+                <input type="text" class="form-control"
+                    placeholder="Rechercher un article ou un service"
+                    data-action="input->commercial-catalogue#search" />
+                <%= inline_svg_tag("icons/search.svg") %>
+              </div>
+              <%= link_to "new_prestation_path",
+                  class:'btn-add text-center',
+                  data: { action:'click->commercial-catalogue#addPrestation',
+                          turbo_frame: 'modal', turbo: 'false'} do %>
+                <%= inline_svg_tag("icons/add.svg") %>
+              <% end %>
+            </div>
+            <div id="catalogue_content">
+              <%= render 'web/finances/quotes/prestations', prestations: @prestations %>
+            </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  
+  
+  
+  
+  
+  

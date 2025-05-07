@@ -1,0 +1,73 @@
+<div class="new-client-form-container settings-container">
+  <div class="d-flex align-items-center mb-4">
+    <%= link_to edit_settings_subcontractor_path(@subcontractor), class: 'prev-page me-3 d-flex align-items-center justify-content-center' do %>
+      <%= inline_svg_tag('icons/arrow-left.svg', class: 'icon-sm') %>
+    <% end %>
+    <h3 class="mb-0">Nouveau sous-traitant</h3>
+  </div>
+
+  <div class="cover-steps d-flex align-items-center justify-content-center">
+    <div class="step-item complete">
+      <%= inline_svg_tag('icons/checkmark.svg') %>
+    </div>
+    <div class="step-separation"></div>
+    <div class="step-item active"> 2 </div>
+  </div>
+
+  <h5 class='mb-3'>Ajouter agent</h5>
+
+  <%= form_with model: @subcontractor_agent, url: create_agent_settings_subcontractor_path(@subcontractor),
+                class: 'subcontractor-agent-validation w-50' do |f| %>
+    <div class="row mb-3">
+      <div class="col-sm-12 col-md-6">
+        <%= f.label :first_name, "Prénom", class:'form-label' %>
+        <%= f.text_field :first_name, class: 'form-control', placeholder: 'Prénom', required: true %>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <%= f.label :last_name, "Nom", class:'form-label' %>
+        <%= f.text_field :last_name, class: 'form-control', placeholder: 'Nom', required: true %>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-12 col-md-6">
+        <%= f.label :email, "Email", class:'form-label' %>
+        <%= f.email_field :email, class: 'form-control', placeholder: 'Email', required: true %>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <%= f.label :phone, "Téléphone", class:'form-label' %>
+        <%= f.telephone_field :phone, class: 'form-control', placeholder: 'Téléphone', required: true %>
+      </div>
+    </div>
+
+    <div class="text-end">
+      <%= f.button type: 'submit', class: "btn btn-blue btn-sm btn-add btn-text-white" do %>
+        <%= inline_svg_tag('icons/add.svg') %>
+        Ajouter
+      <% end %>
+    </div>
+  <% end %>
+
+  <hr>
+
+  <h5 class='mb-3'>Liste des agents</h5>
+
+  <%= form_with url: assign_agents_to_subcontractor_settings_subcontractor_path(@subcontractor), method: :post, local: true do |f| %>
+    <table class="table ideo-table">
+      <thead class='thead-success'>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Prénom</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Email</th>
+          <th scope="col">Téléphone</th>
+        </tr>
+      </thead>
+      <tbody class='align-middle' id='agents-list'>
+        <%= render partial: 'web/settings/subcontractors/agents', locals: { agents: @agents } %>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-between mt-4">
+      <%= f.submit 'Assign Selected Agents', class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>

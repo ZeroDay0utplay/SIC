@@ -1,0 +1,26 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+  <div class="modal fade modal-need-materials w-780 modal-right-side" id="materialModal"
+        tabindex="-1" aria-labelledby="materialModalLabel" aria-hidden="true"
+        data-controller="bs-modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Liste du matériel</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <textarea name="" id=""></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-outline-secondary btn-cancel btn-text-white mx-2" data-action="click->needs-agents#clearAgentsList click->bs-modal#removeModal" data-action="">Annuler</button>
+          <button type="button" class="btn btn-sm mx-2 btn-save btn-text-white btn-blue-dark" data-action="click->bs-modal#removeModal">
+            Enregistrer
+            <%= inline_svg_tag("icons/save.svg") %>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

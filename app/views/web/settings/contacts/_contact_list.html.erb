@@ -1,0 +1,43 @@
+<div class="contact-list">
+  <table class='table ideo-table'>
+    <thead class='thead-success'>
+      <tr>
+        <th>ID</th>
+        <th>Nom de contact</th>
+        <th>Téléphone</th>
+        <th>Email</th>
+        <th>Rôle</th>
+        <th>Société</th>
+        <th>Fonction</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="contacts-list" class='align-middle'>
+      <% contacts.each do |contact| %>
+        <tr id="contact-<%= contact.id %>">
+          <td><%= contact.id %></td>
+          <td><%= contact&.full_name %></td>
+          <td><%= contact.phone %></td>
+          <td><%= contact.email %></td>
+          <td><%= I18n.t("enums.contact_role.#{contact.role}") %></td>
+          <td><%= contact&.company_name %></td>
+          <td><%= contact.job %></td>
+          <td class="align-content-center">
+            <%= link_to edit_settings_contact_path(contact), class:'icon-ideo icon-edit icon-blue icon-16', data: { controller:'contacts', turbo_frame: 'modal', turbo: 'false'} do %>
+              <%= inline_svg_tag ('icons/edit.svg') %>
+            <% end %>
+
+            <%= link_to settings_contact_path(contact),
+                class: 'icon-ideo icon-destroy icon-red icon-16',
+                data: { controller:'confirm-modal', action:'click->confirm-modal#confirmDestroy',
+                        confirm_modal_target:'itemToBeRemoved',
+                        value: "contact-#{contact.id}",
+                        turbo_frame: 'modal', turbo: 'false'} do %>
+              <%= inline_svg_tag('icons/trash-can.svg') %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

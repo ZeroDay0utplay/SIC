@@ -1,0 +1,396 @@
+@use '../global/variables'as *;
+@use '../global/mixins'as *;
+
+.main-needs {
+  width: 100%;
+  margin: auto;
+  max-width: 1060px;
+  position: relative;
+
+  .col-contacts {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  form {
+    .form-label {
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .small-input {
+      width: 100%;
+      max-width: 140px;
+    }
+
+    .medium-input {
+      width: 100%;
+      max-width: 220px;
+    }
+  }
+
+  .title-needs {
+    color: $black;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .cover-dispatch {
+    width: 100%;
+    max-width: 410px;
+    position: relative;
+
+    .label-left {
+      width: 100%;
+      font-size: 18px;
+      max-width: 350px;
+      color: $gray-500;
+      font-weight: 500;
+
+      span {
+        font-weight: 400;
+        font-size: 15px;
+        color: $gray-400;
+      }
+    }
+
+    .custom-checkbox {
+      cursor: pointer;
+      margin-left: 20px;
+
+      input {
+        display: none;
+      }
+
+      span {
+        width: 65px;
+        height: 33px;
+        position: relative;
+        border-radius: 33px;
+        transition: all .2s;
+        background-color: $gray;
+
+        &:after {
+          top: 50%;
+          left: 7px;
+          width: 20px;
+          height: 20px;
+          content: "";
+          position: absolute;
+          border-radius: 20px;
+          transition: all .2s;
+          background-color: $white;
+          transform: translateY(-50%);
+        }
+      }
+
+      input:checked+span {
+        background-color: $green;
+
+        &:after {
+          left: 38px;
+        }
+      }
+    }
+  }
+
+  .clear-contact {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    margin: 0 20px;
+    position: relative;
+    align-items: center;
+    border-radius: 44px;
+    justify-content: center;
+    border: 1px solid $gray;
+    background-color: $white;
+
+    &:after {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+      position: absolute;
+    }
+
+    svg {
+      width: 28px;
+      height: 28px;
+      display: block;
+      fill: $gray
+    }
+  }
+
+  #needs-primary-contacts,
+  #needs-secondary-contacts {
+    .ts-wrapper {
+      width: 100%;
+      max-width: 320px;
+      min-width: 320px;
+
+      .clear-button {
+        display: none;
+      }
+    }
+  }
+
+  .cover-textarea {
+    textarea {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+
+  .ts-control {
+    font-size: 16px;
+    color: $gray-500;
+    line-height: 24px;
+  }
+
+  .ts-dropdown {
+    margin: 0;
+
+    .option {
+      font-size: 14px;
+      color: $gray-500;
+      line-height: 30px;
+    }
+  }
+
+  .custom-button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: $blue;
+    border-radius: 4px;
+
+    &:disabled {
+      background-color: $gray;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+      fill: $white;
+    }
+  }
+
+  .needs-navbar {
+    @include plannings-navbar;
+    max-width: 750px;
+
+    li {
+      max-width: 187px;
+
+      a {
+        padding: 18px 0;
+
+        &:after {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 1280px) {
+    .needs-navbar {
+      li {
+        /**/
+      }
+
+      a {
+        padding: 15px;
+
+        svg {
+          width: 25px;
+          height: 25px;
+        }
+
+        .text {
+          font-size: 16px;
+        }
+
+        &:after {
+          height: 5px;
+        }
+      }
+    }
+  }
+
+  .modal-need-tasks {
+    .modal-header {
+      .title-modal {
+        font-weight: 600;
+      }
+    }
+
+    .cover-all-tasks {
+      .cover-task:first-of-type {
+        .btn-remove-item {
+          display: none;
+        }
+      }
+    }
+
+    .cover-task {
+      margin-top: 15px;
+      padding-top: 45px;
+      position: relative;
+
+      &+.cover-task {
+        border: 1px solid $gray-200;
+        padding: 45px 10px 10px;
+        border-radius: 5px;
+
+        .btn-remove-item {
+          right: 10px;
+        }
+      }
+
+      .btn-remove-item {
+        top: 10px;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        background-color: $red-destroy;
+
+        svg {
+          width: 18px;
+          height: 18px;
+          fill: $white;
+        }
+
+        &:after {
+          top: 0;
+          left: 0;
+          z-index: 1;
+          content: "";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+        }
+      }
+
+      .cover-frequency {
+        margin-bottom: 20px;
+
+        label {
+
+          /**/
+          .task-frequency {
+            width: 18px;
+            height: 18px;
+            margin-right: 5px;
+          }
+        }
+      }
+
+      .cover-frequency-days {
+        padding: 12px 0;
+
+        label {
+          width: 100%;
+          cursor: pointer;
+          max-width: 92px;
+          text-align: center;
+
+          &+label {
+            margin-left: 8px;
+          }
+
+          input {
+            display: none;
+          }
+
+          span {
+            width: 100%;
+            font-size: 12px;
+            font-weight: 500;
+            color: $gray-500;
+            user-select: none;
+            border-radius: 14px;
+            background-color: $gray-200;
+            line-height: 28px;
+            display: block;
+          }
+
+          input:checked+span {
+            background-color: $blue-500;
+            color: $blue;
+          }
+        }
+      }
+    }
+  }
+
+  .cover-intervention-days {
+    .interventions-col {
+
+      .form-label {
+        margin: 0;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid $gray;
+        box-sizing: border-box;
+        border-radius: 22px;
+        text-align: center;
+        padding: 8px 26px;
+
+        &:hover {
+          background-color: $blue-500;
+        }
+
+        &+.form-label {
+          margin-left: 8px;
+        }
+
+        span {
+          font-size: 16px;
+          font-weight: 500;
+          user-select: none;
+          color: $black-text;
+        }
+
+        input {
+          appearance: none;
+        }
+
+        input::after {
+          top: 0;
+          left: 0;
+          z-index: -1;
+          content: "";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          transition: 0.3s ease all;
+          background-color: $gray-100;
+        }
+
+        input:checked::after {
+          background-color: $blue-500;
+        }
+      }
+    }
+  }
+}
+
+.modal-need-agents {
+  .skills-cover {
+    span {
+      padding: 3px;
+      font-size: 13px;
+      line-height: 24px;
+      border-radius: 5px;
+      background-color: $blue-500;
+
+      &+span {
+        margin-left: 5px;
+      }
+    }
+  }
+}

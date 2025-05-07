@@ -1,0 +1,211 @@
+@use '../global/variables.scss'as *;
+
+.boards-container {
+  position: relative;
+
+  .boards-header {
+
+    .boards-list {
+      .board-link {
+        padding: 0 20px;
+        font-size: 18px;
+        font-weight: 500;
+        overflow: hidden;
+        line-height: 60px;
+        color: $gray-400;
+        position: relative;
+        display: inline-block;
+
+        &::after {
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 0;
+          content: "";
+          margin: auto;
+          transition: 0.2s;
+          background: $blue;
+          position: absolute;
+          width: calc(100% - 30px);
+        }
+
+        &.active,
+        &:hover {
+          color: $black-text;
+
+          &::after {
+            height: 7px;
+          }
+
+        }
+      }
+
+      .separator {
+        width: 1px;
+        height: 29px;
+        margin: 0 16px;
+        background-color: $gray;
+      }
+
+    }
+
+    white-space: nowrap;
+  }
+
+  .board-body {
+    margin-bottom: 20px;
+  }
+
+  .boards-scroll {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 10px;
+  }
+
+  .board-item {
+    margin-right: 10px;
+  }
+
+
+  .boards-content {
+    padding: 20px;
+    overflow: hidden;
+    min-height: 240px;
+    overflow-x: scroll;
+    border-radius: 5px;
+    background: $gray-100;
+    border: 1px solid $gray-300;
+  }
+
+
+  .column-item {
+    min-width: 280px;
+    padding: 0 20px 15px;
+    border-radius: 15px;
+    background-color: $white;
+
+    .column-item-title {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 52px;
+      color: $black-text;
+    }
+
+    &+.column-item {
+      margin-left: 15px;
+    }
+
+  }
+
+  .cover-tasks {
+    .task-card {
+      margin-bottom: 10px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      background: $blue-100;
+      border: 1px solid rgba($gray-300, 0.2);
+      box-shadow: 0px 5px 8px rgba(#000, 0.08);
+
+      .task-head {
+        margin-bottom: 10px;
+
+        .drag-icon {
+          svg {
+            fill: $gray;
+            width: 18px;
+            height: 12px;
+          }
+        }
+
+        .action-icons {
+          /**/
+        }
+      }
+
+      .task-body {
+        margin-bottom: 10px;
+      }
+
+      .task-title {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 10px;
+      }
+
+      .task-description {
+        font-size: 14px;
+        line-height: 16px;
+        margin-bottom: 10px;
+      }
+
+      .task-footer {
+        /**/
+      }
+
+      .task-user,
+      .task-date {
+        font-size: 12px;
+        padding: 0 10px;
+        line-height: 20px;
+        border-radius: 15px;
+      }
+
+      .task-user {
+        background-color: $blue-100;
+      }
+
+      .task-date {
+        background-color: $red-light;
+      }
+
+    }
+
+  }
+
+  .btn-add-task {
+    color: $blue;
+    font-size: 16px;
+    padding: 0 20px;
+    line-height: 44px;
+    position: relative;
+    font-weight: 600px;
+    border-radius: 10px;
+    transition: .2s ease;
+    border: 1px solid $blue;
+
+    &::after {
+      content: "";
+      transition: 0.2s ease;
+    }
+
+    svg {
+      fill: $blue;
+      height: 16px;
+      width: 16px;
+      margin-right: 5px;
+    }
+
+    &:hover {
+      color: $white;
+      background-color: $blue;
+
+      svg {
+        fill: $white;
+      }
+    }
+  }
+
+  .delete-board-container {
+    opacity: 0;
+  }
+
+  .hide_actions_board {
+    opacity: 0;
+  }
+
+  .show-actions-board {
+    opacity: 1;
+  }
+
+}

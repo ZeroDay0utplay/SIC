@@ -1,0 +1,201 @@
+<%= form_for @quote, url: url, method: method, html: { multipart: true, id: "form-quote", data: { controller: "finance" } } do |form| %>
+  <%= form.fields_for :commercial_detail do |form_detail| %>
+    <div class="cover-settings text-end mb-3">
+      <div class="btn-group dropstart">
+        <div class="d-inline-block dropdown-toggle" role="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+          <%= inline_svg_tag("icons/settings.svg") %>
+          Paramètres
+        </div>
+        <%= render 'commercial_detail', form_detail: form_detail %>
+      </div>
+    </div>
+  <% end %>
+  <div class="finance-card">
+    <div class="cover-logo-dates">
+      <div class="d-flex justify-content-between">
+        <div class="w-50">
+          <div class="cover-preview-picture d-flex flex-column me-auto justify-content-center align-items-center" id="cover-preview-picture">
+            <label for="edit-avatar" class="text-center">
+              <div class="icon rounded-circle d-flex justify-content-center align-items-center m-auto">
+                <%= inline_svg_tag('icons/image.svg') %>
+              </div>
+            </label>
+            <%= form.file_field :photo, class: "quote-photo", id: "edit-avatar", accept: 'image/png, image/jpeg' %>
+            <% if @quote.photo.attached? %>
+              <%= image_tag @quote.photo %>
+            <% end %>
+          </div>
+          <div class="company-details py-3">
+            <h5><%= Current.company.social_reason %></h5>
+            <div><%= Current.company.address&.entered_by_user || "" %></div>
+            <div><%= Current.company.email %></div>
+            <div><%= Current.company.tel %></div>
+          </div>
+        </div>
+        <div class="comercial-dates w-50">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <%= form.label :reference, 'Devis N°', class:'form-label m-0' %>
+            <%= form.text_field :reference, class: 'form-control', disabled: true %>
+            <%= form.hidden_field :reference %>
+          </div>
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <%= form.label :validate_date, 'En date du', class:'form-label m-0' %>
+            <%= form.date_field :validate_date, class: 'form-control' %>
+          </div>
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <%= form.label :signed_before, 'À signer avant le', class:'form-label m-0' %>
+            <%= form.date_field :signed_before, class: 'form-control' %>
+          </div>
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <%= form.label :client_reference, 'Réf.client', class:'form-label m-0' %>
+            <%= turbo_frame_tag 'client-reference' do %>
+              <input type="text" name="client-reference" id="quote_client_reference"
+                      class="form-control" value="<%= @quote.client&.reference || '' %>" disabled>
+            <% end %>
+          </div>
+          <div class="mb-2 must-signed">
+            <%= form.label :must_signed, class:"user-select-none pointer d-flex align-items-center justify-content-between" do %>
+              Signature devis obligatoire
+              <%= form.checkbox :must_signed, class:"d-none" %>
+              <span class="toggle"></span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cover-admin-payment mb-5">
+      <div class="row">
+        <div class="col-md-4 col-sm-12">
+          <div class="col-quote-step-1 mb-3">
+            <%= form.label :user_id, "Référent", class: "form-label" %>
+            <%= form.select :user_id,
+                Admin.current_company.order(:first_name).map { |admin| [admin.full_name, admin.id] },
+                { include_blank: "Veuillez sélectionner" },
+                required: true,
+                class: "form-select admin-select",
+                data: { action: "change->finance#changeAdmin" }
+            %>
+          </div>
+          <div class="admin-details">
+            <%= turbo_frame_tag 'admin-info' do %>
+              <% unless @quote.persisted? %>
+                <div><span>Tél:</span></div>
+                <div><span>Email:</span></div>
+              <% else %>
+                <div><span>Tél:</span> <strong><%= @quote.admin.phone %></strong></div>
+                <div><span>Email:</span> <strong><%= @quote.admin.email%></strong></div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-8 col-sm-12 d-flex justify-content-between align-items-end">
+          <div class="payment-dates d-flex flex-column ">
+            <%= form.fields_for :payment_method do |payment_form| %>
+              <div class="d-flex align-items-center justify-content-between mb-2 w-100">
+                <%= payment_form.label :payment_mode, "Moyen de règlement", class:"ms-auto me-1" %>
+                <%= payment_form.select :payment_mode,
+                  PaymentMethod.payment_modes.keys.map { |mode| [I18n.t("enums.payment_mode.#{mode}"), mode] },
+                  { include_blank: "Veuillez sélectionner" },
+                  { required: true, class: "form-select" }
+                %>
+              </div>
+              <div class="d-flex align-items-center justify-content-between mb-2 w-100">
+                <%= form.label :validate_date, "Date de validité", class:"ms-auto me-1" %>
+                <%= form.date_field :validate_date, class:"form-control" %>
+              </div>
+              <div class="d-flex align-items-center justify-content-between w-100">
+                <%= payment_form.label :deadline_regle, "Limite de règlement", class:"ms-auto me-1" %>
+                <%= payment_form.date_field :deadline_regle, class:"form-control" %>
+              </div>
+            <% end %>
+          </div>
+          <div class="payment-infos d-flex flex-column justify-content-center">
+            <div class="title text-center">Informations de paiement</div>
+            <div class="item"><small>Etablissement</small><span><%= current_company.establishment %></span></div>
+            <div class="item"><small>IBAN</small><span><%= current_company.iban %></span></div>
+            <div class="item"><small>BIC</small><span><%= current_company.bic %></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cover-client-intervention row mb-4">
+      <div class="col-md-4">
+        <div class="mb-3 d-flex align-items-center">
+          <%= form.label :client_id, "Client:", class: "form-label me-2" %>
+          <%= form.select :client_id,
+              Client.current_company.order(:name).map { |client| [client.name, client.id] },
+              { include_blank: "Veuillez sélectionner" },
+              required: true,
+              class: "form-select client-select me-2",
+              data: { action: "change->finance#changeClient" }
+          %>
+          <%= link_to modal_new_settings_clients_path(), class:'btn btn-text-white btn-blue-dark btn-sm btn-add', data: { controller:'modals', action: 'click->modals#showModal', turbo_frame: 'modal', turbo: 'false'} do %>
+            <%= inline_svg_tag('icons/add.svg') %>
+          <% end %>
+        </div>
+        <div id="display_heading" class=" <%= 'd-none' unless @quote.commercial_detail.display_heading %>">
+          <%= form.label :quote_heading_id, "Intitulé client", class: "form-label" %>
+          <%= turbo_frame_tag 'client-heading' do %>
+            <div class="d-flex align-items-center">
+              <% unless @quote.persisted? %>
+                <%= form.select :heading_id,
+                [],
+                { include_blank: "Veuillez sélectionner" },
+                required: true,
+                class: "form-select admin-select me-2"
+              %>
+              <% else %>
+                <%= form.select :heading_id,
+                @quote.client.headings.order(:title).map { |heading| [heading.title, heading.id] },
+                { include_blank: "Veuillez sélectionner" },
+                required: true,
+                class: "form-select admin-select me-2"
+              %>
+              <% end %>
+              <%= link_to modal_new_settings_headings_path(), class:'btn btn-text-white btn-blue-dark btn-sm btn-add', data: { controller:'modals', action: 'click->modals#showModal', turbo_frame: 'modal', turbo: 'false'} do %>
+                <%= inline_svg_tag('icons/add.svg') %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-8 d-flex align-items-center justify-content-end">
+        <%= turbo_frame_tag 'client-details' do %>
+          <div class="client-details d-flex align-items-center">
+            <% if @quote.persisted? %>
+              <% if @quote.client.logo.attached? %>
+                <%= image_tag @quote.client.logo.variant(resize_to_fill: [40, 40]), class: 'rounded-circle' %>
+              <% else %>
+                <%= inline_svg_tag 'icons/logo.svg', width: "40", height: "40" %>
+              <% end %>
+              <div>
+                <h5><%= @quote.client.name %></h5>
+                <% unless @quote.client.address.nil? %>
+                  <p>
+                    <%= @quote.client&.address&.formatted_address %>
+                  </p>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="d-flex flex-column mb-4">
+      <div id="display_title" class="mb-3 <%= 'd-none' unless @quote.commercial_detail.display_title %>">
+        <%= form.label :document_title, "Titre du document", class: "form-label" %>
+        <%= form.text_field :document_title, class: 'form-control', placeholder: "Titre du document" %>
+      </div>
+      <div id="display_description" class=" <%= 'd-none' unless @quote.commercial_detail.display_description %>">
+        <%= form.label :description, "Champ libre", class: "form-label" %>
+        <%= form.rich_text_area :description, class: 'form-control', placeholder: "Champ libre" %>
+      </div>
+    </div>
+    <div class="text-end">
+      <%= form.button type: "submit", class: "btn btn-md mx-2 btn-save btn-text-white btn-blue-dark" do %>
+        Suivant
+        <%= inline_svg_tag("icons/arrow-right.svg") %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

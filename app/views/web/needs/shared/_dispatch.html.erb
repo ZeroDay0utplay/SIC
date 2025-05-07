@@ -1,0 +1,14 @@
+<div class="cover-dispatch">
+  <div class="form-group d-flex align-items-center justify-content-start mb-2">
+    <div class="form-label label-left">
+      Dispatch manuel
+      <span class="d-block">
+        Gérer manuellement le planning
+      </span>
+    </div>
+    <%= form.label :manual_dispatch, class:"custom-checkbox" do %>
+      <%= form.check_box :manual_dispatch, data: { action:"change->needs#checkDispatch" } %>
+      <span class="d-block"></span>
+    <% end %>
+  </div>
+</div>

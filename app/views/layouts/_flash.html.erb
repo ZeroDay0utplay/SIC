@@ -1,0 +1,12 @@
+<%= turbo_frame_tag :flash_messages do %>
+  <div id="flash_messages">
+    <% flash.each do |type, message| %>
+      <div class="d-flex align-items-center justify-content-between alert alert-<%= type %>" data-controller='flash'>
+        <p class="text">
+          <%= message.nil? ? type : message %>
+        </p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+<div class="d-flex d-wrap justify-content-between mb-3">
+  <h1 class="settings-title mb-0">Liste des utilisateurs</h1>
+
+  <%= link_to new_settings_user_path(type: controller.action_name), class:'btn btn-blue btn-sm btn-add btn-text-white', data: { controller:'new-user', turbo_frame: 'modal', turbo: 'false'} do %>
+    <%= inline_svg_tag('icons/add.svg') %>
+    Ajouter utlisateur
+  <% end %>
+</div>
+
+<%=  %>
+
+<nav class="settings-navbar mb-3">
+  <div class="d-flex">
+    <%= link_to agents_settings_users_path(),
+        class: "settings-nav-link #{ controller.action_name == 'agents' ? 'active' : ''  } d-flex align-items-center" do %>
+      <%= inline_svg_tag('icons/user.svg') %>
+      Agents
+    <% end %>
+    <%= link_to administrators_settings_users_path(),
+        class:"settings-nav-link #{ controller.action_name == 'administrators' ? 'active' : ''  } d-flex align-items-center" do %>
+      <%= inline_svg_tag('icons/user-certification.svg') %>
+      Administrateurs
+    <% end %>
+  </div>
+</nav>

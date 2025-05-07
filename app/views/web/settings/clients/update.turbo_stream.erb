@@ -1,0 +1,7 @@
+<%= turbo_stream.replace 'redirect_placeholder' do %>
+  <script>
+    window.location.href = "<%= @url %>";
+  </script>
+<% end %>
+<%= turbo_frame_tag 'redirect_placeholder' do %>
+<% end %>

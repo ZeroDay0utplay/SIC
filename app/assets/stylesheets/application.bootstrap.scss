@@ -1,0 +1,35 @@
+@use "global/index";
+
+/* Components */
+@forward "components/main_sections";
+@forward "components/settings/prestations";
+@forward "components/settings/profiles";
+@forward "components/settings/clients";
+@forward "components/settings/container";
+@forward "components/settings/navbar";
+@forward "components/settings/sidebar";
+@forward "components/sidebar";
+@forward "components/interventions_list";
+@forward "components/commercial_steps";
+@forward "components/settings/subcontractors";
+@forward "components/settings/users";
+@forward 'components/boards.scss';
+
+
+/* Modal Components */
+@forward 'components/modal/modal_user';
+@forward 'components/modal/modal_prestation';
+@forward "components/modal/modal_user";
+
+/* Views */
+@forward "views/finances";
+@forward "views/needs";
+@forward "views/plannings";
+@forward 'views//quote/index';
+
+
+
+@import "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css";
+@import "https://cdn.jsdelivr.net/npm/tom-select@2.4.3/dist/css/tom-select.bootstrap5.min.css";
+@import "https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css";
+@import "https://unpkg.com/trix@2.0.8/dist/trix.css";

@@ -1,0 +1,40 @@
+@use '../../global/variables.scss'as *;
+@use '../../global/mixins'as *;
+
+.prestations-controller,
+.absences-controller,
+.quotes-controller {
+  .description {
+    color: $gray-500;
+    font-size: 14px;
+    max-width: 300px;
+  }
+
+  .prestation-type {
+    padding: 0 7px;
+    display: block;
+    font-size: 13px;
+    line-height: 26px;
+    border-radius: 8px;
+
+    &.sell {
+      background-color: rgba($green, 0.2);
+    }
+
+    &.service {
+      background-color: rgba($yellow-dark, 0.2);
+    }
+
+    &.rent {
+      background-color: rgba($blue-500, 1);
+    }
+
+    &.recurring {
+      background-color: rgba($red, 0.2);
+    }
+  }
+
+  .prestations-type {
+    @include status-navbar
+  }
+}

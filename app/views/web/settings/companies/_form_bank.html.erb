@@ -1,0 +1,40 @@
+<div class="edit-bank mt-5" id="edit-bank">
+  <%= form_for @company, url: bank_settings_company_path(), method: :patch, html: { multipart: true } do |f| %>
+    <div class="container me-auto ms-0">
+      <div class="row">
+        <div class="col-6">
+          <div class="d-flex mb-4">
+            <div class="w-50">
+              <%= f.label :establishment, "Etablissement", class: "form-label text-gray-dark" %>
+              <%= f.text_field :establishment, class: "form-control" %>
+            </div>
+            <div class="w-50 ps-3">
+              <%= f.label :taux_tva, "TVA", class: "form-label text-gray-dark" %>
+              <%= f.text_field :taux_tva, class: "form-control" %>
+            </div>
+          </div>
+          <div class="mb-4">
+            <%= f.label :iban, "IBAN", class: "form-label text-gray-dark" %>
+            <%= f.text_field :iban, class: "form-control" %>
+          </div>
+          <div class="mb-5">
+            <%= f.label :bic, "BIC", class: "form-label text-gray-dark" %>
+            <%= f.text_field :bic, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-12"></div>
+        <div class="col-6">
+          <div class="d-flex justify-content-end">
+            <%= f.button type: 'reset', class: "btn btn-lg btn-outline-secondary btn-cancel btn-text-white" do %>
+              Annuler
+            <% end %>
+            <%= f.button type: 'submit', class: "btn btn-lg mx-2 btn-save btn-text-white btn-blue-dark" do %>
+              Enregistrer
+              <%= inline_svg_tag('icons/save.svg') %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

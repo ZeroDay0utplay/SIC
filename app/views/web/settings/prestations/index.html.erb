@@ -1,0 +1,109 @@
+<div class="settings-container d-flex">
+  
+  <div class="settings-content">
+    <div class="d-flex d-wrap justify-content-between mb-5">
+      <h1 class="settings-title mb-0">Prestation</h1>
+      <%= link_to new_settings_prestation_path(), class:'btn btn-blue btn-sm btn-add btn-text-white',
+          data: { controller:'prestations', action:'click->prestations#showModal', turbo_frame: 'modal', turbo: 'false' } do %>
+        <%= inline_svg_tag('icons/add.svg') %>
+        Nouveau prestation
+      <% end %>
+    </div>
+
+    <%= search_form_for @q, url: settings_prestations_path(), method: :get,
+        data: { controller: "search", search_url: settings_prestations_path() } do |form| %>
+      <!-- 
+        blue-dark-status
+        yellow-status
+        red-status
+        blue-light-status
+        green-status
+      -->
+      <div class="prestations-type d-flex align-content-center justify-content-center">
+        <div class="form-check form-check-inline">
+          <%= label_tag 'all-filter', class: 'form-check-label blue-dark-status' do %>
+            <%= radio_button_tag :type_prestation, '', class: 'form-check-input', id: 'all-filter',
+                data: { action: 'change->search#getByPrestationType' } %>
+            <span class='type-status-value'>Tout</span>
+            <div class="after"></div>
+          <% end %>
+        </div>
+        <div class="separation"></div>
+        <div class="form-check form-check-inline">
+          <%= label_tag 'service-filter', class: 'form-check-label yellow-status' do %>
+            <%= radio_button_tag :type_prestation, '0', class: 'form-check-input', id: 'service-filter',
+                data: { action: 'change->search#getByPrestationType' } %>
+            <span class='type-status-value'>Service</span>
+            <div class="after"></div>
+          <% end %>
+        </div>
+        <div class="separation"></div>
+        <div class="form-check form-check-inline">
+          <%= label_tag 'rent-filter', class: 'form-check-label blue-light-status' do %>
+            <%= radio_button_tag :type_prestation, '1', class: 'form-check-input', id: 'rent-filter',
+                data: { action: 'change->search#getByPrestationType' } %>
+            <span class='type-status-value'>Location</span>
+            <div class="after"></div>
+          <% end %>
+        </div>
+        <div class="separation"></div>
+        <div class="form-check form-check-inline">
+          <%= label_tag 'sell-filter', class: 'form-check-label green-status' do %>
+            <%= radio_button_tag :type_prestation, '2', class: 'form-check-input', id: 'sell-filter',
+                data: { action: 'change->search#getByPrestationType' } %>
+            <span class='type-status-value'>Vente</span>
+            <div class="after"></div>
+          <% end %>
+        </div>
+        <div class="separation"></div>
+        <div class="form-check form-check-inline">
+          <%= label_tag 'recurring-filter', class: 'form-check-label red-status' do %>
+            <%= radio_button_tag :type_prestation, '3', class: 'form-check-input', id: 'recurring-filter',
+                data: { action: 'change->search#getByPrestationType' } %>
+            <span class='type-status-value'>Récurrent</span>
+            <div class="after"></div>
+          <% end %>
+        </div>
+
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class='m-0'>Liste des prestations</h4>
+        <div class="search-input w-350">
+          <%= form.search_field :name_or_description_cont, class: 'form-control', placeholder: 'Rechercher',
+              aria: { label: 'search by name or company', describedby: 'button-addon-2' },
+              data: { action: "input->search#search", search_target: "input" } %>
+          <i class="search-icon">
+            <%= inline_svg_tag('icons/search.svg') %>
+          </i>
+        </div>
+      </div>
+
+      <div>
+        <%= render "shared/skeleton_loader" %>
+
+        <div data-search-target="skeletonTable">
+
+
+          <%= turbo_frame_tag 'cover-prestations-list' do %>
+            <%= render 'prestations', prestations: @prestations %>
+            <% if @count > 10 %>
+              <footer class="d-flex align-items-center justify-content-between p-4">
+                <div class="cover-pagination">
+                  <%= will_paginate @prestations, renderer: BootstrapPaginationHelper::BootstrapLinkRenderer %>
+                </div>
+
+                <div class='w-25 d-flex align-items-center justify-content-end'>
+                  <label class='text-gray-dark me-2'>Affichage :</label>
+                  <%= select_tag :items, options_for_select([10, 20, 30, 40, 50], params[:items]),
+                    data: { action: "change->search#changeItemsPerPage", search_target: "itemsPerPage" },
+                    class: "w-25 ml-auto form-select" %>
+                </div>
+              </footer>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

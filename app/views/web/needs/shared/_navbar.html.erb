@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center mb-5 needs-navbar">
+  <ul class="nav w-100 justify-content-center">
+    <li>
+      <%= link_to new_need_path("punctual"), class:"d-flex align-items-center flex-column #{ "active" if @planning.type == "Punctual"  }" do %>
+        <%= inline_svg_tag("icons/time.svg") %>
+        <span class="text">
+          Ponctuel
+        </span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to new_need_path("regular"), class:"d-flex align-items-center flex-column #{ "active" if @planning.type == "Regular"  }" do %>
+        <%= inline_svg_tag("icons/list-checked-mirror.svg") %>
+        <span class="text">
+          Régulier
+        </span>
+      <% end %>
+    </li>
+    <li>
+      <a href="#" class="d-flex align-items-center flex-column">
+        <%= inline_svg_tag("icons/shopping-bag.svg") %>
+        <span class="text">
+          Vente
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="d-flex align-items-center flex-column">
+        <%= inline_svg_tag("icons/password.svg") %>
+        <span class="text">
+          Location
+        </span>
+      </a>
+    </li>
+  </ul>
+</div>

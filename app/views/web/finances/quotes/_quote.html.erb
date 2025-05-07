@@ -1,0 +1,64 @@
+
+<tr id="quote-<%= quote.id %>">
+  <td>
+    <input type="checkbox" name="quote_id[]" value="<%= quote.id %>" />
+  </td>
+  <td>
+    <%= quote.id %>
+  </td>
+  <td><%= quote.created_at.strftime("%d/%m/%Y")  %></td>
+  <td data-editable-target="name">
+    <%= quote.client&.name.upcase %>
+  </td>
+  <td> <%= quote.address&.street %> </td>
+  <td >
+    <%= quote.decorate.state %>
+  </td>
+  <td><%= quote.prestation&.name %></td>
+  <td>
+    <span class="see_interloc">
+      <%= render 'show_interlocs', contacts: quote.contacts %>
+    </span>
+  </td>
+  <td>
+    <%= inline_svg_tag(quote.must_signed ? 'icons/signed.svg' : 'icons/unsigned.svg'), "" %>
+  </td>
+  <td>
+    <strong><%= quote.total_before_tax %></strong>
+  </td>
+  <td>
+    <%= link_to pdf_finances_quote_path(quote.id), download: "", target: "_blank" do %>
+      <%= inline_svg_tag("icons/generate_pdf.svg") %>
+    <% end %>
+    <%= link_to "", data: { action: "click->quotes#generatePdf", quote: quote.id } do %>
+      <%= inline_svg_tag("icons/coins_solid.svg") %>
+    <% end %>
+    <div class="dropdown d-inline">
+      <a href="#" id="moreOptionsDropdown" data-bs-toggle="dropdown" aria-expanded="false" class="p-0">
+        <%= inline_svg_tag("icons/more_options.svg", class: "icon-sm") %>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="moreOptionsDropdown">
+        <li>
+          <%= link_to edit_finances_quote_path(quote), class: "dropdown-item p-1", data: { turbo: false } do %>
+            <%= inline_svg_tag("icons/edit.svg") %>
+            Modifier
+          <% end %>
+        </li>
+        <hr class="my-1">
+        <li>
+          <%= link_to "", data: { action: "click->confirm-modal#confirmDestroy", quote: quote.id }, class: "dropdown-item p-1 icon-ideo icon-blue icon-20" do %>
+            <%= inline_svg_tag("icons/send_mail.svg") %>
+            Envoyer
+          <% end %>
+        </li>
+        <hr class="my-1">
+        <li>
+          <%= link_to "#", data: { action: "click->confirm-modal#confirmDestroy", url: finances_quote_path(quote) }, class: "dropdown-item p-1 icon-ideo icon-red icon-20" do %>
+            <%= inline_svg_tag("icons/trash-can.svg") %>
+            Supprimer
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </td>
+</tr>

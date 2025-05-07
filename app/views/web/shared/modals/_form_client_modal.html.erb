@@ -1,0 +1,84 @@
+<div class="modal-header">
+  <h5 class="modal-title">
+    <%= @client.persisted? ? "Modifier les informations du client" : "Ajouter un client" %>
+  </h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body" data-controller="quotes">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <div class="border d-flex flex-column mb-4">
+        <label class="form-label text-700">Type du client</label>
+        <%= form.label :client_type, for: 'particular' do %>
+          <%= form.radio_button :client_type, 'particular', id: 'particular'%>
+          Particulier
+        <% end %>
+        <%= form.label :client_type, for: 'professional' do %>
+          <%= form.radio_button :client_type, "professional", id: 'professional' %>
+          Professionnel
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <div class="border d-flex flex-column mb-4">
+        <label class="form-label text-700">Role</label>
+        <%= form.label :role, for: 'mandataire' do %>
+          <%= form.radio_button :role, 'representative', id: 'mandataire'%>
+          Mandataire
+        <% end %>
+        <%= form.label :role, for: 'contractor' do %>
+          <%= form.radio_button :role, "contractor", id: 'contractor' %>
+          Donneur d'ordre
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="mb-2">
+    <%= form.label :name, "Nom", class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+  <div class="mb-2">
+    <%= form.label :email, "Email", class: "form-label" %>
+    <%= form.text_field :email, class: "form-control" %>
+  </div>
+  <%= form.fields_for :address_attributes, @client.address do |form_address| %>
+    <% form_address.hidden_field :id %>
+    <div class="row mb-5">
+      <div class="col-sm-12 col-md-6 mb-3">
+        <div class="form-group">
+          <%= form_address.label :street, "Adresse", class:'form-label'%>
+          <%= form_address.text_field :street, class:'form-control', required: true,
+                    data: { client_target: "address" } %>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 mb-3">
+        <div class="form-group">
+          <%= form_address.label :country, "Pays", class:'form-label'%>
+          <%= form_address.text_field :country, class:'form-control', required: true,
+                    data: { client_target: "country" } %>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <div class="form-group">
+          <%= form_address.label :city, "Ville", class:'form-label'%>
+          <%= form_address.text_field :city, class:'form-control', required: true,
+                    data: { client_target: "city" } %>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <div class="form-group">
+          <%= form_address.label :postal_code, "Code postal", class:'form-label'%>
+          <%= form_address.text_field :postal_code, class:'form-control', required: true,
+                    data: { client_target: "postal_code" } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="modal-footer">
+  <%= form.button "Annuler", type: 'button', class: "btn btn-lg btn-outline-secondary btn-cancel btn-text-white", data: { bs_dismiss: 'modal' } %>
+  <%= form.button type: 'submit', class: "btn btn-lg mx-2 btn-save btn-text-white btn-blue-dark", data: { action: 'bs-modal#submitEnd'} do %>
+    Enregistrer
+    <%= inline_svg_tag('icons/save.svg') %>
+  <% end %>
+</div>

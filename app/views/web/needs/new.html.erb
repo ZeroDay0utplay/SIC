@@ -1,0 +1,170 @@
+<div class="main-needs">
+  <div class="d-flex d-wrap justify-content-between mb-1">
+    <h1 class="title-1">Besoins</h1>
+  </div>
+  <%= render partial: 'web/needs/shared/navbar' %>
+  <%= form_with model: @planning, url: @url, data: { controller: "needs form-validation" } do |form| %>
+
+    <!----------------------- INFORMATIONS ----------------------->
+    <div class="row mb-4">
+
+      <%= render 'web/needs/shared/informations', form: form %>
+
+      <div class="col-sm-12 col-md-6">
+        <div class="col-contacts">
+          <%= render 'web/needs/shared/prestations', form: form, type: @planning.type %>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-6">
+        <div class="d-flex">
+          <% if @planning.type == "Punctual" %>
+            <div class="form-group w-50">
+              <%= form.label :dates, "Les dates de prestations", class: "form-label text-gray-dark" %>
+              <%= form.text_field :dates, required: true, class:"form-control medium-input", placeholder:"jj-mm-aaaa",
+                  data: { needs_target: "multipleDateInput" } %>
+            </div>
+          <% else %>
+            <div class="form-group w-50">
+              <%= form.label :start_on, "Date début", class: "form-label text-gray-dark" %>
+              <%= form.text_field :start_on, required: true, class:"form-control", value: Date.today.beginning_of_month.strftime("%d-%m-%Y"), placeholder:"jj-mm-aaaa",
+                  data: { needs_target: "dateStartInput" } %>
+            </div>
+            <div class="form-group w-50 ms-3">
+              <%= form.label :finish_on, "Date fin", class: "form-label text-gray-dark" %>
+              <%= form.text_field :finish_on, required: true, class:"form-control", value: Date.today.end_of_month.strftime("%d-%m-%Y"), placeholder:"jj-mm-aaaa",
+                  data: { needs_target: "dateEndInput" } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+    <!----------------------- CONTACTS ----------------------->
+    <div class="row mb-4">
+      <%= render 'web/needs/shared/contacts', form: form %>
+
+    </div>
+
+    <!----------------------- PLANIFICATIONS ----------------------->
+
+    <div class="row mb-2">
+      <div class="col-sm-12">
+        <h4 class="title-needs">Planifications</h4>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <div class="d-flex justify-content-start">
+          <div class="form-group">
+            <%= form.label :agent_needed, "Agents", class: "form-label text-gray-dark" %>
+            <%= form.number_field :agent_needed, class:"form-control small-input", placeholder:"0", min: 0 %>
+          </div>
+
+          <div class="form-group ms-3">
+            <%= form.label :remaining_ability, "Capacité restante", class: "form-label text-gray-dark" %>
+            <%= form.number_field :remaining_ability, class:"form-control small-input", placeholder:"0", disabled: true %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <% if @planning.type == "Punctual" %>
+          <%= render 'web/needs/shared/assign_agents', form: form %>
+        <% else %>
+          <div class="cover-dispatch">
+            <div class="form-group d-flex align-items-center justify-content-start mb-2">
+              <div class="form-label label-left">
+                Faire une planification des tâches
+                <span class="d-block">
+                  Repartir les tâches sur des journées
+                </span>
+              </div>
+              <%= form.label :with_tasks, class:"custom-checkbox" do %>
+                <%= form.check_box :with_tasks, data: { action:"change->needs#canAddTasks" } %>
+                <span class="d-block"></span>
+              <% end %>
+            </div>
+          </div>
+          <%= render 'web/needs/shared/button_add_task', form: form %>
+        <% end %>
+      </div>
+
+      <% if @planning.type == "Punctual" %>
+        <div class="col-sm-12 col-md-6 mt-3">
+          <%= render 'web/needs/shared/dispatch', form: form %>
+        </div>
+
+        <div class="col-sm-12 col-md-6 mt-3">
+          <%= render 'web/needs/shared/button_add_task', form: form %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="row mb-4">
+      <% if @planning.type == "Punctual" %>
+        <div class="col-sm-12 col-md-6">
+            <div class="cover-dispatch">
+              <div class="form-group d-flex align-items-center justify-content-start m-0">
+                <div class="form-label text-gray-dark label-left">
+                  Camion
+                  <span class="d-block">
+                    Inclure un camion pour le client
+                  </span>
+                </div>
+                <%= form.label :include_vehicle, class:"custom-checkbox" do %>
+                  <%= form.check_box :include_vehicle %>
+                  <span class="d-block"></span>
+                <% end %>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+          <div class="cover-dispatch">
+            <div class="form-group d-flex align-items-center justify-content-start m-0">
+              <div class="form-label text-gray-dark label-left m-0">
+                Ajouter matériel sur la mission
+                <span class="d-block">
+                  Ajout du matériel nécessaire a la mission
+                </span>
+              </div>
+              <button class="custom-button" type="button" data-action="click->needs#openMaterialsModal">
+                <%= inline_svg_tag("icons/add.svg") %>
+              </button>
+              <%= form.hidden_field :materials_list, data: { name: "materialsList" } %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @planning.type == "Regular" %>
+        <div class="col-sm-12" data-needs-target="interventionDays">
+          <div class="cover-intervention-days text-gray-dark">
+            <%= form.label :intervention_days, "Jours d'intervention", class: "form-label d-block" %>
+            <div class="interventions-col d-inline-flex mb-2">
+              <% { Lundi: 1, Mardi: 2, Mercredi: 3, Jeudi: 4, Vendredi: 5, Samedi: 6, Dimanche: 0 }.each do |day, value| %>
+                <label class="form-label">
+                  <span><%= day %></span>
+                  <%= form.check_box :intervention_days, { multiple: true }, value, nil %>
+                </label>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+
+    <!----------------------- COMMENTAIRES ----------------------->
+    <%= render "web/needs/shared/comments", form: form %>
+
+    <div class="text-end">
+      <%= form.button type: "submit", class: "btn btn-md mx-2 btn-save btn-text-white btn-blue-dark",
+          data: { needs_target: "submit", form_validation_target: "submit", action: "click->form-validation#submitForm" } do %>
+        Enregistrer
+        <%= inline_svg_tag("icons/save.svg") %>
+      <% end %>
+    </div>
+
+  <% end %>
+
+</div>

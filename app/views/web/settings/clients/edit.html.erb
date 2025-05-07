@@ -1,0 +1,7 @@
+<div class="settings-container d-flex">
+  <div class="new-client-form-container w-100" data-controller="client">
+    <%= form_for @client, url: settings_client_path(@client), method: :patch, html: { multipart: true } do |form| %>
+      <%= render 'form', form: form %>
+    <% end %>
+  </div>
+</div>

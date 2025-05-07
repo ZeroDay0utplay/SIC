@@ -1,0 +1,150 @@
+<div class="d-flex align-items-center mb-5">
+  <%= link_to settings_clients_path, class: 'prev-page me-3 d-flex align-items-center justify-content-center' do %>
+    <%= inline_svg_tag('icons/arrow-left.svg', class: 'icon-sm') %>
+  <% end %>
+  <h3 class="mb-0">
+    <%= @client.persisted? ? "Modifier groupe" : "Nouveau groupe"%>
+  </h3>
+</div>
+
+<!-- Page/Step indicator -->
+<!--
+<div class="cover-steps d-flex align-items-center justify-content-center">
+  <div class="step-item active"> 1 </div>
+  <div class="step-separation"></div>
+  <div class="step-item disabled"> 2 </div>
+</div>
+-->
+
+<div class="cover-client-form m-auto">
+
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+      <!-- Begin Col -->
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <div class="border d-flex flex-column mb-4">
+            <label class="form-label text-700">Type du client</label>
+            <%= form.label :client_type, for: 'particular' do %>
+              <%= form.radio_button :client_type, 'particular', id: 'particular'%>
+              Particulier
+            <% end %>
+            <%= form.label :client_type, for: 'professional' do %>
+              <%= form.radio_button :client_type, "professional", id: 'professional' %>
+              Professionnel
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <div class="border d-flex flex-column mb-4">
+            <label class="form-label text-700">Role</label>
+            <%= form.label :role, for: 'mandataire' do %>
+              <%= form.radio_button :role, 'representative', id: 'mandataire'%>
+              Mandataire
+            <% end %>
+            <%= form.label :role, for: 'contractor' do %>
+              <%= form.radio_button :role, "contractor", id: 'contractor' %>
+              Donneur d'ordre
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- End Col -->
+
+      <!-- Begin Col -->
+      <div class="row mb-4">
+        <div class="col-sm-12 col-md-6">
+          <div class="form-group position-relative">
+            <!-- Suggestion Container -->
+            <%= form.label :name, "Nom client (Groupe)", class:'form-label'%>
+            <%= form.text_field :name, class:'form-control', required: true, autocomplete:"off",
+                  data: { action: "input->client#getCompany blur->form-validate#validate", form_validate_target: "input" } %>
+            <span class="error-message" data-form-validate-target="errorMessage"></span>
+            <div data-client-target="suggestions" class="suggestions-list d-none position-absolute w-100 bg-white shadow p-2"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <div class="form-group">
+            <%= form.label :email, "Email", class:'form-label'%>
+            <%= form.text_field :email, class:'form-control', required: true,
+                  data: { action: "blur->form-validate#validate", form_validate_target: "input" } %>
+            <span class="error-message" data-form-validate-target="errorMessage"></span>
+          </div>
+        </div>
+      </div>
+      <!-- End Col -->
+
+      <!-- Address Col -->
+      <%= form.fields_for :address_attributes, @client.address do |form_address| %>
+        <% form_address.hidden_field :id %>
+        <div class="row mb-5">
+          <div class="col-sm-12 col-md-6 mb-3">
+            <div class="form-group">
+              <%= form_address.label :street, "Adresse", class:'form-label'%>
+              <%= form_address.text_field :street, class:'form-control', required: true,
+                    data: { client_target: "address" } %>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 mb-3">
+            <div class="form-group">
+              <%= form_address.label :country, "Pays", class:'form-label'%>
+              <%= form_address.text_field :country, class:'form-control', required: true,
+                    data: { client_target: "country" } %>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+              <%= form_address.label :city, "Ville", class:'form-label'%>
+              <%= form_address.text_field :city, class:'form-control', required: true,
+                    data: { client_target: "city" } %>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+              <%= form_address.label :postal_code, "Code postal", class:'form-label'%>
+              <%= form_address.text_field :postal_code, class:'form-control', required: true,
+                    data: { client_target: "postal_code" } %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <!-- End Address Col -->
+    </div>
+
+    <!-- Begin Col -->
+    <div class="col-sm-12 col-md-4">
+      <div class="cover-preview-picture d-flex flex-column ms-auto justify-content-center align-items-center" id="cover-preview-picture">
+        <label for="edit-avatar" class="text-center">
+          <div class="icon rounded-circle d-flex justify-content-center align-items-center m-auto">
+            <%= inline_svg_tag('icons/image.svg') %>
+          </div>
+          <div>
+            Glisser et déposer ou <span class="blue">parcourir</span>
+          </div>
+          <div class="gray">
+            PNG ou JPG
+          </div>
+        </label>
+        <%= form.file_field :logo, class: "client-logo", id: "edit-avatar", accept: 'image/png, image/jpeg' %>
+
+        <% if @client.logo.attached? %>
+          <%= image_tag @client.logo %>
+        <% end %>
+      </div>
+    </div>
+    <!-- End Col -->
+  </div>
+
+  <!-- Footer Buttons -->
+  <div class="d-flex justify-content-end">
+    <%= link_to 'Annuler', settings_clients_path,
+        class: "btn btn-lg btn-outline-secondary btn-cancel btn-text-white", data: {turbo: false} %>
+
+    <%= form.button type: 'submit', class: "btn btn-lg mx-2 btn-save btn-text-white btn-blue-dark",
+        data: { action: 'bs-modal#submitEnd'},    form_validate_target: "submit" do %>
+      Enregistrer
+      <%= inline_svg_tag('icons/save.svg') %>
+    <% end %>
+  </div>
+
+</div>

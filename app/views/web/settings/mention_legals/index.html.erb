@@ -1,0 +1,45 @@
+<div class="settings-container d-flex">
+  
+  <div class="settings-content">
+    <h1 class="settings-title">Profile</h1>
+    <%= render 'web/settings/companies/navbar' %>
+
+    <div class="align-items-center d-flex justify-content-between pt-4 mb-3">
+      <h3 class="title">
+        Liste des mentions
+      </h3>
+      <%= link_to new_settings_mention_legal_path(), class:'btn btn-blue btn-sm btn-add btn-text-white', data: { controller:'new-mention-legal', turbo_frame: 'modal', turbo: 'false'} do %>
+        <%= inline_svg_tag('icons/add.svg') %>
+        Ajouter Mention
+      <% end %>
+    </div>
+
+    <%= search_form_for @q, url: settings_mention_legals_path do |form| %>
+      <div class="d-flex mb-3 w-50">
+        <%= form.search_field :name_or_description_cont, class: 'form-control', placeholder: 'Search',
+          area: { label: 'search by name', describedby: 'button-addon-2' } %>
+        <%= form.submit 'Search', class:'btn btn-save btn-text-white btn-blue', id: 'button-addon-2' %>
+      </div>
+      <%= turbo_frame_tag 'cover-mention-legals' do %>
+        <div class="mention-legals-list mb-4">
+          <%= render 'mention_legals' %>
+        </div>
+      <% end %>
+      <%if @mention_legals.count > 10 %>
+        <footer class="d-flex align-items-center justify-content-between p-4">
+          <div class="cover-pagination">
+            <%= will_paginate @mention_legals, renderer: BootstrapPaginationHelper::BootstrapLinkRenderer %>
+          </div>
+
+          <div class='w-25 d-flex align-items-center justify-content-end'>
+            <label class='text-gray-dark me-2'>Affichage :</label>
+            <%= select_tag :items, options_for_select([10, 20, 30, 40, 50], params[:items]),
+              data: { action: "change->search#changeItemsPerPage", search_target: "itemsPerPage" },
+              class: "w-25 ml-auto form-select" %>
+          </div>
+        </footer>
+      <% end %>
+    <% end %>
+
+  </div>
+</div>

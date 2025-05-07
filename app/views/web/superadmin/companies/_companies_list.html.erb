@@ -1,0 +1,25 @@
+<table class='table ideo-table'>
+  <thead class='thead-success'>
+    <tr>
+      <th>ID</th>
+      <th>Raison social</th>
+      <th>Sous-domaine</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id='company-list' class='align-middle'>
+    <% companies.each do |company| %>
+      <tr>
+        <td><%= company.id %></td>
+        <td><%= company.social_reason %></td>
+        <td><%= company.subdomain %></td>
+        <td>
+          <%= link_to switch_company_company_path(company) do%>
+            <%= inline_svg_tag('icons/building-insights.svg') %>
+            <span>Connexion</span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

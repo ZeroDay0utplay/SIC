@@ -1,0 +1,47 @@
+@use '../../global/variables.scss' as *;
+
+.settings-content {
+  .settings-navbar {
+    border-bottom: 1px solid $gray;
+
+    .settings-nav-link {
+      color: $gray-500;
+      padding: 0 20px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 50px;
+      position: relative;
+
+      &:after {
+        left: 0;
+        right: 0;
+        width: 0;
+        bottom: 0;
+        margin: auto;
+        content: "";
+        height: 4px;
+        position: absolute;
+        background-color: $blue;
+        transition: 0.3s ease all;
+      }
+
+      svg {
+        width: 26px;
+        height: 26px;
+        margin-right: 7px;
+      }
+      &.active,
+      &:hover {
+        color: $blue;
+
+        svg {
+          fill: $blue;
+        }
+
+        &:after {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

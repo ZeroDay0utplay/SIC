@@ -1,0 +1,41 @@
+@use '../../global/variables.scss' as *;
+
+.settings-sidebar {
+  .settings-navbar{
+    .nav-link {
+
+      &+.nav-link {
+        margin-top: 12px;
+      }
+      a {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 44px;
+        padding: 0 15px;
+        color: $black-text;
+        border-radius: 10px;
+        background-color: $white;
+        svg {
+          width: 25px;
+          height: 25px;
+          margin-right: 9px;
+        }
+
+        svg:nth-child(2) {
+          display: none;
+        }
+        &.active,
+        &:hover {
+          color: $black-text;
+          background-color: $blue-400;
+          svg:nth-child(1) {
+            display: none;
+          }
+          svg:nth-child(2) {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

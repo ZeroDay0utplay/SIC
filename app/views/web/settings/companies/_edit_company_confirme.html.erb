@@ -1,0 +1,19 @@
+<div class="edit-confirm-message d-flex flex-column align-item-center text-center">
+  <div class="confirm-icon">
+    <%= inline_svg_tag('icons/confirm_icon_cloud.svg') %>
+    <%= inline_svg_tag('icons/warning-diamond.svg', class:'small-icon')%>
+  </div>
+  <div class="confirm-title">
+    Informations générales enregistrées
+  </div>
+  <div class="confirm-text">
+    Informations ajoutées avec succès.
+  </div>
+  <div class="text-center">
+    <%= link_to 'Retour', edit_settings_company_path(company), class:'btn btn-lg btn-outline-secondary btn-cancel btn-text-white' %>
+    <%= link_to bank_settings_company_path(company), class:'btn btn-blue-dark btn-save btn-text-white btn-lg' do %>
+      Continuer
+      <%= inline_svg_tag('icons/arrow-right.svg') %>
+    <% end %>
+  </div>
+</div>

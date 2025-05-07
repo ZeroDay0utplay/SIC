@@ -1,0 +1,82 @@
+@use '../../global/variables.scss' as *;
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(to bottom, $gray-100 0 160px, transparent 160px 100%);
+
+  .profile-header {
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+  }
+
+  .arrow-circle {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    margin-right: 8px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba($gray, 0.2);
+  }
+
+  .profile-title {
+    font-size: 25px;
+    font-weight: 500;
+    margin-left: 10px;
+  }
+
+  .avatar-circle {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+
+    img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 180px;
+      border: 10px solid white;
+    }
+
+    .edit-avatar {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      z-index: 1;
+
+      svg{
+        width: 25px;
+        height: 25px;
+        fill: $blue;
+      }
+    }
+  }
+
+  .profile-details {
+    width: 100%;
+    max-width: 395px;
+    position: relative;
+  }
+
+  .profile-actions .btn {
+    margin: 5px;
+  }
+
+  .profile-header a {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+  }
+
+  .profile-header i {
+    margin-right: 5px;
+  }
+}

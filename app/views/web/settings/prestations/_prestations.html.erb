@@ -1,0 +1,58 @@
+<div class="prestation-list">
+  <% if prestations.empty? %>
+    <h3 class="text-center p-5">Aucune prestation à afficher</h3>
+  <% else %>
+    <table class="table ideo-table">
+      <thead class='thead-success'>
+        <tr>
+          <th>ID</th>
+          <th>Désignation</th>
+          <th>Type</th>
+          <th>Prix</th>
+          <th>Description</th>
+          <th>État</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="prestations-list" class='align-middle'>
+        <% prestations.each do |prestation| %>
+          <tr id="prestation-<%= prestation.id %>">
+            <td><%= prestation.id %></td>
+            <td>
+              <span id="prestation-name-<%= prestation.id %>" data-editable-target="name">
+                <%= prestation.name %>
+              </span>
+            </td>
+            <td class='text-center'>
+              <span class='prestation-type <%= prestation.type_prestation %>'>
+                <%= prestation.type_prestation.present? ? I18n.t("models.prestation.type_prestation.#{prestation.type_prestation}") : "" %>
+              </span>
+            </td>
+            <td><%= "#{prestation.price} / #{prestation.unity}" %></td>
+            <td class='description'><%= prestation.description%></td>
+            <td>
+              <%= prestation.state.present? ? I18n.t("models.prestation.state.#{prestation.state}") : "" %>
+            </td>
+            <td class="align-content-center">
+              <%= link_to edit_settings_prestation_path(prestation), class:'icon-ideo icon-edit icon-blue icon-16',
+                        data: { controller:'prestations', action:'click->prestations#showModal', turbo_frame: 'modal', turbo: 'false'} do %>
+                <%= inline_svg_tag ('icons/edit.svg') %>
+              <% end %>
+
+              <%= link_to settings_prestation_path(prestation),
+                class: 'icon-ideo icon-destroy icon-red icon-16',
+                data: { controller:'confirm-modal', action:'click->confirm-modal#confirmDestroy',
+                        confirm_modal_target:'itemToBeRemoved',
+                        value: "prestation-#{prestation.id}",
+                        turbo_frame: 'modal', turbo: 'false'} do %>
+                <%= inline_svg_tag('icons/trash-can.svg') %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+
+

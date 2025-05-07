@@ -1,0 +1,37 @@
+<% if current_user %>
+  <aside class="main-sidebar h-100">
+    <div class="d-flex align-content-center flex-column">
+      <div class="group-logo">
+        <%= link_to root_path do %>
+          <% if current_user.company && current_user&.company&.logo.attached? %>
+            <%= image_tag current_user.company.logo, class: "logo" %>
+          <% else %>
+            <%= image_tag 'logo.png', class: "logo" %>
+          <% end %>
+        <%end%>
+        <button class="btn-toggle-sidebar" id="toggle-sidebar">
+          <%= inline_svg_tag('icons/toggle-sidebar-min.svg') %>
+          <%= inline_svg_tag('icons/toggle-sidebar-max.svg') %>
+        </button>
+      </div>
+
+      <ul class="side-nav-menu">
+        <li>
+          <%= link_to companies_path() ,class:"side-nav-link d-flex align-items-center #{ is_active?('company') }", data: {turbo: false} do %>
+            <%= inline_svg_tag('icons/building.svg') %>
+            <%= inline_svg_tag('icons/building-full.svg') %>
+            <span class="sidenav-text">Agences</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to administrators_path() ,class:"side-nav-link d-flex align-items-center #{ is_active?('users') }", data: {turbo: false} do %>
+            <%= inline_svg_tag('icons/user-avatar.svg') %>
+            <%= inline_svg_tag('icons/user-avatar-filled.svg') %>
+            <span class="sidenav-text">Administrateurs</span>
+          <% end %>
+        </li>
+      </ul>
+
+    </div>
+  </aside>
+<% end %>

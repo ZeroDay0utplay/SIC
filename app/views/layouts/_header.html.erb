@@ -1,0 +1,54 @@
+<% if current_user %>
+  <header class="main-navbar">
+    <div class="d-flex align-items-center justify-content-end">
+      <div class="navbar-item light-dark" id="light-dark">
+        <span class="light"><%= inline_svg_tag('icons/light-filled.svg') %></span>
+        <span class="dark"><%= inline_svg_tag('icons/asleep-filled.svg') %></span>
+      </div>
+      <div class="navbar-item full-screen">
+        <%= inline_svg_tag('icons/maximize.svg') %>
+      </div>
+      <div class="navbar-item notification-icon">
+        <%= inline_svg_tag('icons/notification-new.svg') %>
+      </div>
+      <div class="navbar-item d-flex text-center navbar-dropdown">
+        <div class="user-details d-flex flex-column">
+          <span class="user-fullname"><%= current_user&.full_name %></span>
+          <span class="user-role"><%= current_user&.type.camelcase %></span>
+        </div>
+        <div class="avatar">
+          <% if current_user.photo.attached? %>
+            <%= image_tag current_user&.photo %>
+          <% else %>
+            <%= inline_svg_tag('icons/user-avatar-filled-alt.svg') %>
+          <% end %>
+        </div>
+        <div class="menu-dropdown">
+          <% if user_signed_in? %>
+            <div class="link-item">
+              <%= link_to edit_profile_path, data: { turbo: false } do %>
+                <%= inline_svg_tag('icons/user-avatar.svg') %>
+                Profile
+              <% end %>
+            </div>
+            <% if current_user.superadmin? %>
+              <div class="link-item">
+                <%= link_to switch_global_companies_path, data: { turbo: false } do %>
+                  <%= inline_svg_tag('icons/settings.svg') %>
+                  Configuration
+                <% end %>
+              </div>
+            <% end %>
+            <hr />
+            <div class="link-item">
+              <%= link_to destroy_user_session_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Êtes-vous sûr de vouloir vous déconnecter ?' } do %>
+                <%= inline_svg_tag('icons/logout.svg') %>
+                Sign Out
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </header>
+<% end %>

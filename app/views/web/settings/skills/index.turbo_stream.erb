@@ -1,0 +1,33 @@
+<%= turbo_stream.replace "cover-skills" do %>
+  <%= turbo_frame_tag 'cover-skills' do %>
+    <div id="cover-skills">
+      <table class="table ideo-table">
+        <thead class='thead-success'>
+          <tr>
+            <th>ID</th>
+            <th>Compétence</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="skills-list" class='align-middle'>
+          <%= turbo_frame_tag "skills-list" do %>
+            <%= render @skills %>
+          <% end %>
+        </tbody>
+      </table>
+
+      <footer class="d-flex align-items-center justify-content-between p-4">
+        <div class="cover-pagination">
+          <%= will_paginate @skills, renderer: BootstrapPaginationHelper::BootstrapLinkRenderer %>
+        </div>
+
+        <div class='w-25 d-flex align-items-center justify-content-end'>
+          <label class='text-gray-dark me-2'>Affichage :</label>
+          <%= select_tag :items, options_for_select([10, 20, 30, 40, 50], params[:items]),
+            data: { action: "change->search#changeItemsPerPage", search_target: "itemsPerPage" },
+            class: "w-25 ml-auto form-select" %>
+        </div>
+      </footer>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,62 @@
+<div class="settings-sidebar">
+  <div class="d-flex flex-column">
+    <ul class="settings-navbar p-0 m-0 list-unstyled">
+      <li class="nav-link">
+        <%= link_to edit_settings_company_path(current_user.company) ,class:"d-flex align-items-center #{is_active?(controller.controller_name)}" do %>
+          <%= inline_svg_tag('icons/building.svg') %>
+          <%= inline_svg_tag('icons/building-full.svg') %>
+          Entreprise
+        <% end %>
+      </li>
+      <li class="nav-link">
+        <%= link_to agents_settings_users_path() ,class:"d-flex align-items-center" do %>
+          <%= inline_svg_tag('icons/user-avatar.svg') %>
+          <%= inline_svg_tag('icons/user-avatar-filled.svg') %>
+          Utilisateurs
+        <% end %>
+      </li>
+      <li class="nav-link">
+        <%= link_to settings_skills_path() ,class:"d-flex align-items-center" do %>
+          <%= inline_svg_tag('icons/tools-alt.svg') %>
+          <%= inline_svg_tag('icons/tools-alt-full.svg') %>
+          Compétences
+        <% end %>
+      </li>
+      <li class="nav-link">
+        <%= link_to settings_prestations_path() ,class:"d-flex align-items-center" do %>
+          <%= inline_svg_tag('icons/construction.svg') %>
+          <%= inline_svg_tag('icons/construction.svg') %>
+          Prestations
+        <% end %>
+      </li>
+      <li class="nav-link">
+        <%= link_to settings_clients_path() ,class:"d-flex align-items-center" do %>
+          <%= inline_svg_tag('icons/license-third-party.svg') %>
+          <%= inline_svg_tag('icons/License-full.svg') %>
+          Groupes
+        <% end %>
+      </li>
+      <li class="nav-link">
+        <%= link_to settings_contacts_path() ,class:"d-flex align-items-center" do %>
+          <%= inline_svg_tag('icons/email.svg') %>
+          <%= inline_svg_tag('icons/email-full.svg') %>
+          Contact client
+        <% end %>
+      </li>
+      <li class="nav-link">
+        <%= link_to settings_subcontractors_path() ,class:"d-flex align-items-center" do %>
+          <%= inline_svg_tag('icons/group-access.svg') %>
+          <%= inline_svg_tag('icons/group-access.svg') %>
+          Sous-traitants
+        <% end %>
+      </li>
+      <li class="nav-link">
+        <%= link_to settings_email_models_path() ,class:"d-flex align-items-center" do %>
+          <%= inline_svg_tag('icons/email.svg') %>
+          <%= inline_svg_tag('icons/email-full.svg') %>
+          Modèles de mail
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

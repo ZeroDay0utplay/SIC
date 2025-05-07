@@ -1,0 +1,93 @@
+<%= turbo_stream.replace "board-actions" do %>
+  <%= turbo_frame_tag "board-actions" do %>
+    <div class="board-actions">
+      <%= link_to edit_board_path(@board), class: 'icon-ideo icon-edit icon-blue icon-20 mx-2',
+          data: { action:"click->boards#showModal", turbo_frame: 'modal', turbo: 'false' } do %>
+        <%= inline_svg_tag('icons/edit.svg') %>
+      <% end %>
+
+      <%= link_to board_path(@board),
+          class: 'icon-ideo icon-destroy icon-red icon-20',
+          data: { controller: 'confirm-modal',
+                  action: 'click->confirm-modal#confirmDestroy',
+                  confirm_modal_target: 'itemToBeRemoved',
+                  value: "board-#{@board.id}",
+                  turbo_frame: 'modal', turbo: 'false' } do %>
+        <%= inline_svg_tag('icons/trash-can.svg', class: "icon-xs") %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= turbo_stream.replace "board-details" do %>
+  <%= turbo_frame_tag "board-details" do %>
+    <div class="board-details d-flex align-items-start justify-content-start" data-controller="column-items">
+      <!-- ColumnItems -->
+      <% @column_items.each do |column| %>
+        <div class='column-item d-flex flex-column align-items-center' data-board-id="<%= column.board.id %>"  data-id="<%= column.id %>">
+          <div class="column-item-title">
+            <%= column.title %>
+          </div>
+          <div class="cover-tasks" data-controller="tasks">
+            <% column.tasks.each do |task| %>
+              <!-- Task Card-->
+                <div class="task-card" data-id="<%= task.id %>">
+                  <div class="task-head d-flex justify-content-between">
+                    <div class="drag-icon">
+                      <%= link_to '#', class:'icon-ideo icon-black' do %>
+                        <%= inline_svg_tag('icons/draggable-line.svg') %>
+                      <% end %>
+                    </div>
+                    <div class="action-icons">
+                      <%= link_to '#', class:'icon-ideo icon-red icon-16' do %>
+                        <%= inline_svg_tag('icons/trash-can.svg') %>
+                      <% end %>
+                      <%= link_to '#', class:'icon-ideo icon-black icon-16' do %>
+                        <%= inline_svg_tag('icons/edit_pen.svg') %>
+                      <% end %>
+                      <%= link_to '#', class:'icon-ideo icon-black icon-16' do %>
+                        <%= inline_svg_tag('icons/archive.svg') %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="task-body">
+                    <div class="task-title">
+                      <%= task.title %>
+                    </div>
+                    <% unless task.description.empty? %>
+                      <div class="task-description">
+                        <%= task.description.length > 45 ? "#{task.description[0...45]}..." : task.description %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="task-footer d-flex justify-content-between">
+                    <div class="task-user">
+                      <%= inline_svg_tag('icons/user-avatar.svg') %>
+                      <%= task.user.first_name %>
+                    </div>
+                    <div class="task-date">
+                      <%= inline_svg_tag('icons/timer.svg') %>
+                      <%= task.delivery_date %>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+
+          <div class="btn btn-add-task">
+            <%= inline_svg_tag('icons/row-insert.svg') %>
+            Ajouter une tâche
+          </div>
+
+        </div>
+      <% end %>
+
+      <div class="column-item d-flex flex-column align-items-center p-3">
+        <%= link_to 'javascript:void(0)', class: 'btn btn-add btn-blue btn-sm mx-4', style: 'color: white;' do %>
+          <%= inline_svg_tag('icons/add.svg', style: 'fill: white;') %>
+          Ajouter une liste
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

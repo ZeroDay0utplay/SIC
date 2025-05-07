@@ -1,0 +1,41 @@
+<table class="table ideo-table">
+  <thead class="thead-success">
+    <tr>
+      <th></th>
+      <th>Nom de l'agent</th>
+      <th>Dates</th>
+      <th>Compétences</th>
+      <th>Rôle</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% Agent.includes(:skills).regular.current_company.each do |agent| %>
+      <tr data-full-name="<%= agent.full_name %>" data-controller="regular-agent"
+          data-agent-id="<%= agent.id %>"
+          data-selected-dates-param="<%= agent.regular_assigned_date(@regular.id).pluck(:date).to_json %>"
+      >
+        <td>
+          <input type="checkbox" id="agent-<%= agent.id %>"
+                  <%= "checked" if @regular.agents.include?(agent) %>
+                  data-regular-agent-target="agentId"
+                  data-action="change->regular-agent#toggleAgent">
+        </td>
+        <td>
+          <%= agent.full_name %>
+        </td>
+        <td>
+          <input type="text" class="form-controle" data-regular-agent-target="date">
+          <%= form.hidden_field :agent_schedule_dates, multiple: true, class:"form-controle", data: { regular_agent_target:"scheduleInput" } %>
+        </td>
+        <td>
+          <%= agent.skills.join(', ') %>
+        </td>
+        <td>
+          <%= agent.role %>
+        </td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>

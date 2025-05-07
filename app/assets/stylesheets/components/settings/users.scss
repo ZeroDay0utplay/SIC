@@ -1,0 +1,46 @@
+@use '../../global/variables.scss' as *;
+
+.users-controller {
+  .ideo-table {
+    --bs-table-color: $gray-500;
+
+    .full-name {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .email {
+      font-size: 11px;
+    }
+
+    .skills {
+      padding: 7px;
+      font-size: 14px;
+      max-width: 190px;
+      border-radius: 7px;
+      background-color: $blue-500;
+    }
+
+  }
+
+  .user-status {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 10px;
+    border-radius: 7px;
+    line-height: 28px;
+    display: block;
+    text-align: center;
+
+    &.enable {
+      color: $green;
+      background-color: $green-light;
+    }
+
+    &.disable {
+      color: $gray;
+      background-color: $gray-100;
+    }
+  }
+
+}

@@ -1,0 +1,12 @@
+<%= form.label :prestation_id, "Type de prestation", class:"form-label text-gray-dark" %>
+<% if type == "Punctual" %>
+  <%= form.select :prestation_id,
+      Prestation.service.current_company.order(:name).map { |prestation| [prestation.name, prestation.id] } ,
+      { include_blank: 'Choisissez-en un' },
+      required: true , data: { needs_target: "prestationsList" } %>
+<% else %>
+  <%= form.select :prestation_id,
+      Prestation.recurring.current_company.order(:name).map { |prestation| [prestation.name, prestation.id] } ,
+      { include_blank: 'Choisissez-en un' },
+      required: true, data: { needs_target: "prestationsList" } %>
+<% end %>

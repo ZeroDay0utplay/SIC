@@ -1,0 +1,30 @@
+<%= turbo_frame_tag 'client-list' do %>
+  <% clients.each do |client| %>
+    <tr id="client-<%= client.id %>">
+      <td><%= client.id %></td>
+      <td>
+        <% if client.logo.attached? %>
+          <%= image_tag client.logo.variant(resize_to_fill: [40, 40]), class: 'rounded-circle' %>
+        <% else %>
+          <%= inline_svg_tag 'icons/logo.svg', width: "40", height: "40" %>
+        <% end %>
+      </td>
+      <td><%= client.name %></td>
+      <td><%= I18n.t("enums.client_type.#{client.client_type}") %></td>
+      <td><%= client.formatted_address %></td>
+      <td class="align-content-center">
+        <%= link_to edit_settings_client_path(client), class:'icon-ideo icon-edit icon-blue icon-20', data: { turbo: false }  do %>
+          <%= inline_svg_tag ('icons/edit.svg') %>
+        <% end %>
+        <%= link_to settings_client_path(client),
+            class: 'icon-ideo icon-destroy icon-red icon-16',
+            data: { controller:'confirm-modal', action:'click->confirm-modal#confirmDestroy',
+                    confirm_modal_target:'itemToBeRemoved',
+                    value: "client-#{client.id}",
+                    turbo_frame: 'modal', turbo: 'false'} do %>
+          <%= inline_svg_tag('icons/trash-can.svg') %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>

@@ -1,0 +1,116 @@
+@use '../../global/variables.scss' as *;
+
+.settings-container {
+
+  .settings-title {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 40px;
+    color: $black-text;
+  }
+
+  .settings-sidebar {
+    width: 100%;
+    position: fixed;
+    max-width: 250px;
+    padding: 12px 0 0 0;
+  }
+
+  .settings-content {
+    width: 100%;
+
+    .edit-company {
+      width: 100%;
+      max-width: 850px;
+    }
+
+  }
+
+  .pagy-bootstrap {
+    ul {
+      margin: 0;
+    }
+  }
+
+  .numbering-description {
+    max-width: 360px;
+    margin-left: auto;
+    padding: 30px 25px;
+    border-radius: 10px;
+    background-color: $yellow-light;
+
+    a {
+      color: $gray-500;
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 10px;
+
+      svg {
+        width: 22px;
+        height: 22px;
+        fill: $gray-500;
+        margin-right: 7px;
+      }
+    }
+
+    span {
+      color: $gray;
+      font-size: 16px;
+    }
+  }
+
+  .mention-legals-list {
+    .mention-name {
+      width: 100%;
+      max-width: 210px;
+    }
+
+    .mention-description {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .icon-ideo {
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  .edit-confirm-message {
+    padding: 100px 0;
+
+    .confirm-icon {
+      margin-bottom: 10px;
+      position: relative;
+
+      .small-icon {
+        left: 0;
+        right: 0;
+        height: 60px;
+        width: 60px;
+        bottom: 33px;
+        margin: auto;
+        fill: $green;
+        position: absolute;
+      }
+    }
+
+    .confirm-title {
+      margin-bottom: 10px;
+      line-height: 36px;
+      font-weight: 600;
+      font-size: 32px;
+      color: $black;
+    }
+
+    .confirm-text {
+      margin-bottom: 50px;
+      font-weight: 500;
+      font-size: 20px;
+      color: $gray;
+    }
+  }
+
+}

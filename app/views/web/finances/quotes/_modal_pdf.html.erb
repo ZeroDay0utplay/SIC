@@ -1,0 +1,18 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+  <div class='modal fade modalapp effect-scale' tabindex='-1'
+          aria-labelledby='exampleModalLabel' aria-hidden='true' data-controller='bs-modal'>
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title"><%= @quote.reference %></h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= turbo_frame_tag "pdf_preview" do %>
+            <iframe id="pdf_preview" src="<%= pdf_finances_quote_path(@quote.id) %>" width="100%" height="700px;"></iframe>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

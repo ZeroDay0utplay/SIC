@@ -1,0 +1,25 @@
+<%= turbo_stream.replace "cover-email-models-list" do %>
+  <%= turbo_frame_tag 'cover-email-models-list' do %>
+    <% if @email_models.empty? %>
+      <div class="alert alert-warning" role="alert">
+        Aucun model email trouvé
+      </div>
+    <% else %>
+      <%= render 'email_model_list', email_models: @email_models %>
+      <% if @count > 10 %>
+        <footer class="d-flex align-items-center justify-content-between p-4">
+          <div class="cover-pagination">
+            <%= will_paginate @email_models, renderer: BootstrapPaginationHelper::BootstrapLinkRenderer %>
+          </div>
+
+          <div class='w-25 d-flex align-items-center justify-content-end'>
+            <label class='text-gray-dark me-2'>Affichage :</label>
+            <%= select_tag :items, options_for_select([10, 20, 30, 40, 50], params[:items]),
+                          data: { action: "change->search#changeItemsPerPage", search_target: "itemsPerPage" },
+                          class: "w-25 ml-auto form-select" %>
+          </div>
+        </footer>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

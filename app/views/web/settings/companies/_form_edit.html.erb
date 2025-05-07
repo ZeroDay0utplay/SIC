@@ -1,0 +1,75 @@
+<div class="edit-company mt-5" id="edit-company">
+  <%= form_for @company, url: settings_company_path(), method: :patch, html: { multipart: true, id: "edit-company" } do |form| %>
+    <div class="container me-auto ms-0">
+      <div class="row mb-3">
+        <div class="col-5">
+          <div class="mb-3">
+            <%= form.label :social_reason, "Raison social", class: "form-label text-gray-dark" %>
+            <%= form.text_field :social_reason, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :email, "Email", class: "form-label text-gray-dark" %>
+            <%= form.text_field :email, class: "form-control" %>
+          </div>
+          <div>
+            <%= form.label :tel, "Téléphone", class: "form-label text-gray-dark" %>
+            <%= form.text_field :tel, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-7">
+          <div class="cover-preview-picture dropzone d-flex flex-column justify-content-center align-items-center ms-auto" id="cover-preview-picture">
+            <label for="edit-avatar" class="text-center">
+              <div class="icon rounded-circle d-flex justify-content-center align-items-center m-auto">
+                <%= inline_svg_tag('icons/image.svg') %>
+              </div>
+              <div>
+                Glisser et déposer ou <span class="blue">parcourir</span>
+              </div>
+              <div class="gray">
+                PNG ou JPG
+              </div>
+            </label>
+            <%= form.file_field :logo, class: "company-logo", id: "edit-avatar", accept: 'image/png, image/jpeg' %>
+
+            <% if @company.logo.attached? %>
+              <%= image_tag @company.logo %>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 mb-3">
+          <%= form.fields_for :address do |address_form| %>
+            <%= address_form.label :address, "Adresse", class: "form-label text-gray-dark" %>
+            <%= address_form.text_field :entered_by_user, class: "form-control adresse-input", placeholder: "Emplacement" %>
+          <% end %>
+        </div>
+
+        <div class="col-12 mb-4 mt-4">
+          <p class="mb-0 text-black">
+            Bas de page
+            <span class="text-gray-dark">(Devis / Facture)</span>
+          </p>
+        </div>
+        <div class="col-12 mb-5">
+          <div class="cover-company-footer-page">
+            <%= form.rich_text_area :footer_page, data: { controller: 'trix-toolbar'}, id: 'company-footer-page', placeholder: 'Ecrivez votre text ici ...' %>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="d-flex justify-content-end">
+            <%= form.button type: 'reset', class: "btn btn-lg btn-outline-secondary btn-cancel btn-text-white" do %>
+              Annuler
+            <% end %>
+            <%= form.button type: 'submit', class: "btn btn-lg mx-2 btn-save btn-text-white btn-blue-dark" do %>
+              Enregistrer
+              <%= inline_svg_tag('icons/save.svg') %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>

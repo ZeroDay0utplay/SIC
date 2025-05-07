@@ -1,0 +1,51 @@
+<div class="regular-mission">
+  <%= render 'regular_details' %>
+  <%= form_for @regular, url: update_tasks_agents_plannings_regular_path(@regular), method: :post, data: {turbo: false} do |form| %>
+    <div class="cover-container">
+      <div class="container-tasks-list d-flex flex-column">
+        <h3>Liste des tâches</h3>
+        <input type="search" name="" id="" placeholder="Rechercher" class="form-control mb-2" />
+        <div class="tasks-list">
+
+          <% @regular.tasks.order(:date).includes(:prestation).unscheduled.each do |task| %>
+            <div class="task-card">
+              <div class="prestation">
+                <%= task.prestation.name %>
+              </div>
+              <div class="schedule-date-time d-flex align-items-center">
+                <span>De</span>
+                <span class="date-time ms-3">
+                  <%= task.started_at.strftime("%H:%M") %>
+                </span>
+                <span class="ms-3">à</span>
+                <span class="date-time ms-3">
+                  <%= task.finished_at.strftime("%H:%M") %>
+                </span>
+              </div>
+              <div class="schedule-date-time d-flex align-items-center">
+                <span>Le</span>
+                <span class="date-time ms-3">
+                  <%= task.date.strftime("%d/%m/%Y") %>
+                </span>
+              </div>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+      <div class="calendar" id="calendar"></div>
+    </div>
+
+    <div class="col-12 mt-5 w-100">
+      <div class="d-flex justify-content-between justify-content-center">
+        <%= form.button type: 'reset', class: "btn btn-sm btn-outline-secondary btn-cancel btn-text-white" do %>
+          Annuler
+        <% end %>
+        <%= form.button type: 'submit', class: "btn btn-sm btn-save btn-text-white btn-blue-dark" do %>
+          Suivant
+          <%= inline_svg_tag('icons/save.svg') %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

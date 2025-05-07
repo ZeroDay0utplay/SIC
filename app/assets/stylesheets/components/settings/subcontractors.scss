@@ -1,0 +1,56 @@
+@use '../../global/variables.scss' as *;
+@use '../../global/_mixins' as *;
+
+.subcontractor-settings {
+  .subcontractor-list {
+    .social-raison {
+
+      img,
+      svg {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}
+
+.create-subcontractor {
+  form {
+    max-width: 850px;
+  }
+
+  .col-left {
+    max-width: 380px
+  }
+
+  .form-user-status {
+    @include form-user-status;
+  }
+}
+
+.modal-subcontractor-agent {
+  transform: translate(100%, 0%);
+  transition: 0.7s transform cubic-bezier(0.2, -0.45, 0.25, 1);
+  &.show {
+    transform: translate(0%, 0%);
+  }
+  .modal-dialog {
+    top: 0;
+    right: 0;
+    margin: 0;
+    width: 50vw;
+    height: 100vh;
+    max-width: 920px;
+    position: absolute;
+
+    .modal-content {
+      margin: 0;
+      height: 100%;
+      border-radius: 0;
+
+      .modal-body {
+        overflow-y: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<nav class="settings-navbar">
+  <div class="d-flex flex-wrap">
+    <%= link_to edit_settings_company_path(current_user.company), class:'settings-nav-link d-flex align-items-center' do %>
+      <%= inline_svg_tag('icons/warning-diamond.svg') %>
+      Géneral
+    <% end %>
+    <%= link_to bank_settings_company_path(current_user.company), class:'settings-nav-link d-flex align-items-center' do %>
+      <%= inline_svg_tag('icons/purchase.svg') %>
+      Informations bancaires
+    <% end %>
+    <%= link_to settings_mention_legals_path(), class:'settings-nav-link d-flex align-items-center' do %>
+      <%= inline_svg_tag('icons/scales.svg') %>
+      Mentions légales
+    <% end %>
+    <%= link_to numberings_settings_company_path(current_user.company), class:'settings-nav-link d-flex align-items-center' do %>
+      <%= inline_svg_tag('icons/list-numbered.svg') %>
+      Numérotations
+    <% end %>
+  </div>
+</nav>

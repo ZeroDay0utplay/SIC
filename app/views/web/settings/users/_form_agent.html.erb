@@ -1,0 +1,164 @@
+<%= form_for @user, url: @path, method: @method_form, html: { multipart: true, id: 'new-user', class: 'form-validate', data: { controller:'form-validate'} } do |f| %>
+  <div class="modal-header">
+    <h5 class="modal-title"><%= @user.persisted? ? "Modifier utilisateur" : "Nouveau utilisateur" %></h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+
+    <div class='container me-auto ms-0'>
+      <div class='row'>
+        <div class='col-7 d-flex flex-wrap'>
+
+          <div class='w-50 pe-2 mb-2'>
+            <%= f.label :first_name, 'Nom', class: 'form-label text-gray-dark' %>
+            <%= f.text_field :first_name, class: 'form-control', require: true,
+                data: { action: "blur->form-validate#validate", form_validate_target: "input" } %>
+            <span class="error-message" data-form-validate-target="errorMessage"></span>
+          </div>
+
+          <div class='w-50 ps-2 mb-2'>
+            <%= f.label :last_name, 'Prénom', class: 'form-label text-gray-dark' %>
+            <%= f.text_field :last_name, class: 'form-control', require: true,
+                data: { action: "blur->form-validate#validate", form_validate_target: "input" } %>
+            <span class="error-message" data-form-validate-target="errorMessage"></span>
+          </div>
+
+          <div class='w-100 mb-2'>
+            <%= f.label :address, 'Adresse', class: 'form-label text-gray-dark' %>
+            <%= f.text_field :address, class: 'form-control', require: true,
+                data: { action: "blur->form-validate#validate", form_validate_target: "input" } %>
+            <span class="error-message" data-form-validate-target="errorMessage"></span>
+          </div>
+
+          <div class='w-50 pe-2 mb-2'>
+            <%= f.label :job, 'Poste', class:'form-label text-gray-dark' %>
+            <%= f.text_field :job, class:'form-control', require: true,
+                data: { action: "blur->form-validate#validate", form_validate_target: "input" } %>
+            <span class="error-message" data-form-validate-target="errorMessage"></span>
+          </div>
+          <% if @user.type == "Admin" %>
+            <%= f.hidden_field :role, value: "admin" %>
+            <%= f.hidden_field :type, value: "Admin" %>
+          <% else %>
+            <div class='w-50 ps-2 mb-2'>
+              <%= f.hidden_field :type, value: "Agent" %>
+              <%= f.label :role, 'Rôle', class:'form-label text-gray-dark' %>
+              <%= f.select :role,
+                  options_for_select([['Agent', :agent], ['Superviseur', :supervisor], ['Ponctuel', :punctual],['Régulier', :regular],['Finition', :finishing]]),
+                  {}, { class: 'form-select'} %>
+            </div>
+          <% end %>
+
+          <div class='w-100 mb-2'>
+            <%= f.label :email, 'Email', class:'form-label text-gray-dark' %>
+            <%= f.email_field :email, class: 'form-control' %>
+          </div>
+
+          <div class='w-100'>
+            <%= f.label :password, 'Mot de passe', class:'form-label text-gray-dark' %>
+            <%= f.password_field :password, class: 'form-control' %>
+          </div>
+
+          <% unless @user.admin? %>
+            <div class='w-100'>
+              <%= f.label :skills, 'Compétence', class:'form-label text-gray-dark' %>
+              <%= f.select :skills, options_for_select(@skills.pluck(:name, :id), @user.skills.pluck(:id)),
+                                    {},
+                                    { multiple:true, data: {controller:"user-skills", user_skills_target: 'select'}} %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class='col-5 d-flex flex-column justify-content-center align-items-center  p-0'>
+
+          <div class="cover-preview-picture dropzonem" id="cover-preview-picture">
+            <label for="edit-avatar" class="text-center">
+              <div class="icon rounded-circle d-flex justify-content-center align-items-center m-auto">
+                <%= inline_svg_tag('icons/image.svg') %>
+              </div>
+              <div>
+                Glisser et déposer ou <span class="blue">parcourir</span>
+              </div>
+              <div class="gray">
+                PNG ou JPG
+              </div>
+            </label>
+            <%= f.file_field :photo, class: "company-logo", id: "edit-avatar", accept: 'image/png, image/jpeg' %>
+
+            <% if @user.photo.attached? %>
+              <%= image_tag @user.photo %>
+            <% end %>
+          </div>
+
+          <div class='ideo-checkbox-group w-100 d-flex'>
+            <% unless @user.admin? %>
+              <div class='cover-checkbox'>
+                <%= f.label :platform_mobile, class:'d-flex align-items-center mb-2' do %>
+                  <%= f.radio_button :platform, :mobile, checked: @user.mobile? %>
+                  <%= inline_svg_tag('icons/radio-button.svg', class:'radio unchecked') %>
+                  <%= inline_svg_tag('icons/radio-button-checked.svg', class:'radio checked') %>
+                  <span>Mobile</span>
+                <% end %>
+                <%= f.label :platform_web, class:'d-flex align-items-center' do %>
+                  <%= f.radio_button :platform, :web, checked: @user.web? %>
+                  <%= inline_svg_tag('icons/radio-button.svg', class:'radio unchecked') %>
+                  <%= inline_svg_tag('icons/radio-button-checked.svg', class:'radio checked') %>
+                  <span>Desktop</span>
+                <% end  %>
+              </div>
+            <% end %>
+
+            <% if @user.admin? %>
+              <%= f.radio_button :platform, :web, checked: true, class: "d-none" %>
+              <div class="w-100 p-3"></div>
+            <% end %>
+
+            <% unless @user.admin? %>
+              <div class='cover-checkbox ms-2'>
+                <%= f.label :is_teamleader, class:'d-flex align-items-center mb-2' do %>
+                  <%= f.checkbox :is_teamleader, checked: @user.is_teamleader %>
+                  <%= inline_svg_tag('icons/checkmark.svg', class:'checkbox') %>
+                  <span>Chef d'équipe</span>
+                <% end %>
+                <%= f.label :is_driver, class:'d-flex align-items-center' do %>
+                  <%= f.checkbox :is_driver, checked: @user.is_driver %>
+                  <%= inline_svg_tag('icons/checkmark.svg', class:'checkbox') %>
+                  <span>Chauffeur</span>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class='w-100 mb-2'>
+            <%= f.label :identifier, 'Identifiant', class:'form-label text-gray-dark' %>
+            <%= f.text_field :identifier, class: 'form-control' %>
+          </div>
+
+          <div class="w-100">
+            <%= f.label :active, class: 'form-user-status form-check-label d-flex align-items-center justify-content-between' do %>
+              <div class='d-flex flex-column'>
+                <span>Actif</span>
+                <small>Exerce ses fonctions</small>
+              </div>
+              <%= f.check_box :active, class: 'form-check-input' %>
+              <div class="toggle"></div>
+            <% end %>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <%= f.button type: 'reset', class: "btn btn-lg btn-outline-secondary btn-cancel btn-text-white" do %>
+      Annuler
+    <% end %>
+    <%= f.button type: 'submit', class: "btn btn-lg mx-2 btn-save btn-text-white btn-blue-dark", data: { form_validate_target: "submit", action: 'bs-modal#submitEnd'} do %>
+      Enregistrer
+      <%= inline_svg_tag('icons/save.svg') %>
+    <% end %>
+  </div>
+
+<% end %>

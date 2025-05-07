@@ -1,0 +1,57 @@
+@use '../../global/variables.scss' as *;
+
+.new-client-form-container {
+  .cover-steps {
+    margin-bottom: 70px;
+  }
+
+  .cover-client-form {
+    width: 100%;
+    padding: 0 75px;
+    max-width: 1230px;
+
+    .border {
+      width: 100%;
+      padding: 13px 24px;
+      border-radius: 10px;
+      border: 1px solid $gray;
+    }
+  }
+
+  .error {
+    border-color: red;
+    background-color: #f8d7da;
+  }
+
+  .suggestions-list {
+    border-radius: 0 0 5px 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    max-width: 340px;
+    z-index: 1000;
+    top: 100%;
+
+    .suggestion-item {
+      padding: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 500;
+      &:hover {
+        background-color: #f1f1f1;
+      }
+
+      i {
+        font-weight: 300;
+        font-size: 12px;
+      }
+    }
+  }
+
+
+  .error {
+    border-color: red;
+    background-color: #f8d7da;
+  }
+
+
+}

@@ -1,0 +1,22 @@
+.ts-wrapper {
+  .ts-control {
+    font-size: 15px;
+    line-height: 24px;
+
+    .item {
+      font-weight: 500;
+    }
+
+    input {
+      position: relative;
+    }
+  }
+
+  .ts-dropdown {
+    border-radius: 0;
+
+    .ts-dropdown-content {
+      position: relative;
+    }
+  }
+}

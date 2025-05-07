@@ -1,0 +1,30 @@
+<div class="align-content-center container justify-content-center vh-100 vw-100">
+  <div class="row">
+    <div class="col-6 m-auto">
+      <%= image_tag 'logo.png', class:'w-25 d-block m-auto mb-5 logo' %>
+
+      <%= form_for(resource, as: resource_name, url: new_user_session_path(resource_name)) do |f| %>
+        <div class="mb-3">
+          <%= f.label :email, class:"form-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :password, "Mot de passe", class:"form-label" %>
+          <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="d-flex align-content-center mb-3">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me, "Retenir mot de passe", class:"ms-3" %>
+          </div>
+        <% end %>
+
+        <div class="actions text-end">
+          <%= f.submit "Connexion", class:"btn btn-blue" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

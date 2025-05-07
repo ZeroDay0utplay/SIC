@@ -1,0 +1,16 @@
+<div class="main-plannings" data-controller="punctuals search">
+  <div class="d-flex d-wrap justify-content-between mb-2">
+    <h1 class="title-1">Fields services</h1>
+  </div>
+
+  <%= render partial: 'web/plannings/shared/navbar' %>
+  <%= render "form_filter" %>
+
+  <%= render "shared/skeleton_loader" %>
+  <div data-search-target="skeletonTable">
+    <%= turbo_frame_tag 'cover-punctuals-list' do %>
+      <%= render 'punctuals', punctuals: @punctuals %>
+    <% end %>
+  </div>
+</div>
+

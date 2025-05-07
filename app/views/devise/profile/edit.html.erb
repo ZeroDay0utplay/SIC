@@ -1,0 +1,58 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <%= link_to root_path do %>
+      <span class="arrow-circle">
+        <%= inline_svg_tag('icons/arrow-left.svg') %>
+      </span>
+      <div class="profile-title">
+        Profile
+      </div>
+    <% end %>
+  </div>
+
+  <div class="align-items-center avatar-circle d-flex justify-content-center">
+    <label class="edit-avatar" for="edit-avatar">
+      <%= inline_svg_tag('icons/edit.svg') %>
+    </label>
+    <%= image_tag(@user.photo.attached? ? url_for(@user.photo) : 'default_avatar.png', alt: "Avatar", id: "avatar-preview", class: "avatar") %>
+  </div>
+
+  <div class="profile-details">
+    <div class="top-details text-center">
+      <h2 class=""><%= @user.full_name %></h2>
+      <p><%= @user.type.camelcase %></p>
+    </div>
+
+    <div class="form-group">
+      <%= form_for @user, url: profile_path, method: :patch, html: { multipart: true } do |f| %>
+        <div class="mb-2">
+          <%= f.label :first_name, "Prénom", class: "form-label" %>
+          <%= f.text_field :first_name, class: "form-control" %>
+        </div>
+
+        <div class="mb-2">
+          <%= f.label :last_name, "Nom", class: "form-label" %>
+          <%= f.text_field :last_name, class: "form-control" %>
+        </div>
+
+        <div class="mb-4">
+          <%= f.label :phone, "Téléphone", class: "form-label" %>
+          <%= f.telephone_field :phone, class: "form-control", value: f.object.phone.presence || "+33" %>
+        </div>
+
+        <div class="d-none">
+          <%= f.file_field :photo, class: "form-control", id: "edit-avatar", data: { target: "avatar-preview" } %>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <%= link_to 'Annuler', root_path, class: "btn btn-lg btn-outline-secondary btn-cancel btn-text-white" %>
+          <%= f.button type: 'submit', class: "btn btn-lg mx-2 btn-save btn-text-white btn-blue-dark" do %>
+            Enregistrer
+            <%= inline_svg_tag('icons/save.svg') %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

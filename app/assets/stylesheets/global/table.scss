@@ -1,0 +1,20 @@
+@use './variables.scss' as *;
+
+.ideo-table {
+  margin: 0;
+  --bs-table-bg: $green;
+
+  .thead-success {
+    tr {
+      background-color: $green-light;
+
+      * {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 32px;
+        color: $black-text;
+      }
+
+    }
+  }
+}

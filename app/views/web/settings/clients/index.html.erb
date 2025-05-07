@@ -1,0 +1,67 @@
+<div class="settings-container d-flex">
+  <div class="settings-content" data-controller="search">
+    <div class="d-flex d-wrap justify-content-between mb-4">
+      <h1 class="settings-title mb-0">Liste des clients</h1>
+      <%= link_to new_settings_client_path(), class:'btn btn-blue btn-sm btn-add btn-text-white', data: { turbo_frame: 'client-form', turbo: 'false'} do %>
+        <%= inline_svg_tag('icons/add.svg') %>
+        Nouveau client
+      <% end %>
+    </div>
+
+    <%= search_form_for @q, url: settings_clients_path(), method: :get, data: { controller: "search", action: "input->search#search", search_url: settings_clients_path() } do |form| %>
+      <div class='d-flex mb-4'>
+        <h3 class="title-2 col-sm-12 col-md-6"></h3>
+        <div class="col-sm-12 col-md-6 d-flex align-items-center justify-content-end">
+          <div class="search-input w-350">
+            <%= form.search_field :name_or_email_cont, class: 'form-control', placeholder: 'Rechercher',
+              aria: { label: 'search by name or company', describedby: 'button-addon-2' },
+              data: { action: "input->search#search", search_target: "input" } %>
+            <i class="search-icon">
+              <%= inline_svg_tag('icons/search.svg') %>
+            </i>
+          </div>
+        </div>
+      </div>
+
+      <%= turbo_frame_tag 'cover-clients-list' do %>
+        <% if @clients.empty? %>
+          <div class="alert alert-warning" role="alert">Aucun client trouvé</div>
+        <% else %>
+          <div class="contact-list">
+            <table class='table ideo-table'>
+              <thead class='thead-success'>
+                <tr>
+                  <th>ID</th>
+                  <th>Logo</th>
+                  <th>Nom</th>
+                  <th>Type</th>
+                  <th>Adresse</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="clients-list" class='align-middle'>
+                <%= render 'web/settings/clients/client_list', clients: @clients %>
+              </tbody>
+            </table>
+          </div>
+          <% if @count > 10 %>
+            <footer class="d-flex align-items-center justify-content-between p-4">
+              <div class="cover-pagination">
+                <%= will_paginate @clients, renderer: BootstrapPaginationHelper::BootstrapLinkRenderer %>
+              </div>
+
+              <div class='w-25 d-flex align-items-center justify-content-end'>
+                <label class='text-gray-dark me-2'>Affichage :</label>
+                <%= select_tag :items, options_for_select([10, 20, 30, 40, 50], params[:items]),
+                  data: { action: "change->search#changeItemsPerPage", search_target: "itemsPerPage" },
+                  class: "w-25 ml-auto form-select" %>
+              </div>
+            </footer>
+          <% end %>
+        <% end %>
+      <% end %>
+
+
+    <% end %>
+  </div>
+</div>

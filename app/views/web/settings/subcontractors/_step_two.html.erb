@@ -1,0 +1,9 @@
+<h3>Add Agents for <%= subcontractor.company %></h3>
+
+<%= turbo_frame_tag 'form-step' do %>
+  <%= render 'web/settings/subcontractors_agents/form', subcontractor_agent: SubcontractorAgent.new, subcontractor: @subcontractor %>
+<% end %>
+
+<%= turbo_frame_tag 'agents-list' do %>
+  <%= render 'agents', subcontractor: @subcontractor %>
+<% end %>

@@ -1,0 +1,321 @@
+// _mixins.scss
+@use './variables.scss'as *;
+
+@mixin form-user-status {
+  width: 100%;
+  max-width: 260px;
+
+  span {
+    font-size: 16px;
+    color: $black;
+    font-weight: 500;
+  }
+
+  small {
+    font-size: 14px;
+    color: $gray-400;
+  }
+
+  input {
+    display: none;
+  }
+
+  .toggle {
+    width: 65px;
+    height: 32px;
+    cursor: pointer;
+    transition: .3s;
+    position: relative;
+    border-radius: 32px;
+    background-color: $gray;
+
+    &::before {
+      top: 50%;
+      left: 10px;
+      content: "";
+      width: 20px;
+      height: 20px;
+      transition: 0.3s;
+      background: white;
+      position: absolute;
+      border-radius: 20px;
+      transform: translateY(-50%);
+    }
+  }
+
+  input:checked+.toggle {
+    background-color: $green;
+
+    &::before {
+      left: 40px;
+    }
+  }
+}
+
+@mixin plannings-navbar {
+  padding: 0;
+  width: 100%;
+  margin: auto;
+  max-width: 850px;
+  border-bottom: 1px solid $gray;
+
+  li {
+    width: 100%;
+    max-width: 170px;
+    position: relative;
+
+    &+li:before {
+      left: 0;
+      top: 50%;
+      width: 1px;
+      height: 30px;
+      content: "";
+      position: absolute;
+      background-color: $gray;
+      transform: translateY(-50%);
+    }
+  }
+
+  a {
+    padding: 10px;
+    color: $gray-400;
+    position: relative;
+
+    &:hover,
+    &.active {
+      color: $gray-500;
+    }
+
+    &:hover,
+    &.active {
+      svg {
+        fill: $gray-500;
+      }
+    }
+
+    svg {
+      width: 26px;
+      height: 26px;
+      fill: $gray-400;
+      margin-bottom: 12px;
+    }
+
+    .text {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    &:after {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 0%;
+      height: 7px;
+      content: "";
+      margin: auto;
+      max-width: 130px;
+      position: absolute;
+      background-color: $blue;
+      transition: .25s all ease;
+    }
+
+    &:hover:after,
+    &.active:after {
+      width: 100%;
+    }
+  }
+}
+
+@mixin ideo-checkbox {
+  .toggle {
+    width: 65px;
+    height: 32px;
+    cursor: pointer;
+    transition: .3s;
+    position: relative;
+    border-radius: 32px;
+    background-color: $gray;
+
+    &::before {
+      top: 50%;
+      left: 10px;
+      content: "";
+      width: 20px;
+      height: 20px;
+      transition: 0.3s;
+      background: white;
+      position: absolute;
+      border-radius: 20px;
+      transform: translateY(-50%);
+    }
+  }
+
+  input:checked+.toggle {
+    background-color: $green;
+  }
+
+  input:checked+.toggle:before {
+    left: 35px
+  }
+}
+
+@mixin status-navbar {
+  /*
+  all -> blue-dark-status
+  send, service -> yellow-status
+  wait, recurrent, in_progress -> red-status
+  rent, partial -> blue-light-status
+  sell, invoiced, validate -> green-status
+  */
+  margin-bottom: 50px;
+
+  .form-check {
+    margin: 0;
+    padding: 0;
+  }
+
+  .form-check-label {
+    margin: 0;
+    cursor: pointer;
+    display: block;
+    padding: 0 30px;
+    line-height: 64px;
+    overflow: hidden;
+    position: relative;
+    user-select: none;
+
+    input {
+      display: none;
+    }
+
+    &:hover .after,
+    & input:checked+span+.after {
+      bottom: 0;
+    }
+
+    & .after {
+      right: 0;
+      left: 0;
+      z-index: -1;
+      width: 80%;
+      content: "";
+      height: 100%;
+      margin: auto;
+      position: absolute;
+      bottom: calc(-100% + 5px);
+      transition: .3s all ease;
+    }
+
+    &.blue-dark-status {
+      & .after {
+        background-color: $blue;
+      }
+    }
+
+    &.yellow-status {
+      & .after {
+        background-color: $yellow-dark;
+      }
+    }
+
+    &.blue-light-status {
+      & .after {
+        background-color: $blue-500;
+      }
+    }
+
+    &.green-status {
+      & .after {
+        background-color: $green;
+      }
+    }
+
+    &.red-status {
+
+      & .after {
+        background-color: $red;
+      }
+    }
+
+    .type-status-value {
+      z-index: 1;
+      font-weight: 500;
+      display: block;
+      font-size: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+  }
+
+  .separation {
+    width: 2px;
+    height: 20px;
+    margin: auto 15px;
+    background-color: $gray;
+  }
+}
+
+@mixin steps {
+  .step {
+    .text {
+      color: $gray;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .index {
+      width: 32px;
+      height: 32px;
+      line-height: 28px;
+      text-align: center;
+      border-radius: 32px;
+      border: 2px solid $gray;
+      display: inline-block;
+      font-weight: 700;
+      font-size: 15px;
+      color: $blue;
+    }
+
+    &.disabled {
+      .text {
+        color: $gray-500;
+      }
+
+      .index {
+        cursor: not-allowed;
+        color: $gray-500;
+      }
+    }
+
+    &.valide {
+      .text {
+        color: $black-text;
+      }
+
+      .index {
+        background-color: $blue;
+        border: 2px solid $blue;
+        color: $white;
+      }
+    }
+
+    &.current {
+      .text {
+        color: $black-text;
+      }
+
+      .index {
+        border: 2px solid $blue;
+        background-color: $white;
+        color: $blue;
+      }
+    }
+  }
+
+  .separate {
+    width: 10px;
+    height: 2px;
+    margin: 0 8px;
+    background-color: $blue;
+  }
+}

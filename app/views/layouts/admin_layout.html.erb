@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ideo Admin</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= image_path('favicon.ico')%>" />
+
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  </head>
+
+  <body class="<%= "#{controller.controller_name}-controller #{controller.action_name}-action" %>">
+    <%= render "layouts/flash" %>
+    <div class="align-content-between d-flex justify-content-between main-container min-vh-100 vw-100">
+      <div class="left-side">
+        <%= render 'layouts/sidebar' %>
+      </div>
+      <div class="right-side">
+        <%= render 'layouts/header' %>
+        <div class="inner-container">
+          <%= yield %>
+        </div>
+        <%= turbo_frame_tag 'remote_modal' %>
+      </div>
+    </div>
+  </body>
+</html>

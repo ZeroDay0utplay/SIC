@@ -1,0 +1,32 @@
+@use './variables.scss' as *;
+
+.ideo-swal-popup {
+  position: relative;
+
+  .swal2-icon {
+    .swal2-x-mark {
+      /**/
+    }
+  }
+
+  .ideo-swal-title {
+    font-size: 1.2rem;
+  }
+
+  .ideo-swal-html {
+    font-size: 1rem;
+    line-height: 24px;
+  }
+}
+
+.ideo-swal-confirm-button {
+  position: relative;
+}
+
+.ideo-swal-cancel-button {
+  position: relative;
+}
+
+.ideo-swal-actions {
+  position: relative;
+}

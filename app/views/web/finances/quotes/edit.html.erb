@@ -1,0 +1,8 @@
+<div class="finance-container" data-controller="finance">
+  <div class="finance-head">
+    <h1>Création de devis</h1>
+    <%= render 'steps' %>
+  </div>
+
+  <%= render 'form_first_step', url: finances_quote_path(), method: :put %>
+</div>

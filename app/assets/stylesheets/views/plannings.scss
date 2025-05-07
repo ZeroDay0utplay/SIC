@@ -1,0 +1,238 @@
+@use '../global/variables'as *;
+@use '../global/mixins'as *;
+
+.main-plannings {
+  .navbar {
+    @include plannings-navbar;
+  }
+
+  .dispatch-manual {
+    svg {
+      height: 24px;
+      width: 24px;
+      fill: $gray;
+    }
+
+    &.active {
+      svg {
+        fill: $green;
+      }
+    }
+  }
+
+  .agents-counter {
+    label {
+      padding: 0 15px;
+      font-size: 18px;
+      line-height: 44px;
+      color: $gray-400;
+    }
+
+    .agent-status {
+      color: $blue;
+      padding: 0 10px;
+      line-height: 44px;
+      border-radius: 8px;
+      background-color: $blue-500;
+
+      &.deficit {
+        color: $red;
+        background-color: $red-light;
+      }
+
+      strong {
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      span {
+        margin-left: 5px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+    }
+  }
+
+  .mission-address {
+    max-width: 170px;
+    font-size: 12px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .agents-list {
+    .dropdown-menu {
+      padding: 0;
+      min-width: 220px;
+      border-radius: 5px;
+      left: -50% !important;
+      transition: .3s all ease;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+
+      li {
+        padding: 0 10px;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 32px;
+      }
+    }
+  }
+}
+
+// REGULAR MISSION
+// --------------------------------------------------------
+// This section is for the regular mission planning details
+// --------------------------------------------------------
+.regular-mission {
+  .planning-details-header {
+    .details-title {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 32px;
+      color: $gray-500;
+    }
+
+    .card-customer {
+      width: 100%;
+      padding: 10px 15px;
+      border-radius: 7px;
+      max-width: max-content;
+      border: 1px solid $gray-light;
+
+      .customer-logo {
+        image {
+          display: block;
+        }
+
+        margin-right: 5px;
+      }
+
+      .card-customer-details {
+        font-size: 14px;
+        color: $gray-600;
+        line-height: 20px;
+
+        .name {
+          font-weight: 500;
+        }
+
+        .address {
+          font-weight: 400;
+
+          br {
+            display: inline-block;
+          }
+        }
+
+        .prestation {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .steps-navbar {
+    @include steps;
+
+    .separate {
+      width: 100%;
+      max-width: 80px;
+    }
+  }
+
+  .cover-container {
+    .container-tasks-list {
+      width: 100%;
+      max-width: 295px;
+      padding: 25px 15px;
+      border-radius: 15px;
+      background-color: $gray-100;
+
+      h3 {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 32px;
+        margin-bottom: 10px;
+      }
+
+      .tasks-list {
+        width: 100%;
+
+        .task-card {
+          margin-bottom: 15px;
+          border-radius: 7px;
+          position: relative;
+          background-color: $white;
+          padding: 10px 10px 20px 35px;
+
+          .prestation {
+            font-size: 16px;
+            font-weight: 600;
+            color: $gray-600;
+            line-height: 24px;
+            margin-bottom: 10px;
+          }
+
+          .schedule-date-time {
+            margin-bottom: 15px;
+
+            span {
+              font-size: 14px;
+              font-weight: 500;
+              color: $gray-400;
+              border-radius: 6px;
+            }
+
+            .date-time {
+              padding: 0 15px;
+              font-size: 16px;
+              font-weight: 600;
+              line-height: 36px;
+              text-align: center;
+              color: $black-text;
+              background-color: $blue-300;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .regular-form {
+    width: 100%;
+    margin: auto;
+    max-width: 1200px;
+
+    .regular-contacts {
+      .assigned-contact {
+        .contacts-list {
+          .contact-card {
+            padding: 15px;
+            font-size: 16px;
+            line-height: 24px;
+            border-radius: 7px;
+            background-color: $blue-400;
+
+            &+.contact-card {
+              margin-left: 10px;
+            }
+
+            &.primary {
+              background-color: $blue-500;
+            }
+
+            strong {
+              color: $gray-500;
+            }
+
+            span {
+              color: $gray-600;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

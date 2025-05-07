@@ -1,0 +1,60 @@
+@use './variables.scss'as *;
+
+#flash_messages {
+  .alert {
+    margin: 0;
+    right: 30px;
+    bottom: 30px;
+    z-index: 999;
+    padding: 10px;
+    min-width: 320px;
+    position: fixed;
+    text-align: center;
+    border-radius: 10px;
+    background-color: $white;
+
+    &.alert-error,
+    &.alert-danger {
+      color: $alert-error;
+      background: $ideo-color-error-bg;
+      border: 1px solid $ideo-color-error-border;
+    }
+
+    &.alert-success {
+      color: $alert-success;
+      background: $ideo-color-success-bg;
+      border: 1px solid $ideo-color-success-border;
+    }
+
+    .text {
+      margin: 0;
+      text-align: left;
+      line-height: 24px;
+      max-width: calc(100% - 40px);
+    }
+
+    .close {
+      padding: 0;
+      border: none;
+      margin-left: 20px;
+      background: transparent;
+
+      svg {
+        width: 20px;
+        height: 20px
+      }
+    }
+  }
+}
+
+#notice-message {
+  position: fixed;
+  padding: 20px;
+  background: #fff;
+  z-index: 9999;
+  min-width: 360px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  right: 20px;
+  bottom: 20px;
+}
