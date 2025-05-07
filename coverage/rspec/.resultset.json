@@ -1,416 +1,150 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/zdo/Documents/IDEO/app/models/user.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/channels/application_cable/channel.rb": {
         "lines": [
-          1,
-          1,
-          null,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
           0,
-          null,
-          null,
-          1,
           0,
-          null,
-          null
-        ]
-      },
-      "/home/zdo/Documents/IDEO/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
           0,
-          null,
-          null
-        ]
+          0
+        ],
+        "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/concerns/company_scoped.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/channels/application_cable/connection.rb": {
         "lines": [
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          1,
           0,
-          null,
-          null
-        ]
-      },
-      "/home/zdo/Documents/IDEO/app/controllers/home_controller.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          null
-        ]
+          0,
+          0,
+          0
+        ],
+        "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/application_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/api/v1/absences_controller.rb": {
         "lines": [
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
           0,
           0,
-          0,
+          null,
           0,
           0,
-          null,
-          null,
           0,
-          null,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          1,
-          2,
           0,
-          2,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/controllers/api/v1/application_controller.rb": {
+        "lines": [
           0,
-          null,
-          2,
-          null,
-          1,
-          null,
           0,
-          null,
-          1,
-          null,
-          null,
           null,
-          null,
-          1,
-          3,
-          null,
-          2,
           0,
-          null,
-          2,
-          null,
           null,
-          2,
-          null,
-          null
-        ]
-      },
-      "/home/zdo/Documents/IDEO/app/helpers/application_helper.rb": {
-        "lines": [
-          1,
-          1,
           0,
           null,
-          null,
-          1,
           0,
           0,
           null,
           0,
-          null,
-          null,
-          null,
-          1,
           0,
           0,
           0,
           0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/zdo/Documents/IDEO/app/helpers/boards_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/zdo/Documents/IDEO/app/helpers/bootstrap_pagination_helper.rb": {
-        "lines": [
-          1,
-          1,
-          1,
           0,
-          null,
-          null,
-          1,
           0,
           0,
-          null,
           0,
-          null,
-          null,
-          null,
-          1,
           0,
           0,
           null,
-          null,
-          1,
           0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/controllers/api/v1/base_controller.rb": {
+        "lines": [
           0,
-          null,
-          null,
-          1,
           0,
-          null,
-          null,
           null,
-          null,
-          null,
-          null,
-          null,
+          0,
           null,
           0,
           0,
           null,
-          null,
-          1,
           0,
-          null,
-          null,
-          1,
           0,
           0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/zdo/Documents/IDEO/app/helpers/column_items_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/zdo/Documents/IDEO/app/helpers/links_active_helper.rb": {
-        "lines": [
-          1,
-          1,
-          12,
-          null,
-          null,
-          1,
-          2,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/home/zdo/Documents/IDEO/app/helpers/tasks_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/zdo/Documents/IDEO/app/helpers/web/finances/bills_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/zdo/Documents/IDEO/app/helpers/web/finances/commercials_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/zdo/Documents/IDEO/app/helpers/web/settings/headings_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/zdo/Documents/IDEO/app/controllers/web/users/sessions_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
           0,
           0,
-          null,
-          null,
           0,
           0,
-          null,
-          null,
-          null,
-          1,
           0,
           0,
           0,
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/home/zdo/Documents/IDEO/app/models/admin.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/home/zdo/Documents/IDEO/app/models/current.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/zdo/Documents/IDEO/app/models/company.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
           0,
           null,
-          null
-        ]
-      },
-      "/home/zdo/Documents/IDEO/app/channels/application_cable/channel.rb": {
-        "lines": [
           0,
-          0,
-          0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/channels/application_cable/connection.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/api/v1/sessions_controller.rb": {
         "lines": [
           0,
           0,
           0,
-          0
-        ],
-        "branches": {}
-      },
-      "/home/zdo/Documents/IDEO/app/controllers/api/v1/absences_controller.rb": {
-        "lines": [
+          null,
+          null,
           0,
           0,
-          null,
           0,
           0,
           0,
           0,
-          0
-        ],
-        "branches": {}
-      },
-      "/home/zdo/Documents/IDEO/app/controllers/api/v1/application_controller.rb": {
-        "lines": [
           0,
           0,
-          null,
           0,
           null,
-          0,
           null,
           0,
           0,
-          null,
+          0,
           0,
           0,
           0,
           0,
           0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/controllers/api/v1/users_controller.rb": {
+        "lines": [
           0,
           0,
+          null,
           0,
           0,
           0,
+          null,
           0,
           null,
           0,
+          0,
+          0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/api/v1/base_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/application_controller.rb": {
         "lines": [
           0,
           0,
-          null,
+          0,
           0,
           null,
           0,
+          null,
           0,
           null,
           0,
@@ -425,19 +159,12 @@
           0,
           0,
           null,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/home/zdo/Documents/IDEO/app/controllers/api/v1/sessions_controller.rb": {
-        "lines": [
           0,
           0,
           0,
           null,
-          null,
           0,
+          null,
           0,
           0,
           0,
@@ -446,8 +173,6 @@
           0,
           0,
           0,
-          null,
-          null,
           0,
           0,
           0,
@@ -456,29 +181,23 @@
           0,
           0,
           0,
-          0
-        ],
-        "branches": {}
-      },
-      "/home/zdo/Documents/IDEO/app/controllers/api/v1/users_controller.rb": {
-        "lines": [
+          null,
           0,
           0,
           null,
           0,
           0,
           0,
-          null,
           0,
-          null,
           0,
+          null,
           0,
           0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/concerns/checks_company.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/concerns/checks_company.rb": {
         "lines": [
           0,
           0,
@@ -492,10 +211,20 @@
           0,
           0,
           null,
+          0,
+          0,
           0,
           0,
           0,
           0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/controllers/home_controller.rb": {
+        "lines": [
           0,
           0,
           0,
@@ -504,7 +233,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/absences_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/absences_controller.rb": {
         "lines": [
           0,
           0,
@@ -595,7 +324,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/admin_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/admin_controller.rb": {
         "lines": [
           0,
           0,
@@ -604,7 +333,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/application_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/application_controller.rb": {
         "lines": [
           0,
           0,
@@ -624,7 +353,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/boards_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/boards_controller.rb": {
         "lines": [
           0,
           0,
@@ -725,7 +454,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/column_items_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/column_items_controller.rb": {
         "lines": [
           0,
           0,
@@ -752,14 +481,14 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/finances/bills_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/finances/bills_controller.rb": {
         "lines": [
           0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/finances/commercials_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/finances/commercials_controller.rb": {
         "lines": [
           0,
           0,
@@ -787,7 +516,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/finances/interventions_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/finances/interventions_controller.rb": {
         "lines": [
           0,
           0,
@@ -830,7 +559,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/finances/quotes_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/finances/quotes_controller.rb": {
         "lines": [
           0,
           0,
@@ -1127,7 +856,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/needs_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/needs_controller.rb": {
         "lines": [
           0,
           0,
@@ -1449,7 +1178,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/plannings/punctuals_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/plannings/punctuals_controller.rb": {
         "lines": [
           0,
           0,
@@ -1493,7 +1222,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/plannings/regulars_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/plannings/regulars_controller.rb": {
         "lines": [
           0,
           0,
@@ -1629,7 +1358,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/settings/clients_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/settings/clients_controller.rb": {
         "lines": [
           0,
           0,
@@ -1722,7 +1451,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/settings/companies_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/settings/companies_controller.rb": {
         "lines": [
           0,
           0,
@@ -1800,7 +1529,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/settings/contacts_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/settings/contacts_controller.rb": {
         "lines": [
           0,
           0,
@@ -1913,7 +1642,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/settings/email_models_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/settings/email_models_controller.rb": {
         "lines": [
           0,
           0,
@@ -2011,7 +1740,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/settings/headings_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/settings/headings_controller.rb": {
         "lines": [
           0,
           0,
@@ -2054,7 +1783,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/settings/mention_legals_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/settings/mention_legals_controller.rb": {
         "lines": [
           0,
           0,
@@ -2151,7 +1880,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/settings/prestations_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/settings/prestations_controller.rb": {
         "lines": [
           0,
           0,
@@ -2258,7 +1987,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/settings/quotes_model_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/settings/quotes_model_controller.rb": {
         "lines": [
           0,
           0,
@@ -2277,7 +2006,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/settings/skills_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/settings/skills_controller.rb": {
         "lines": [
           0,
           0,
@@ -2353,14 +2082,14 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/settings/subcontractor_agents_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/settings/subcontractor_agents_controller.rb": {
         "lines": [
           0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/settings/subcontractors_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/settings/subcontractors_controller.rb": {
         "lines": [
           0,
           0,
@@ -2491,7 +2220,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/settings/users_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/settings/users_controller.rb": {
         "lines": [
           0,
           0,
@@ -2700,7 +2429,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/settings_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/settings_controller.rb": {
         "lines": [
           0,
           0,
@@ -2710,7 +2439,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/superadmin/administrators_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/superadmin/administrators_controller.rb": {
         "lines": [
           0,
           0,
@@ -2722,7 +2451,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/superadmin/companies_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/superadmin/companies_controller.rb": {
         "lines": [
           0,
           0,
@@ -2750,7 +2479,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/superadmin_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/superadmin_controller.rb": {
         "lines": [
           0,
           0,
@@ -2759,7 +2488,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/tasks_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/tasks_controller.rb": {
         "lines": [
           0,
           0,
@@ -2826,19 +2555,55 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/controllers/web/users/profile_controller.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/users/profile_controller.rb": {
         "lines": [
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
           0,
           0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
           null,
+          0,
           0,
           0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/controllers/web/users/sessions_controller.rb": {
+        "lines": [
+          0,
+          0,
           null,
+          0,
           0,
+          0,
+          null,
           0,
           0,
           0,
           null,
+          0,
+          0,
+          0,
+          0,
           0,
           0,
           0,
@@ -2847,10 +2612,16 @@
           0,
           0,
           0,
+          0,
           null,
+          0,
+          0,
           0,
+          0,
+          0,
           null,
           0,
+          null,
           0,
           0,
           0,
@@ -2858,7 +2629,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/decorators/quote_decorator.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/decorators/quote_decorator.rb": {
         "lines": [
           0,
           0,
@@ -2874,39 +2645,178 @@
           0,
           0,
           null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/decorators/web/finances/intervention_decorator.rb": {
+        "lines": [
           0,
           0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/decorators/web/settings/heading_decorator.rb": {
+        "lines": [
           0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/decorators/web/finances/intervention_decorator.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/helpers/application_helper.rb": {
         "lines": [
           0,
           0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/helpers/boards_helper.rb": {
+        "lines": [
+          0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/decorators/web/settings/heading_decorator.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/helpers/bootstrap_pagination_helper.rb": {
         "lines": [
+          0,
+          0,
           0,
           0,
+          0,
           null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           null,
+          0,
+          0,
+          0,
+          0,
           null,
+          0,
+          0,
+          0,
+          0,
           null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           null,
+          0,
+          0,
+          0,
           null,
+          0,
+          0,
+          0,
           null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/helpers/column_items_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/helpers/links_active_helper.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
           null,
+          0,
+          0,
+          0,
           null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/helpers/tasks_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/helpers/web/finances/bills_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/helpers/web/finances/commercials_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/helpers/web/settings/headings_helper.rb": {
+        "lines": [
+          0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/jobs/application_job.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/jobs/application_job.rb": {
         "lines": [
           0,
           null,
@@ -2918,7 +2828,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/mailers/application_mailer.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/mailers/application_mailer.rb": {
         "lines": [
           0,
           0,
@@ -2927,7 +2837,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/ability.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/ability.rb": {
         "lines": [
           null,
           null,
@@ -2949,7 +2859,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/absence.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/absence.rb": {
         "lines": [
           0,
           0,
@@ -2986,7 +2896,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/address.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/address.rb": {
         "lines": [
           0,
           0,
@@ -2995,20 +2905,33 @@
           0,
           0,
           null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/models/admin.rb": {
+        "lines": [
           0,
           0,
           0,
+          0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/agent.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/agent.rb": {
         "lines": [
           0,
           0,
           0,
           null,
+          0,
           0,
+          0,
+          null,
           0,
           0,
           null,
@@ -3017,6 +2940,15 @@
           null,
           0,
           0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/models/application_record.rb": {
+        "lines": [
+          0,
+          0,
           null,
           0,
           0,
@@ -3025,7 +2957,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/bill.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/bill.rb": {
         "lines": [
           0,
           null,
@@ -3033,7 +2965,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/board.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/board.rb": {
         "lines": [
           0,
           0,
@@ -3046,7 +2978,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/client.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/client.rb": {
         "lines": [
           0,
           0,
@@ -3085,7 +3017,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/client_contact.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/client_contact.rb": {
         "lines": [
           0,
           0,
@@ -3094,7 +3026,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/column_item.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/column_item.rb": {
         "lines": [
           0,
           0,
@@ -3103,7 +3035,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/commercial.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/commercial.rb": {
         "lines": [
           0,
           0,
@@ -3127,32 +3059,77 @@
           null,
           0,
           null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/models/commercial_contact.rb": {
+        "lines": [
+          0,
           0,
           0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/models/commercial_detail.rb": {
+        "lines": [
           0,
           0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/commercial_contact.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/company.rb": {
         "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           0,
           0,
           0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/commercial_detail.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/concerns/company_scoped.rb": {
         "lines": [
+          0,
+          0,
+          null,
+          0,
+          0,
           0,
           0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/contact.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/contact.rb": {
         "lines": [
           0,
           0,
@@ -3181,14 +3158,22 @@
           0,
           0,
           null,
+          0,
           0,
           0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/models/current.rb": {
+        "lines": [
+          0,
           0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/document.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/document.rb": {
         "lines": [
           0,
           0,
@@ -3201,7 +3186,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/email_model.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/email_model.rb": {
         "lines": [
           0,
           0,
@@ -3217,7 +3202,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/heading.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/heading.rb": {
         "lines": [
           0,
           0,
@@ -3225,7 +3210,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/intervention.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/intervention.rb": {
         "lines": [
           0,
           0,
@@ -3273,7 +3258,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/item.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/item.rb": {
         "lines": [
           0,
           0,
@@ -3284,21 +3269,21 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/material/consumable.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/material/consumable.rb": {
         "lines": [
           0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/material/tool.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/material/tool.rb": {
         "lines": [
           0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/material.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/material.rb": {
         "lines": [
           0,
           0,
@@ -3309,7 +3294,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/mention_legal.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/mention_legal.rb": {
         "lines": [
           0,
           0,
@@ -3321,7 +3306,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/payment_method.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/payment_method.rb": {
         "lines": [
           0,
           0,
@@ -3331,7 +3316,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/planning/flat_rate.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/planning/flat_rate.rb": {
         "lines": [
           0,
           0,
@@ -3340,7 +3325,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/planning/punctual.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/planning/punctual.rb": {
         "lines": [
           0,
           0,
@@ -3372,7 +3357,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/planning/regular.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/planning/regular.rb": {
         "lines": [
           0,
           0,
@@ -3389,7 +3374,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/planning.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/planning.rb": {
         "lines": [
           0,
           0,
@@ -3426,7 +3411,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/planning_agent.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/planning_agent.rb": {
         "lines": [
           0,
           0,
@@ -3435,7 +3420,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/planning_contact.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/planning_contact.rb": {
         "lines": [
           0,
           0,
@@ -3446,7 +3431,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/planning_material.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/planning_material.rb": {
         "lines": [
           0,
           0,
@@ -3455,7 +3440,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/planning_photo.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/planning_photo.rb": {
         "lines": [
           0,
           0,
@@ -3474,7 +3459,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/planning_report_photo.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/planning_report_photo.rb": {
         "lines": [
           0,
           0,
@@ -3487,7 +3472,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/planning_subcontractor.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/planning_subcontractor.rb": {
         "lines": [
           0,
           0,
@@ -3499,7 +3484,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/planning_subcontractor_agent.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/planning_subcontractor_agent.rb": {
         "lines": [
           0,
           0,
@@ -3510,7 +3495,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/planning_task.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/planning_task.rb": {
         "lines": [
           0,
           0,
@@ -3526,7 +3511,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/planning_vehicle.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/planning_vehicle.rb": {
         "lines": [
           0,
           0,
@@ -3535,7 +3520,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/pointing_internal.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/pointing_internal.rb": {
         "lines": [
           0,
           0,
@@ -3547,7 +3532,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/prestation.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/prestation.rb": {
         "lines": [
           0,
           0,
@@ -3573,7 +3558,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/quote.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/quote.rb": {
         "lines": [
           0,
           0,
@@ -3677,7 +3662,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/schedule.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/schedule.rb": {
         "lines": [
           0,
           0,
@@ -3700,7 +3685,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/skill.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/skill.rb": {
         "lines": [
           0,
           0,
@@ -3722,7 +3707,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/subcontractor.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/subcontractor.rb": {
         "lines": [
           0,
           0,
@@ -3759,14 +3744,14 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/subcontractor_admin.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/subcontractor_admin.rb": {
         "lines": [
           0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/subcontractor_agent.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/subcontractor_agent.rb": {
         "lines": [
           0,
           0,
@@ -3777,7 +3762,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/subcontractor_skill.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/subcontractor_skill.rb": {
         "lines": [
           0,
           0,
@@ -3786,7 +3771,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/subcontractor_user.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/subcontractor_user.rb": {
         "lines": [
           0,
           0,
@@ -3797,36 +3782,69 @@
           0,
           0,
           null,
+          0,
+          0,
           0,
+          0
+        ],
+        "branches": {}
+      },
+      "/home/zdo/Documents/PFA/SIC/app/models/superadmin.rb": {
+        "lines": [
+          0,
+          0,
           0,
           0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/superadmin.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/task.rb": {
         "lines": [
           0,
           0,
           0,
           0,
+          null,
+          0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/task.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/user.rb": {
         "lines": [
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
           0,
           0,
           0,
           0,
           null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
           0,
           0
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/user_skill.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/user_skill.rb": {
         "lines": [
           0,
           0,
@@ -3835,7 +3853,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/models/vehicle.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/models/vehicle.rb": {
         "lines": [
           0,
           0,
@@ -3843,7 +3861,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/queries/helpers/intervention_query_helper.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/queries/helpers/intervention_query_helper.rb": {
         "lines": [
           0,
           0,
@@ -3879,7 +3897,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/serializers/absence_serializer.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/serializers/absence_serializer.rb": {
         "lines": [
           0,
           0,
@@ -3899,7 +3917,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/serializers/user_serializer.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/serializers/user_serializer.rb": {
         "lines": [
           0,
           0,
@@ -3907,7 +3925,7 @@
         ],
         "branches": {}
       },
-      "/home/zdo/Documents/IDEO/app/services/flash_message_service.rb": {
+      "/home/zdo/Documents/PFA/SIC/app/services/flash_message_service.rb": {
         "lines": [
           0,
           0,
@@ -3934,6 +3952,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1746649036
+    "timestamp": 1746651869
   }
 }

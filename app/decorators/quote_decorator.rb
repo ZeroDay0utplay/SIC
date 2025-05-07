@@ -4,12 +4,11 @@ class QuoteDecorator < Draper::Decorator
   def state
     bill_shape = "success-bill"
     if model.state == "pending"
+      bill_shape = "pending-bill"
+    elsif model.state == "draft"
       bill_shape = "fail-bill"
-    elsif model.state == "sended"
-      bill_shape = "sended-bill"
     end
-    status = I18n.t("enums.quote_state.#{model.state}")
-    "<span class='badge #{bill_shape}'>#{status}</span>".html_safe
+    "<span class='badge #{bill_shape}'>#{model.state}</span>".html_safe
   end
 
   def interloc

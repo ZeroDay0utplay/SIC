@@ -1,0 +1,13 @@
+{:uriI"ïfile://app/assets/builds/avatar_preview.js.map?type=application/js-sourcemap+json&id=4a380ab9936df9e837c36977704b0448cb3bf304f9ff77933a4ecbd27a78c080:ET:load_pathI"app/assets/builds;T:filenameI",app/assets/builds/avatar_preview.js.map;T:	nameI"avatar_preview;T:logical_pathI"avatar_preview.js.map;T:content_typeI""application/js-sourcemap+json;T:sourceI"3{
+  "version": 3,
+  "sources": ["../../javascript/avatar_preview.js"],
+  "sourcesContent": ["document.addEventListener(\"turbo:load\", function () {\n  const avatarInput = document.getElementById(\"edit-avatar\");\n  const preview = document.getElementById(\"avatar-preview\");\n\n  if (avatarInput && preview) {\n    avatarInput.addEventListener(\"change\", (event) => {\n      const input = event.target;\n\n      if (input.files && input.files[0]) {\n        const reader = new FileReader();\n        reader.onload = (e) => {\n          preview.src = e.target.result;\n        };\n        reader.readAsDataURL(input.files[0]);\n      }\n    });\n  }\n});"],
+  "mappings": ";AAAA,SAAS,iBAAiB,cAAc,WAAY;AAClD,QAAM,cAAc,SAAS,eAAe,aAAa;AACzD,QAAM,UAAU,SAAS,eAAe,gBAAgB;AAExD,MAAI,eAAe,SAAS;AAC1B,gBAAY,iBAAiB,UAAU,CAAC,UAAU;AAChD,YAAM,QAAQ,MAAM;AAEpB,UAAI,MAAM,SAAS,MAAM,MAAM,CAAC,GAAG;AACjC,cAAM,SAAS,IAAI,WAAW;AAC9B,eAAO,SAAS,CAAC,MAAM;AACrB,kBAAQ,MAAM,EAAE,OAAO;AAAA,QACzB;AACA,eAAO,cAAc,MAAM,MAAM,CAAC,CAAC;AAAA,MACrC;AAAA,IACF,CAAC;AAAA,EACH;AACF,CAAC;",
+  "names": []
+}
+;T:metadata{
+:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"Zprocessors:type=application/js-sourcemap+json&file_type=application/js-sourcemap+json;TTI":file-digest://app/assets/builds/avatar_preview.js.map;TTF:charsetI"
+utf-8;F:digest"%««xí—eá≠ËıRg‰Aü˙Cı˝/†gØˆaò:lengthi3:environment_versionI"1.0;T:dependencies_digest"%iõÙ”tÙF‘Íû!y|éÓÄk.Åõ0=˛
+É*B:idI"E4a380ab9936df9e837c36977704b0448cb3bf304f9ff77933a4ecbd27a78c080;F

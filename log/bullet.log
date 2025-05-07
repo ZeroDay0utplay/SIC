@@ -1,0 +1,11 @@
+2025-05-07 22:22:08[WARN] user: zdo
+GET /settings/contacts
+AVOID eager loading detected
+  Contact => [:clients, :client_contacts]
+  Remove from your query: .includes([:clients, :client_contacts])
+Call stack
+  /home/zdo/Documents/PFA/SIC/app/views/web/settings/contacts/_contact_list.html.erb:16:in `_app_views_web_settings_contacts__contact_list_html_erb__697994434394393864_826240'
+  /home/zdo/Documents/PFA/SIC/app/views/web/settings/contacts/index.html.erb:27:in `block (2 levels) in _app_views_web_settings_contacts_index_html_erb__271054610786230215_826220'
+  /home/zdo/Documents/PFA/SIC/app/views/web/settings/contacts/index.html.erb:25:in `block in _app_views_web_settings_contacts_index_html_erb__271054610786230215_826220'
+  /home/zdo/Documents/PFA/SIC/app/views/web/settings/contacts/index.html.erb:11:in `_app_views_web_settings_contacts_index_html_erb__271054610786230215_826220'
+

@@ -5,7 +5,7 @@
     <div class="btn-group">
       <button type="button" class="dropdown-toggle btn btn-blue btn-sm btn-add btn-text-white add-quote" data-bs-toggle="dropdown" aria-expanded="false">
         <%= inline_svg_tag('icons/add_document.svg') %>
-        Nouveau Devis
+        New Invoice
       </button>
       <ul class="dropdown-menu dropdown-menu-end">
         <li>
@@ -34,7 +34,7 @@
         <%= label_tag 'all-filter', class: 'form-check-label blue-dark-status' do %>
           <%= radio_button_tag :state, '', class: 'form-check-input', checked: true, id: 'all-filter',
               data: { action: 'change->search#getByState' } %>
-          <span class='type-status-value'>Tout</span>
+          <span class='type-status-value'>All</span>
           <div class="after"></div>
         <% end %>
       </div>
@@ -43,7 +43,7 @@
         <%= label_tag 'send-filter', class: 'form-check-label yellow-status' do %>
           <%= radio_button_tag :state, '1', class: 'form-check-input', id: 'send-filter',
               data: { action: 'change->search#getByState' } %>
-          <span class='type-status-value'>Envoyé</span>
+          <span class='type-status-value'>Sent</span>
           <div class="after"></div>
         <% end %>
       </div>
@@ -52,7 +52,7 @@
         <%= label_tag 'pending-filter', class: 'form-check-label red-status' do %>
           <%= radio_button_tag :state, '2', class: 'form-check-input', id: 'pending-filter',
               data: { action: 'change->search#getByState' } %>
-          <span class='type-status-value'>En attente</span>
+          <span class='type-status-value'>Pending</span>
           <div class="after"></div>
         <% end %>
       </div>
@@ -61,7 +61,7 @@
         <%= label_tag 'validate-filter', class: 'form-check-label green-status' do %>
           <%= radio_button_tag :state, '3', class: 'form-check-input', id: 'validate-filter',
               data: { action: 'change->search#getByState' } %>
-          <span class='type-status-value'>Validé</span>
+          <span class='type-status-value'>Approved</span>
           <div class="after"></div>
         <% end %>
       </div>
@@ -70,7 +70,7 @@
         <%= label_tag 'draft-filter', class: 'form-check-label blue-light-status' do %>
           <%= radio_button_tag :state, '0', class: 'form-check-input', id: 'draft-filter',
               data: { action: 'change->search#getByState' } %>
-          <span class='type-status-value'>Brouillon</span>
+          <span class='type-status-value'>Draft</span>
           <div class="after"></div>
         <% end %>
       </div>
@@ -95,28 +95,20 @@
         </div>
       </div>
 
-      <div class="col-sm-12 col-md-8 col-lg-5 d-flex justify-content-center">
+      <div class="col-4"></div>
+
+      <div class="col-sm-12 col-md-8 col-lg-5 d-flex justify-content-end">
         <div class="search-input w-350">
           <%= form.search_field :combined_search_cont, class: 'form-control', placeholder: 'Rechercher',
-              aria: { label: 'search by client_name', describedby: 'button-addon-2' },
-              data: { action: "input->search#search", search_target: "input" } %>
+          aria: { label: 'search by client_name', describedby: 'button-addon-2' },
+          data: { action: "input->search#search", search_target: "input" } %>
           <i class="search-icon">
-            <%= inline_svg_tag('icons/search.svg') %>
+        <%= inline_svg_tag('icons/search.svg') %>
           </i>
         </div>
       </div>
 
-      <div class="col-sm-12 col-md-12 col-lg-4">
-        <div class="col-item ms-auto d-flex justify-content-end align-items-center">
-          <label class='form-label me-2 mb-0'>Affichage :</label>
-          <div class="input-group">
-            <%= select_tag :quote_status, options_for_select([['Condensé', ''], ['Envoyé', '0'], ['En attente', '1'], ['Validé', '2']], params[:quote_status]),
-              class: "form-select ps-4", style: "font-size: 1.2rem;", data: { action: "change->search#filterByStatus", search_target: "status" } %>
-          </div>
-        </div>
-      </div>
     </div>
-
 
     <div>
       <%= render "shared/skeleton_loader" %>

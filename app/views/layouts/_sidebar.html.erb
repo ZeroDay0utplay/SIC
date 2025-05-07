@@ -32,39 +32,11 @@
             <hr />
           </li>
           <li class='side-nav-item'>
-            <%= link_to new_need_path('punctual'), class:"side-nav-link" do %>
-              <%= inline_svg_tag('icons/need.svg', class:'svg-default') %>
-              <%= inline_svg_tag('icons/need-full.svg', class:'svg-hover') %>
-              <span class="sidenav-text">Besoins</span>
-            <% end %>
-          </li>
-          <li class='side-nav-item'>
             <%= link_to boards_path(), class:"side-nav-link", data: {turbo: false} do %>
               <%= inline_svg_tag('icons/list-checked.svg') %>
               <%= inline_svg_tag('icons/list-checked.svg') %>
               <span class="sidenav-text">Gestion des tâches</span>
             <% end %>
-          </li>
-          <li class='side-nav-item'>
-            <label for="field_services"  class="side-nav-link pointer">
-              <%= inline_svg_tag('icons/microservices.svg', class:'svg-default') %>
-              <%= inline_svg_tag('icons/microservices-full.svg', class:'svg-hover') %>
-              <span class="sidenav-text">Field services</span>
-              <%= inline_svg_tag('icons/chevron-right.svg', class:'svg-dropdown') %>
-            </label>
-            <input type="checkbox" class="d-none" id="field_services" <%= "checked" if field_services?("Web::Plannings") %>>
-            <ul class="sub-navbar list-unstyled">
-              <li class="side-nav-item">
-                <%= link_to plannings_punctuals_path, class:"side-nav-link d-flex align-items-center #{ is_active?('punctuals') }", data: {turbo: false} do %>
-                  <span class="sidenav-text">Ponctuel</span>
-                <% end %>
-              </li>
-              <li class="side-nav-item">
-                <%= link_to plannings_regulars_path, class:"side-nav-link d-flex align-items-center #{ is_active?('regulars') }", data: {turbo: false} do %>
-                  <span class="sidenav-text">Régulier</span>
-                <% end %>
-              </li>
-            </ul>
           </li>
           <li class='side-nav-item'>
             <label for="finances"  class="side-nav-link pointer">
@@ -82,12 +54,7 @@
               </li>
               <li class="side-nav-item">
                 <%= link_to finances_quotes_path, class:"side-nav-link d-flex align-items-center #{ is_active?('quotes') }", data: {turbo: false} do %>
-                  <span class="sidenav-text">Devis</span>
-                <% end %>
-              </li>
-              <li class="side-nav-item">
-                <%= link_to finances_bills_path, class:"side-nav-link d-flex align-items-center #{ is_active?('bills') }", data: {turbo: false} do %>
-                  <span class="sidenav-text">Facture</span>
+                  <span class="sidenav-text">Invoices</span>
                 <% end %>
               </li>
             </ul>
@@ -157,13 +124,6 @@
                 <% end %>
               </li>
               <li class="side-nav-item">
-                <%= link_to settings_skills_path(), class:"side-nav-link d-flex align-items-center #{ is_active?('skills') }", data: {turbo: false} do %>
-                  <%= inline_svg_tag('icons/tools-alt.svg') %>
-                  <%= inline_svg_tag('icons/tools-alt-full.svg') %>
-                  <span class="sidenav-text">Compétences</span>
-                <% end %>
-              </li>
-              <li class="side-nav-item">
                 <%= link_to settings_prestations_path(), class:"side-nav-link d-flex align-items-center #{ is_active?('prestations') }", data: {turbo: false} do %>
                   <%= inline_svg_tag('icons/construction.svg') %>
                   <%= inline_svg_tag('icons/construction.svg') %>
@@ -182,28 +142,6 @@
                   <%= inline_svg_tag('icons/email.svg') %>
                   <%= inline_svg_tag('icons/email-full.svg') %>
                   <span class="sidenav-text">Contact client</span>
-                <% end %>
-              </li>
-              <li class="side-nav-item">
-                <%= link_to settings_subcontractors_path(), class:"side-nav-link d-flex align-items-center #{ is_active?('subcontractors') }", data: {turbo: false} do %>
-                  <%= inline_svg_tag('icons/group-access.svg') %>
-                  <%= inline_svg_tag('icons/group-access.svg') %>
-                  <span class="sidenav-text">Sous-traitants</span>
-                <% end %>
-              </li>
-              <li class="side-nav-item">
-                <%= link_to settings_email_models_path() ,class:"side-nav-link d-flex align-items-center" do %>
-                  <%= inline_svg_tag('icons/email.svg') %>
-                  <%= inline_svg_tag('icons/email-full.svg') %>
-                  <span class="sidenav-text">Modèles de mail</span>
-                <% end %>
-              </li>
-
-              <li class="nav-link">
-                <%= link_to settings_quotes_model_index_path() ,class:"d-flex align-items-center" do %>
-                  <%= inline_svg_tag('icons/email.svg') %>
-                  <%= inline_svg_tag('icons/email-full.svg') %>
-                  Modèles de devis
                 <% end %>
               </li>
             </ul>
