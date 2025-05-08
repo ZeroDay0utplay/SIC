@@ -1,30 +1,6 @@
 <div class="settings-container finances-quotes">
   <div class="d-flex d-wrap justify-content-between mb-3">
-    <h1 class="settings-title mb-0">Devis</h1>
-
-    <div class="btn-group">
-      <button type="button" class="dropdown-toggle btn btn-blue btn-sm btn-add btn-text-white add-quote" data-bs-toggle="dropdown" aria-expanded="false">
-        <%= inline_svg_tag('icons/add_document.svg') %>
-        New Invoice
-      </button>
-      <ul class="dropdown-menu dropdown-menu-end">
-        <li>
-          <%= link_to new_finances_quote_path(), class:'dropdown-item', data: {turbo: false} do %>
-            Devis vide
-          <% end %>
-
-          <% unless Quote.current_company.is_template.count.zero? %>
-            <li><hr class="dropdown-divider"></li>
-            <% Quote.current_company.is_template.each do |model| %>
-              <%= link_to new_from_model_finances_quotes_path(model.id), class:'dropdown-item', data: {turbo: false} do %>
-                <%= model.template_name %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </li>
-      </ul>
-    </div>
-
+    <h1 class="settings-title mb-0">Invoices</h1>
   </div>
   <%= search_form_for @q, url: finances_quotes_path(), method: :get,
       data: { controller: "search", search_url: finances_quotes_path() } do |form| %>
@@ -40,7 +16,7 @@
       </div>
       <div class="separation"></div>
       <div class="form-check form-check-inline">
-        <%= label_tag 'send-filter', class: 'form-check-label yellow-status' do %>
+        <%= label_tag 'send-filter', class: 'form-check-label green-status' do %>
           <%= radio_button_tag :state, '1', class: 'form-check-input', id: 'send-filter',
               data: { action: 'change->search#getByState' } %>
           <span class='type-status-value'>Sent</span>
@@ -49,7 +25,7 @@
       </div>
       <div class="separation"></div>
       <div class="form-check form-check-inline">
-        <%= label_tag 'pending-filter', class: 'form-check-label red-status' do %>
+        <%= label_tag 'pending-filter', class: 'form-check-label yellow-status' do %>
           <%= radio_button_tag :state, '2', class: 'form-check-input', id: 'pending-filter',
               data: { action: 'change->search#getByState' } %>
           <span class='type-status-value'>Pending</span>
@@ -58,16 +34,7 @@
       </div>
       <div class="separation"></div>
       <div class="form-check form-check-inline">
-        <%= label_tag 'validate-filter', class: 'form-check-label green-status' do %>
-          <%= radio_button_tag :state, '3', class: 'form-check-input', id: 'validate-filter',
-              data: { action: 'change->search#getByState' } %>
-          <span class='type-status-value'>Approved</span>
-          <div class="after"></div>
-        <% end %>
-      </div>
-      <div class="separation"></div>
-      <div class="form-check form-check-inline">
-        <%= label_tag 'draft-filter', class: 'form-check-label blue-light-status' do %>
+        <%= label_tag 'draft-filter', class: 'form-check-label red-status' do %>
           <%= radio_button_tag :state, '0', class: 'form-check-input', id: 'draft-filter',
               data: { action: 'change->search#getByState' } %>
           <span class='type-status-value'>Draft</span>

@@ -3,9 +3,9 @@ class QuoteDecorator < Draper::Decorator
 
   def state
     bill_shape = "success-bill"
-    if model.state == "pending"
+    if model.state == "Pending"
       bill_shape = "pending-bill"
-    elsif model.state == "draft"
+    elsif model.state == "Refused"
       bill_shape = "fail-bill"
     end
     "<span class='badge #{bill_shape}'>#{model.state}</span>".html_safe

@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2025-05-07T22:04:29+01:00">2025-05-07T22:04:29+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2025-05-08T14:21:42+01:00">2025-05-08T14:21:42+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -42,9 +42,9 @@
   </div>
 
   <div class="t-line-summary">
-    <b>2786</b> relevant lines,
+    <b>2785</b> relevant lines,
     <span class="green"><b>0</b> lines covered</span> and
-    <span class="red"><b>2786</b> lines missed. </span>
+    <span class="red"><b>2785</b> lines missed. </span>
     (<span class="red">
   0.0%
 </span>
@@ -523,10 +523,10 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#cffc634b0e027b467a62279ab8db7f16fb29b017" class="src_link" title="app/decorators/quote_decorator.rb">app/decorators/quote_decorator.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
-            <td class="cell--number">18</td>
-            <td class="cell--number">16</td>
+            <td class="cell--number">17</td>
+            <td class="cell--number">15</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">16</td>
+            <td class="cell--number">15</td>
             <td class="cell--number">0.00</td>
             
           </tr>
@@ -2960,9 +2960,9 @@
   </div>
 
   <div class="t-line-summary">
-    <b>82</b> relevant lines,
+    <b>81</b> relevant lines,
     <span class="green"><b>0</b> lines covered</span> and
-    <span class="red"><b>82</b> lines missed. </span>
+    <span class="red"><b>81</b> lines missed. </span>
     (<span class="red">
   0.0%
 </span>
@@ -2990,10 +2990,10 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#cffc634b0e027b467a62279ab8db7f16fb29b017" class="src_link" title="app/decorators/quote_decorator.rb">app/decorators/quote_decorator.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
-            <td class="cell--number">18</td>
-            <td class="cell--number">16</td>
+            <td class="cell--number">17</td>
+            <td class="cell--number">15</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">16</td>
+            <td class="cell--number">15</td>
             <td class="cell--number">0.00</td>
             
           </tr>
@@ -28595,9 +28595,9 @@
     
 
     <div class="t-line-summary">
-      <b>16</b> relevant lines.
+      <b>15</b> relevant lines.
       <span class="green"><b>0</b> lines covered</span> and
-      <span class="red"><b>16</b> lines missed.</span>
+      <span class="red"><b>15</b> lines missed.</span>
     </div>
 
     
@@ -28663,7 +28663,7 @@
 
             
 
-            <code class="ruby">    if model.state == &quot;pending&quot;</code>
+            <code class="ruby">    if model.state == &quot;Pending&quot;</code>
           </li>
         </div>
       
@@ -28673,7 +28673,7 @@
 
             
 
-            <code class="ruby">      bill_shape = &quot;fail-bill&quot;</code>
+            <code class="ruby">      bill_shape = &quot;pending-bill&quot;</code>
           </li>
         </div>
       
@@ -28683,7 +28683,7 @@
 
             
 
-            <code class="ruby">    elsif model.state == &quot;sended&quot;</code>
+            <code class="ruby">    elsif model.state == &quot;Draft&quot;</code>
           </li>
         </div>
       
@@ -28693,7 +28693,7 @@
 
             
 
-            <code class="ruby">      bill_shape = &quot;sended-bill&quot;</code>
+            <code class="ruby">      bill_shape = &quot;fail-bill&quot;</code>
           </li>
         </div>
       
@@ -28713,7 +28713,7 @@
 
             
 
-            <code class="ruby">    status = I18n.t(&quot;enums.quote_state.#{model.state}&quot;)</code>
+            <code class="ruby">    &quot;&lt;span class=&#39;badge #{bill_shape}&#39;&gt;#{model.state}&lt;/span&gt;&quot;.html_safe</code>
           </li>
         </div>
       
@@ -28723,22 +28723,12 @@
 
             
 
-            <code class="ruby">    &quot;&lt;span class=&#39;badge #{bill_shape}&#39;&gt;#{status}&lt;/span&gt;&quot;.html_safe</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="13">
-            
-
-            
-
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="14">
+          <li class="never" data-hits="" data-linenumber="13">
             
 
             
@@ -28748,7 +28738,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="15">
+          <li class="missed" data-hits="0" data-linenumber="14">
             
 
             
@@ -28758,7 +28748,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="16">
+          <li class="missed" data-hits="0" data-linenumber="15">
             
 
             
@@ -28768,7 +28758,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="17">
+          <li class="missed" data-hits="0" data-linenumber="16">
             
 
             
@@ -28778,7 +28768,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="18">
+          <li class="missed" data-hits="0" data-linenumber="17">
             
 
             
@@ -36880,7 +36870,7 @@
 
             
 
-            <code class="ruby">  enum :state, [:draft, :sended, :pending, :validated]</code>
+            <code class="ruby">  enum :state, [:Draft, :Sent, :Pending, :Validated]</code>
           </li>
         </div>
       

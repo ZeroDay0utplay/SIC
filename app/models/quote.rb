@@ -4,7 +4,7 @@ class Quote < Commercial
 
   attr_accessor :use_as_template
 
-  enum :state, [:draft, :sended, :pending, :validated]
+  enum :state, [:Pending, :Approved, :Refused]
 
   def self.ransackable_attributes(auth_object = nil)
     ["client_name", "created_at", "combined_search"]
