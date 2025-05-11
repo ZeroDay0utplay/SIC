@@ -1,2 +1,0 @@
-class Consumable < Material
-end

@@ -10,7 +10,7 @@ class CreateItems < ActiveRecord::Migration[8.0]
       t.integer :order
       t.text :description
       t.boolean :has_description
-      t.boolean :has_reduction
+      t.boolean :has_reduction      
       t.integer :reduction_unit
       t.float :reduction
 

@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 class DeviseCreateUsers < ActiveRecord::Migration[7.1]
   def change
@@ -20,23 +19,19 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
       t.string :confirmation_token
       t.datetime :confirmed_at
       t.datetime :confirmation_sent_at
-      t.string :unconfirmed_email # Only if using reconfirmable
 
       t.string :authentication_token
 
+
       t.string :first_name
       t.string :last_name
+      t.references :company, null: false, foreign_key: true
       t.string :phone
-      t.references :company, null: false, type: :foreign_key
+      t.string :job
       t.integer :role
       t.integer :platform
       t.string :photo
       t.boolean :active
-      t.string :address
-      t.float :lat
-      t.float :long
-      t.integer :match_ia
-      t.string :identifier
       t.float :current_position_lat
       t.float :current_position_long
 

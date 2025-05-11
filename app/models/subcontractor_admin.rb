@@ -1,2 +1,0 @@
-class SubcontractorAdmin < SubcontractorUser
-end

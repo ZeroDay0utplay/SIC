@@ -38,26 +38,11 @@
             <%= form.text_field :reference, class: 'form-control', disabled: true %>
             <%= form.hidden_field :reference %>
           </div>
-          <div class="d-flex align-items-center justify-content-between mb-2">
-            <%= form.label :validate_date, 'En date du', class:'form-label m-0' %>
-            <%= form.date_field :validate_date, class: 'form-control' %>
-          </div>
-          <div class="d-flex align-items-center justify-content-between mb-2">
-            <%= form.label :signed_before, 'À signer avant le', class:'form-label m-0' %>
-            <%= form.date_field :signed_before, class: 'form-control' %>
-          </div>
           <div class="d-flex align-items-center justify-content-between mb-3">
             <%= form.label :client_reference, 'Réf.client', class:'form-label m-0' %>
             <%= turbo_frame_tag 'client-reference' do %>
               <input type="text" name="client-reference" id="quote_client_reference"
                       class="form-control" value="<%= @quote.client&.reference || '' %>" disabled>
-            <% end %>
-          </div>
-          <div class="mb-2 must-signed">
-            <%= form.label :must_signed, class:"user-select-none pointer d-flex align-items-center justify-content-between" do %>
-              Signature devis obligatoire
-              <%= form.checkbox :must_signed, class:"d-none" %>
-              <span class="toggle"></span>
             <% end %>
           </div>
         </div>

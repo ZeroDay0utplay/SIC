@@ -35,7 +35,7 @@
             <%= link_to boards_path(), class:"side-nav-link", data: {turbo: false} do %>
               <%= inline_svg_tag('icons/list-checked.svg') %>
               <%= inline_svg_tag('icons/list-checked.svg') %>
-              <span class="sidenav-text">Gestion des tâches</span>
+              <span class="sidenav-text">Task Management</span>
             <% end %>
           </li>
           <li class='side-nav-item'>
@@ -48,53 +48,11 @@
             <input type="checkbox" class="d-none" id="finances" <%= "checked" if check_namespace?("Web::Finances") %>>
             <ul class="sub-navbar list-unstyled">
               <li class="side-nav-item">
-                <%= link_to finances_interventions_path, class:"side-nav-link d-flex align-items-center #{ is_active?('interventions') }", data: {turbo: false} do %>
-                  <span class="sidenav-text">Interventions</span>
-                <% end %>
-              </li>
-              <li class="side-nav-item">
                 <%= link_to finances_quotes_path, class:"side-nav-link d-flex align-items-center #{ is_active?('quotes') }", data: {turbo: false} do %>
                   <span class="sidenav-text">Invoices</span>
                 <% end %>
               </li>
             </ul>
-          </li>
-          <li class='side-nav-item'>
-            <%= link_to "#", class:"side-nav-link" do %>
-              <%= inline_svg_tag('icons/location-person.svg', class:'svg-default') %>
-              <%= inline_svg_tag('icons/location-person-filled.svg', class:'svg-hover') %>
-              <span class="sidenav-text">Pointage</span>
-            <% end %>
-          </li>
-          <li class='side-nav-item'>
-            <%= link_to "#", class:"side-nav-link" do %>
-              <%= inline_svg_tag('icons/tool-box.svg', class:'svg-default') %>
-              <%= inline_svg_tag('icons/tool-box-full.svg', class:'svg-hover') %>
-              <span class="sidenav-text">Matériel</span>
-            <% end %>
-          </li>
-          <li class='side-nav-item'>
-            <%= link_to "#", class:"side-nav-link" do %>
-              <%= inline_svg_tag('icons/chat.svg', class:'svg-default') %>
-              <%= inline_svg_tag('icons/chat.svg', class:'svg-hover') %>
-              <span class="sidenav-text">Messagerie</span>
-            <% end %>
-          </li>
-
-          <li>
-            <%= link_to absences_path(), class:"side-nav-link" do %>
-              <%= inline_svg_tag('icons/cafe.svg', class:'svg-default') %>
-              <%= inline_svg_tag('icons/cafe-full.svg', class:'svg-hover') %>
-              <span class="sidenav-text">Congés</span>
-            <% end %>
-          </li>
-
-          <li class='side-nav-item'>
-            <%= link_to "#", class:"side-nav-link" do %>
-              <%= inline_svg_tag('icons/book.svg', class:'svg-default') %>
-              <%= inline_svg_tag('icons/book-full.svg', class:'svg-hover') %>
-              <span class="sidenav-text">Annuaire</span>
-            <% end %>
           </li>
           <li><hr /></li>
 
@@ -120,14 +78,7 @@
                 <%= link_to agents_settings_users_path(), class:"side-nav-link d-flex align-items-center #{ is_active?('users') }", data: {turbo: false} do %>
                   <%= inline_svg_tag('icons/user-avatar.svg') %>
                   <%= inline_svg_tag('icons/user-avatar-filled.svg') %>
-                  <span class="sidenav-text">Utilisateurs</span>
-                <% end %>
-              </li>
-              <li class="side-nav-item">
-                <%= link_to settings_prestations_path(), class:"side-nav-link d-flex align-items-center #{ is_active?('prestations') }", data: {turbo: false} do %>
-                  <%= inline_svg_tag('icons/construction.svg') %>
-                  <%= inline_svg_tag('icons/construction.svg') %>
-                  <span class="sidenav-text">Prestations</span>
+                  <span class="sidenav-text">Users</span>
                 <% end %>
               </li>
               <li class="side-nav-item">
@@ -135,13 +86,6 @@
                   <%= inline_svg_tag('icons/license-third-party.svg') %>
                   <%= inline_svg_tag('icons/License-full.svg') %>
                   <span class="sidenav-text">Groupes</span>
-                <% end %>
-              </li>
-              <li class="side-nav-item">
-                <%= link_to settings_contacts_path(), class:"side-nav-link d-flex align-items-center #{ is_active?('contacts') }", data: {turbo: false} do %>
-                  <%= inline_svg_tag('icons/email.svg') %>
-                  <%= inline_svg_tag('icons/email-full.svg') %>
-                  <span class="sidenav-text">Contact client</span>
                 <% end %>
               </li>
             </ul>

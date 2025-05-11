@@ -1,7 +1,7 @@
 Superadmin.first_or_create(email: "superadmin@example.com", active: true, role: 5, password: "password")
 
-ideo_company = Company.create(social_reason: "Ideo Groupe", subdomain: "ideogroupe")
-test_company = Company.create(social_reason: "Test Company", subdomain: "testcompany")
+ideo_company = Company.create(legal_name: "Ideo Groupe", tax_id: "FR123456789")
+test_company = Company.create(legal_name: "Test Company", tax_id: "FR987654321")
 
 Admin.create(email: "ideo@example.com", active: true, password: "password", company: ideo_company, first_name: "Ideo", last_name: "Admin")
 Admin.create(email: "test@example.com", active: true, password: "password", company: test_company, first_name: "Test", last_name: "Admin")
@@ -58,7 +58,7 @@ ActiveRecord::Base.transaction do
       signed_at: Faker::Date.between(from: 30.days.ago, to: Date.today),
       must_signed: [true, false].sample,
       description: Faker::Lorem.sentence,
-      document_title: Faker::Company.name,
+      document_title: Faker::Company.legal_name,
       prefix_type: rand(0..3),
       send_at: Faker::Date.between(from: 30.days.ago, to: Date.today),
       type: "Quote"

@@ -49,7 +49,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_152250) do
     t.string "complement"
     t.string "postal_code"
     t.string "city"
-    t.string "country", default: "France"
+    t.string "country", default: "Tunisia"
     t.string "entered_by_user"
     t.float "latitude"
     t.float "longitude"
@@ -60,19 +60,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_152250) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
-  end
-
-  create_table "clients", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "client_type", default: 0, null: false
-    t.string "logo"
-    t.integer "role"
-    t.string "reference"
-    t.bigint "heading_id"
-    t.bigint "company_id"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "commercial_details", force: :cascade do |t|
@@ -98,56 +85,31 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_152250) do
   end
 
   create_table "commercials", force: :cascade do |t|
-    t.bigint "intervention_id"
     t.bigint "user_id"
-    t.bigint "client_id"
-    t.bigint "facture_id"
-    t.bigint "heading_id"
-    t.bigint "prestation_id"
     t.bigint "company_id"
-    t.bigint "report_id"
-    t.bigint "template_id"
-    t.bigint "created_by"
+    t.float "fraud_score"
     t.string "reference"
-    t.date "validate_date"
-    t.text "pretations_details"
     t.integer "state", default: 0
-    t.date "signed_before"
-    t.date "signed_at"
-    t.boolean "must_signed"
     t.text "description"
     t.string "document_title"
-    t.integer "prefix_type"
-    t.integer "reduction_unit"
-    t.float "reduction", default: 0.0
-    t.date "send_at"
     t.string "photo"
     t.string "type"
-    t.string "template_name", default: ""
-    t.boolean "is_template", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_commercials_on_company_id"
+    t.index ["user_id"], name: "index_commercials_on_user_id"
   end
 
   create_table "companies", force: :cascade do |t|
-    t.string "social_reason"
-    t.string "siren"
-    t.string "num_tva"
+    t.string "legal_name"
+    t.string "tax_id"
     t.string "email"
     t.string "tel"
-    t.text "footer_page"
-    t.text "activity"
-    t.date "creation_date"
     t.string "logo"
     t.string "establishment"
     t.string "iban"
     t.string "bic"
-    t.integer "taux_tva"
-    t.string "prefix_bill", default: "FACT-(AA)-(mois)-"
-    t.string "prefix_quote", default: "DEV-(AA)-(mois)-"
-    t.string "prefix_credit", default: "AVR-(AA)-(mois)-"
-    t.string "subdomain"
-    t.boolean "is_archived", default: false
+    t.integer "tva_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -197,34 +159,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_152250) do
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
     t.string "authentication_token"
     t.string "first_name"
     t.string "last_name"
     t.string "phone"
-    t.bigint "company_id", null: false
     t.string "job"
     t.integer "role"
     t.integer "platform"
     t.string "photo"
     t.boolean "active"
-    t.string "btp"
-    t.string "cin"
-    t.string "rib"
-    t.string "driving_license"
-    t.string "type"
-    t.string "address"
-    t.boolean "is_driver"
-    t.boolean "is_teamleader"
-    t.float "lat"
-    t.float "long"
-    t.integer "match_ia"
-    t.string "identifier"
     t.float "current_position_lat"
     t.float "current_position_long"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -232,4 +179,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_152250) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "commercials", "companies"
+  add_foreign_key "commercials", "users"
 end

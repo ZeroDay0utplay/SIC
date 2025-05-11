@@ -9,6 +9,8 @@ module CompanyScoped
   private
 
   def set_company
-    self.company ||= Current.company
+    if has_attribute?(:company_id)
+      self.company ||= Company.current
+    end
   end
 end

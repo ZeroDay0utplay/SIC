@@ -5,7 +5,7 @@ class CreateAddresses < ActiveRecord::Migration[8.0]
       t.string :complement
       t.string :postal_code
       t.string :city
-      t.string :country, default: "France"
+      t.string :country, default: "Tunisia"
       t.string :entered_by_user
       t.float :latitude
       t.float :longitude
